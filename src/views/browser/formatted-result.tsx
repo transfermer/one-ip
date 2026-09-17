@@ -12,7 +12,7 @@ function Value({ value, depth = 0 }: { value: unknown; depth?: number }) {
       <img
         className="max-h-48 max-w-full rounded bg-white object-contain"
         src={value}
-        alt={t("本次检测生成的绘图样本")}
+        alt={t("本次檢測生成的繪圖樣本")}
       />
     );
   if (value === null || typeof value !== "object")
@@ -27,7 +27,7 @@ function Value({ value, depth = 0 }: { value: unknown; depth?: number }) {
   if (!entries.length)
     return (
       <span className="text-muted-foreground">
-        {Array.isArray(value) ? t("空列表（0 项）") : t("无记录（0 项）")}
+        {Array.isArray(value) ? t("空列表（0 項）") : t("無記錄（0 項）")}
       </span>
     );
   if (
@@ -64,7 +64,7 @@ function Value({ value, depth = 0 }: { value: unknown; depth?: number }) {
             title={key}
           >
             {Array.isArray(value)
-              ? t("第 {0} 项", [Number(key) + 1])
+              ? t("第 {0} 項", [Number(key) + 1])
               : fieldLabel(key)}
           </div>
           <div
@@ -98,9 +98,9 @@ export function FormattedResult({
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-border/50 py-2">
           <p
             className="grow text-sm text-muted-foreground"
-            title={t("用于比较，不是检测分数")}
+            title={t("用於比較，不是檢測分數")}
           >
-            {t("指纹摘要")}
+            {t("指紋摘要")}
           </p>
           <p className="max-w-full flex-none break-all font-mono text-xs">
             {hash}
@@ -108,7 +108,7 @@ export function FormattedResult({
         </div>
       )}
       <Button size="sm" variant="outline" onClick={() => setRaw(!raw)}>
-        {raw ? t("返回格式化结果") : t("查看原始 JSON")}
+        {raw ? t("返回格式化結果") : t("查看原始 JSON")}
       </Button>
       {raw ? (
         <pre className="rounded-lg bg-muted p-3 text-xs whitespace-pre-wrap break-all">

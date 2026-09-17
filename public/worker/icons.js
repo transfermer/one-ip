@@ -27,7 +27,7 @@ export async function siteIcon(host) {
     ].includes(type)
   ) {
     await response.body?.cancel();
-    throw new HttpError(502, "图标暂不可用");
+    throw new HttpError(502, "圖標暫不可用");
   }
   return new Response(response.body, {
     headers: {

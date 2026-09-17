@@ -68,7 +68,7 @@ export function AiNetworkCheck({
     <Card className="ai-network-check">
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
-          <CardTitle>{t("网络连通性")}</CardTitle>
+          <CardTitle>{t("網絡連通性")}</CardTitle>
           <button
             type="button"
             className="shrink-0 text-xs font-normal text-primary enabled:hover:underline underline-offset-4"
@@ -85,16 +85,16 @@ export function AiNetworkCheck({
                   ]),
                 );
                 if (next.data?.every((result) => result.median != null))
-                  toast.success(t("网络检测完成"));
-                else toast.warning(t("检测完成，部分站点未获取到响应"));
+                  toast.success(t("網絡檢測完成"));
+                else toast.warning(t("檢測完成，部分站點未獲取到響應"));
               } catch {
-                toast.error(t("网络检测失败，请重试"));
+                toast.error(t("網絡檢測失敗，請重試"));
               } finally {
                 setRefreshing(false);
               }
             }}
           >
-            {busy ? <Pending>{t("检测中…")}</Pending> : t("重新检测")}
+            {busy ? <Pending>{t("檢測中…")}</Pending> : t("重新檢測")}
           </button>
         </div>
       </CardHeader>
@@ -105,7 +105,7 @@ export function AiNetworkCheck({
               <TableRow>
                 <TableHead>{t("域名")}</TableHead>
                 <TableHead>{t("出口")} IP</TableHead>
-                <TableHead className="text-right">{t("延迟")}</TableHead>
+                <TableHead className="text-right">{t("延遲")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -120,18 +120,18 @@ export function AiNetworkCheck({
                   <TableCell className="ai-connectivity-exit text-muted-foreground">
                     <span className="sm:hidden">{t("出口 IP：")} </span>
                     {exit.isFetching ? (
-                      <Pending>{t("检测中…")}</Pending>
+                      <Pending>{t("檢測中…")}</Pending>
                     ) : exit.data?.ip ? (
                       <IpText ip={exit.data.ip} />
                     ) : (
-                      <span title={t("未获取到出口，可能受跨域或连接限制。")}>
-                        {t("暂不可用")}
+                      <span title={t("未獲取到出口，可能受跨域或連接限制。")}>
+                        {t("暫不可用")}
                       </span>
                     )}
                   </TableCell>
                   <TableCell className="ai-connectivity-latency text-right">
                     {query.isFetching ? (
-                      <Pending>{t("检测中…")}</Pending>
+                      <Pending>{t("檢測中…")}</Pending>
                     ) : result?.median != null ? (
                       <span title={result.description}>
                         <LatencyBadge result={result} running={false} />
@@ -142,8 +142,8 @@ export function AiNetworkCheck({
                         title={result?.description}
                       >
                         {result?.status === "restricted"
-                          ? t("检测受限")
-                          : t("未确认")}
+                          ? t("檢測受限")
+                          : t("未確認")}
                       </span>
                     )}
                   </TableCell>
@@ -154,12 +154,12 @@ export function AiNetworkCheck({
         </div>
         <p className="small muted mt-2">
           {t(
-            "检测的是站点资源响应，不等于登录或对话可用；跨站限制和超时不会判为“未连通”。",
+            "檢測的是站點資源響應，不等於登錄或對話可用；跨站限制和超時不會判爲“未連通”。",
           )}
         </p>
         {query.error && (
           <p className="small text-destructive">
-            {t("网络检测失败，请重试。")}
+            {t("網絡檢測失敗，請重試。")}
           </p>
         )}
         {children}

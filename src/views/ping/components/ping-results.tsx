@@ -23,7 +23,7 @@ interface Row {
 const columns: ColumnDef<Row>[] = [
   {
     accessorKey: "name",
-    header: t("节点"),
+    header: t("節點"),
     cell: ({ row }) => (
       <span className="site-cell">
         <CountryFlag code={row.original.country} />
@@ -33,14 +33,14 @@ const columns: ColumnDef<Row>[] = [
   },
   {
     accessorKey: "status",
-    header: t("状态"),
+    header: t("狀態"),
     cell: ({ row }) =>
-      row.original.status === t("测试中...") ? (
-        <Pending>{t("测试中...")}</Pending>
+      row.original.status === t("測試中...") ? (
+        <Pending>{t("測試中...")}</Pending>
       ) : (
         <Badge
           variant={
-            row.original.status === t("失败") ||
+            row.original.status === t("失敗") ||
             row.original.avg == null ||
             row.original.avg < 0
               ? "destructive"
@@ -69,7 +69,7 @@ const columns: ColumnDef<Row>[] = [
   })),
   {
     accessorKey: "loss",
-    header: t("丢包"),
+    header: t("丟包"),
     cell: ({ row }) =>
       row.original.loss == null ? (
         "—"
@@ -95,12 +95,12 @@ export function PingResults({
     status:
       item.result.status === "finished"
         ? item.result.stats?.avg == null || item.result.stats.avg < 0
-          ? t("无响应")
+          ? t("無響應")
           : t("完成")
         : item.result.status === "failed"
-          ? t("失败")
+          ? t("失敗")
           : pending
-            ? t("测试中...")
+            ? t("測試中...")
             : t("未完成"),
     ...item.result.stats,
   }));
@@ -120,7 +120,7 @@ export function PingResults({
             row.avg == null ||
             !Number.isFinite(row.avg) ||
             row.avg < 0 ||
-            row.status === t("失败")
+            row.status === t("失敗")
               ? "ping-row-danger"
               : row.avg < 100
                 ? "ping-row-fast"
@@ -135,7 +135,7 @@ export function PingResults({
           animateSorting
           animateEntries
           empty={
-            pending ? <Pending>{t("等待远端探针...")}</Pending> : t("暂无结果")
+            pending ? <Pending>{t("等待遠端探針...")}</Pending> : t("暫無結果")
           }
         />
       </CardContent>

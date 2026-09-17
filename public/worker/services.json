@@ -2,39 +2,39 @@
   {
     "id": "telegram",
     "name": "Telegram",
-    "group": "社区",
+    "group": "社區",
     "url": "https://uptimerobot.com/api/pulse/monitors/telegram",
     "page": "https://uptimerobot.com/is-it-down/telegram/",
     "statusSource": "UptimeRobot",
     "icon": "https://icons.duckduckgo.com/ip3/telegram.org.ico",
     "officialStatus": false,
-    "note": "第三方来源：UptimeRobot。仅监测 telegram.org 网站可用性，不代表 Telegram 全球消息收发状态；数据过期或不可用时显示待确认。"
+    "note": "第三方來源：UptimeRobot。僅監測 telegram.org 網站可用性，不代表 Telegram 全球消息收發狀態；數據過期或不可用時顯示待確認。"
   },
   {
     "id": "0",
     "name": "Cloudflare",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://www.cloudflarestatus.com/api/v2/summary.json",
     "page": "https://www.cloudflarestatus.com"
   },
   {
     "id": "1",
     "name": "Supabase",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://status.supabase.com/api/v2/summary.json",
     "page": "https://status.supabase.com"
   },
   {
     "id": "2",
     "name": "SendGrid",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.sendgrid.com/api/v2/summary.json",
     "page": "https://status.twilio.com"
   },
   {
     "id": "3",
     "name": "Twilio",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.twilio.com/api/v2/summary.json",
     "page": "https://status.twilio.com"
   },
@@ -90,138 +90,138 @@
     "url": "https://www.cloudflarestatus.com/api/v2/summary.json",
     "page": "https://www.cloudflarestatus.com/services?search=replicate",
     "icon": "https://icons.duckduckgo.com/ip3/replicate.com.ico",
-    "note": "Replicate 已迁入 Cloudflare 官方状态页，仅展示 Replicate 组件及关联事件。"
+    "note": "Replicate 已遷入 Cloudflare 官方狀態頁，僅展示 Replicate 組件及關聯事件。"
   },
   {
     "id": "12",
     "name": "DigitalOcean",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://status.digitalocean.com/api/v2/summary.json",
     "page": "http://status.digitalocean.com"
   },
   {
     "id": "13",
     "name": "Fly.io",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://status.flyio.net/api/v2/summary.json",
     "page": "https://status.flyio.net"
   },
   {
     "id": "14",
     "name": "Netlify",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://www.netlifystatus.com/api/v2/summary.json",
     "page": "https://www.netlifystatus.com"
   },
   {
     "id": "15",
     "name": "Vercel",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://www.vercel-status.com/api/v2/summary.json",
     "page": "https://www.vercel-status.com"
   },
   {
     "id": "16",
     "name": "Atlassian",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.atlassian.com/api/v2/summary.json",
     "page": "https://status.atlassian.com"
   },
   {
     "id": "17",
     "name": "Clerk",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.clerk.com/api/v2/summary.json",
     "page": "https://status.clerk.com/"
   },
   {
     "id": "18",
     "name": "Figma",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.figma.com/api/v2/summary.json",
     "page": "https://status.figma.com"
   },
   {
     "id": "19",
     "name": "GitHub",
-    "group": "开发",
+    "group": "開發",
     "url": "https://www.githubstatus.com/api/v2/summary.json",
     "page": "https://www.githubstatus.com"
   },
   {
     "id": "20",
     "name": "Notion",
-    "group": "开发",
+    "group": "開發",
     "url": "https://www.notion-status.com/api/v2/summary.json",
     "page": "https://www.notion-status.com/"
   },
   {
     "id": "21",
     "name": "Postman",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.postman.com/api/v2/summary.json",
     "page": "https://status.postman.com"
   },
   {
     "id": "22",
     "name": "Python Infrastructure",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.python.org/api/v2/summary.json",
     "page": "https://status.python.org"
   },
   {
     "id": "23",
     "name": "Sentry",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.sentry.io/api/v2/summary.json",
     "page": "https://status.sentry.io"
   },
   {
     "id": "24",
     "name": "Stripe",
-    "group": "开发",
+    "group": "開發",
     "url": "https://www.stripestatus.com/api/v2/summary.json",
     "page": "https://www.stripestatus.com"
   },
   {
     "id": "25",
     "name": "npm",
-    "group": "开发",
+    "group": "開發",
     "url": "https://status.npmjs.org/api/v2/summary.json",
     "page": "https://status.npmjs.org"
   },
   {
     "id": "26",
     "name": "Discord",
-    "group": "社区",
+    "group": "社區",
     "url": "https://discordstatus.com/api/v2/summary.json",
     "page": "https://discordstatus.com"
   },
   {
     "id": "27",
     "name": "Pinterest",
-    "group": "社区",
+    "group": "社區",
     "url": "https://www.pintereststatus.com/api/v2/summary.json",
     "page": "https://www.pintereststatus.com"
   },
   {
     "id": "28",
     "name": "Reddit",
-    "group": "社区",
+    "group": "社區",
     "url": "https://www.redditstatus.com/api/v2/summary.json",
     "page": "https://www.redditstatus.com"
   },
   {
     "id": "29",
     "name": "Twitch",
-    "group": "社区",
+    "group": "社區",
     "url": "https://status.twitch.tv/api/v2/summary.json",
     "page": "https://status.twitch.com"
   },
   {
     "id": "30",
     "name": "Zoom",
-    "group": "社区",
+    "group": "社區",
     "url": "https://status.zoom.us/api/v2/summary.json",
     "page": "https://www.zoomstatus.com"
   },
@@ -232,7 +232,7 @@
     "url": "https://alkalimakersuite-pa.clients6.google.com/$rpc/google.internal.alkali.applications.makersuite.v1.MakerSuiteService/ListIncidentsHistory",
     "page": "https://aistudio.google.com/status",
     "icon": "https://icons.duckduckgo.com/ip3/gemini.google.com.ico",
-    "note": "仅涵盖 AI Studio / Gemini API，不代表 Gemini 聊天网站状态。",
+    "note": "僅涵蓋 AI Studio / Gemini API，不代表 Gemini 聊天網站狀態。",
     "officialStatus": true
   },
   {
@@ -242,7 +242,7 @@
     "url": "https://status.deepseek.com/feed.rss",
     "page": "https://status.deepseek.com",
     "icon": "https://icons.duckduckgo.com/ip3/www.deepseek.com.ico",
-    "note": "读取 DeepSeek 官方 RSS 中未解决的事件，已恢复事件不计入故障。",
+    "note": "讀取 DeepSeek 官方 RSS 中未解決的事件，已恢復事件不計入故障。",
     "officialStatus": true
   },
   {
@@ -252,17 +252,17 @@
     "url": "https://status.x.ai/feed.xml",
     "page": "https://status.x.ai",
     "icon": "https://icons.duckduckgo.com/ip3/grok.com.ico",
-    "note": "读取官方 RSS 中未解决的事件；不包含状态页的实时监控指标。",
+    "note": "讀取官方 RSS 中未解決的事件；不包含狀態頁的實時監控指標。",
     "officialStatus": true
   },
   {
     "id": "34",
-    "name": "通义千问",
+    "name": "通義千問",
     "group": "AI",
     "url": "https://status.aliyun.com/api/status/listCurrentProductStatus?regionId=non-regional",
     "page": "https://status.aliyun.com/#/?region=non-regional",
     "icon": "https://icons.duckduckgo.com/ip3/chat.qwen.ai.ico",
-    "note": "展示阿里云非区域性「百炼」产品状态，覆盖千问 API；不代表千问聊天网站状态。",
+    "note": "展示阿里雲非區域性「百鍊」產品狀態，覆蓋千問 API；不代表千問聊天網站狀態。",
     "officialStatus": true
   },
   {
@@ -272,7 +272,7 @@
     "url": "https://status.moonshot.cn/api/v2/summary.json",
     "page": "https://status.moonshot.cn",
     "icon": "https://icons.duckduckgo.com/ip3/www.kimi.com.ico",
-    "note": "Moonshot AI 官方状态，涵盖 Kimi 与开放平台 API。",
+    "note": "Moonshot AI 官方狀態，涵蓋 Kimi 與開放平臺 API。",
     "officialStatus": true
   },
   {
@@ -282,7 +282,7 @@
     "url": "https://does.dmit.fail/api/v1/status?locale=en",
     "page": "https://does.dmit.fail/",
     "icon": "https://icons.duckduckgo.com/ip3/dmit.io.ico",
-    "note": "展示官方汇总与机房线路状态；完整事件请查看官方状态页。",
+    "note": "展示官方彙總與機房線路狀態；完整事件請查看官方狀態頁。",
     "officialStatus": true
   },
   {
@@ -292,67 +292,67 @@
     "url": "https://bwhstatus.com/",
     "page": "https://bwhstatus.com/",
     "icon": "https://icons.duckduckgo.com/ip3/bandwagonhost.com.ico",
-    "note": "读取官方页面的当前汇总状态；完整事件请查看官方状态页。",
+    "note": "讀取官方頁面的當前彙總狀態；完整事件請查看官方狀態頁。",
     "officialStatus": true
   },
   {
     "id": "aws",
     "name": "Amazon Web Services (AWS)",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://health.aws.amazon.com/public/currentevents",
     "page": "https://health.aws.amazon.com/health/status",
     "icon": "https://icons.duckduckgo.com/ip3/aws.amazon.com.ico",
-    "note": "仅涵盖公开服务事件，不代表账户或实例的专属健康状态。",
+    "note": "僅涵蓋公開服務事件，不代表賬戶或實例的專屬健康狀態。",
     "officialStatus": true
   },
   {
     "id": "aliyun",
-    "name": "阿里云",
-    "group": "云服务",
+    "name": "阿里雲",
+    "group": "雲服務",
     "url": "https://status.aliyun.com/api/status/listEventInProgress",
     "page": "https://status.aliyun.com/",
     "icon": "https://icons.duckduckgo.com/ip3/aliyun.com.ico",
-    "note": "读取阿里云官方进行中事件，已恢复事件不计入当前故障。",
+    "note": "讀取阿里雲官方進行中事件，已恢復事件不計入當前故障。",
     "officialStatus": true
   },
   {
     "id": "tencent-cloud",
-    "name": "腾讯云",
-    "group": "云服务",
+    "name": "騰訊雲",
+    "group": "雲服務",
     "url": "https://status.tencentcloud.com/v1/api/status/DescribeRegions?BelongSite=1",
     "page": "https://status.tencentcloud.com/",
     "icon": "https://icons.duckduckgo.com/ip3/tencentcloud.com.ico",
-    "note": "读取腾讯云官方区域状态与当前公告，隐藏或已恢复公告不计入故障。",
+    "note": "讀取騰訊雲官方區域狀態與當前公告，隱藏或已恢復公告不計入故障。",
     "officialStatus": true
   },
   {
     "id": "google-cloud",
     "name": "Google Cloud",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://status.cloud.google.com/incidents.json",
     "page": "https://status.cloud.google.com/",
     "icon": "https://icons.duckduckgo.com/ip3/cloud.google.com.ico",
-    "note": "仅涵盖公开服务事件，不代表账户或实例的专属健康状态。",
+    "note": "僅涵蓋公開服務事件，不代表賬戶或實例的專屬健康狀態。",
     "officialStatus": true
   },
   {
     "id": "azure",
     "name": "Microsoft Azure",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://azure.status.microsoft/en-us/status/",
     "page": "https://azure.status.microsoft/en-us/status/",
     "icon": "https://icons.duckduckgo.com/ip3/azure.microsoft.com.ico",
-    "note": "读取 Azure 官方 Current Impact；仅涵盖公开的广泛影响事件，不代表账户专属健康状态。",
+    "note": "讀取 Azure 官方 Current Impact；僅涵蓋公開的廣泛影響事件，不代表賬戶專屬健康狀態。",
     "officialStatus": true
   },
   {
     "id": "oracle-cloud",
     "name": "Oracle Cloud (OCI)",
-    "group": "云服务",
+    "group": "雲服務",
     "url": "https://ocistatus.oraclecloud.com/api/v2/status.json",
     "page": "https://ocistatus.oraclecloud.com/",
     "icon": "https://icons.duckduckgo.com/ip3/oracle.com.ico",
-    "note": "展示 OCI 商业区域的官方汇总状态；区域详情请查看官方页面。",
+    "note": "展示 OCI 商業區域的官方彙總狀態；區域詳情請查看官方頁面。",
     "officialStatus": true
   }
 ]

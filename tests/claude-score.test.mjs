@@ -10,7 +10,7 @@ test('upstream weights, region exceptions and risk boundaries stay intact', () =
  assert.equal(scoreTimezone('Asia/Shanghai'),1);
  assert.equal(scoreTimezone('Asia/Taipei'),0);
  assert.equal(scoreLanguages(['zh-TW','zh','en']),0);
- assert.equal(scoreLanguages(['zh-CN','en']),1);
+ assert.equal(scoreLanguages(['zh-TW','en']),1);
  assert.deepEqual([30,31,60,61].map(riskBand),['low','medium','medium','high']);
 });
 test('weighted totals preserve fractional contributions and incomplete outcomes', () => {

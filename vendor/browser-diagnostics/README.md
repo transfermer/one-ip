@@ -22,6 +22,6 @@ constant-assignment errors used for TypeError detection. Do not rewrite these
 probes for lint compliance. The generated file and pinned upstream are excluded
 from first-party formatting/linting.
 
-The public UI uses the distinct name “浏览器深度检测”; CreepJS is mentioned only
+The public UI uses the distinct name “瀏覽器深度檢測”; CreepJS is mentioned only
 as attribution and is not used as the site's product identity. This is not an
 official deployment or a complete clone of the upstream application.

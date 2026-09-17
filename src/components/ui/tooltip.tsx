@@ -93,7 +93,7 @@ function TooltipContent({
       <ResponsiveDialog
         open={mobile.open}
         onOpenChange={mobile.setOpen}
-        title={t("完整内容")}
+        title={t("完整內容")}
         description=""
       >
         <div className="whitespace-pre-wrap break-words text-sm leading-relaxed [overflow-wrap:anywhere]">

@@ -7,14 +7,14 @@ import { resolveLocale, t } from "../src/i18n/index.ts";
 
 const en = JSON.parse(readFileSync("src/i18n/en.json", "utf8"));
 test("saved language wins; browser language supplies a safe default", () => {
-  assert.equal(resolveLocale("en", ["zh-CN"]), "en");
-  assert.equal(resolveLocale("zh-CN", ["en-US"]), "zh-CN");
-  assert.equal(resolveLocale(null, ["zh-TW"]), "zh-CN");
+  assert.equal(resolveLocale("en", ["zh-TW"]), "en");
+  assert.equal(resolveLocale("zh-TW", ["en-US"]), "zh-TW");
+  assert.equal(resolveLocale(null, ["zh-TW"]), "zh-TW");
   assert.equal(resolveLocale("invalid", ["fr-FR"]), "en");
   assert.equal(resolveLocale(null, []), "en");
 });
 test("interpolation leaves user values intact", () => {
-  assert.equal(t("请求失败 ({0})", [503]), "请求失败 (503)");
+  assert.equal(t("請求失敗 ({0})", [503]), "請求失敗 (503)");
   assert.equal(t("{0}", ["{1} <script>"]), "{1} <script>");
 });
 test("all literal translation calls have English entries and matching placeholders", () => {
@@ -45,12 +45,12 @@ test("English runtime translates messages and switches with blocked storage with
   try {
     const runtime = await import("../src/i18n/index.ts?english-test");
     assert.equal(runtime.locale, "en");
-    assert.equal(runtime.t("网络检测"), "Network checks");
-    assert.equal(runtime.t("请求失败 ({0})", [503]), "Request failed (503)");
-    assert.equal(runtime.t("外部数据源暂不可用 (502)"), "Upstream source unavailable (502)");
+    assert.equal(runtime.t("網絡檢測"), "Network checks");
+    assert.equal(runtime.t("請求失敗 ({0})", [503]), "Request failed (503)");
+    assert.equal(runtime.t("外部數據源暫不可用 (502)"), "Upstream source unavailable (502)");
     assert.equal(runtime.t("Untranslated upstream text"), "Untranslated upstream text");
-    runtime.setLocale("zh-CN");
-    assert.equal(destination, "https://example.test/status?group=AI&lang=zh-CN#details");
+    runtime.setLocale("zh-TW");
+    assert.equal(destination, "https://example.test/status?group=AI&lang=zh-TW#details");
   } finally {
     delete globalThis.window;
     delete globalThis.localStorage;

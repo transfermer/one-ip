@@ -12,12 +12,12 @@ export function parseTelegramStatus(data, now = Date.now()) {
     checked > now + 60_000 ||
     now - checked > 30 * 60_000
   )
-    throw new HttpError(502, "第三方状态数据暂不可用");
+    throw new HttpError(502, "第三方狀態數據暫不可用");
   const up = data.status === "UP";
   return {
     status: {
       indicator: up ? "none" : "major",
-      description: up ? "第三方网站监测正常" : "第三方网站监测异常",
+      description: up ? "第三方網站監測正常" : "第三方網站監測異常",
     },
     checkedAt: new Date(checked).toISOString(),
     components: [

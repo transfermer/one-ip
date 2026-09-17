@@ -18,8 +18,8 @@ export function ShareSite() {
         variant="ghost"
         size="icon"
         className="size-8 rounded-full text-muted-foreground md:size-9 md:rounded-lg"
-        aria-label={t("分享当前页面")}
-        title={t("分享当前页面")}
+        aria-label={t("分享當前頁面")}
+        title={t("分享當前頁面")}
         onClick={() => setOpen(true)}
       >
         <QrCode className="size-4" aria-hidden="true" />
@@ -27,8 +27,8 @@ export function ShareSite() {
       <ResponsiveDialog
         open={open}
         onOpenChange={setOpen}
-        title={t("分享当前页面")}
-        description={t("扫码或复制链接，打开当前页面。")}
+        title={t("分享當前頁面")}
+        description={t("掃碼或複製鏈接，打開當前頁面。")}
       >
         <div className="space-y-3">
           <div className="share-qr-panel flex flex-col items-center rounded-xl px-3 py-3">
@@ -40,7 +40,7 @@ export function ShareSite() {
                 marginSize={4}
                 bgColor="#ffffff"
                 fgColor="#111827"
-                title={t("扫码打开当前页面")}
+                title={t("掃碼打開當前頁面")}
                 className="block h-auto w-full rounded-xl"
               />
               <span
@@ -61,14 +61,14 @@ export function ShareSite() {
               />
             </div>
             <p className="mt-2 text-[11px] text-muted-foreground">
-              {t("扫码打开当前页面")}
+              {t("掃碼打開當前頁面")}
             </p>
           </div>
           <InputGroup>
             <InputGroupInput
               readOnly
               value={siteUrl}
-              aria-label={t("当前页面链接")}
+              aria-label={t("當前頁面鏈接")}
               className="h-8 min-w-0 flex-1 text-xs"
               onFocus={(event) => event.currentTarget.select()}
             />

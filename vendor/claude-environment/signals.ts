@@ -203,8 +203,8 @@ export function scoreLanguages(langs: string[]): number {
   // A bare "zh" only implies Simplified/mainland when it isn't the generic
   // fallback trailing a Traditional-Chinese preference.
   const isHansCN = (l: string, i: number) =>
-    l.startsWith("zh-cn") ||
-    l.includes("hans") ||
+    l.startsWith("zh-tw") ||
+    l.includes("hant") ||
     (l === "zh" && (firstTrad === -1 || i < firstTrad));
 
   const kept = list
@@ -237,14 +237,14 @@ function detectIntlLocale(): DetectOutcome {
   }
   const l = locale.toLowerCase();
   let score = 0;
-  if (l.startsWith("zh-cn") || l.includes("hans") || l === "zh") score = 1;
+  if (l.startsWith("zh-tw") || l.includes("hant") || l === "zh") score = 1;
   // zh-TW = Taiwan (supported region) → no score; zh-HK/zh-MO keep partial risk.
   else if (l.startsWith("zh") && !l.startsWith("zh-tw")) score = 0.5;
   return { raw: locale || "unknown", score };
 }
 
 function isFontAvailable(font: string, ctx: CanvasRenderingContext2D): boolean {
-  const testString = "中文字体检测ABCabc012";
+  const testString = "中文字體檢測ABCabc012";
   const size = "72px";
   const bases = ["monospace", "sans-serif", "serif"];
   return bases.some((base) => {

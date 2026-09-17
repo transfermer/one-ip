@@ -46,7 +46,7 @@ export const aiPlatforms = [
     name: "Gemini",
     domain: "gemini.google.com",
     statusPage: "https://aistudio.google.com/status",
-    statusLabel: t("AI Studio / Gemini API 状态"),
+    statusLabel: t("AI Studio / Gemini API 狀態"),
   },
   {
     id: "deepseek",
@@ -63,7 +63,7 @@ export const aiPlatforms = [
     docsUrl:
       "https://www.alibabacloud.com/help/en/model-studio/compatibility-of-openai-with-dashscope",
     statusId: "34",
-    name: t("通义千问"),
+    name: t("通義千問"),
     domain: "chat.qwen.ai",
   },
   {

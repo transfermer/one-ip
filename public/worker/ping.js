@@ -7,7 +7,7 @@ export async function startPing(input) {
     input.protocol !== undefined &&
     !["icmp", "https"].includes(input.protocol)
   )
-    throw new HttpError(400, "不支持此测量协议");
+    throw new HttpError(400, "不支持此測量協議");
   let locations;
   if (input.regions) {
     const allowed = ["AF", "AS", "EU", "NA", "OC", "SA"];
@@ -19,7 +19,7 @@ export async function startPing(input) {
       input.perRegion < 1 ||
       new Set(input.regions).size * input.perRegion > 50
     )
-      throw new HttpError(400, "单批请选择有效地区及 1–50 个探针");
+      throw new HttpError(400, "單批請選擇有效地區及 1–50 個探針");
     locations = [...new Set(input.regions)].map((continent) => ({
       continent,
       limit: input.perRegion,
@@ -30,7 +30,7 @@ export async function startPing(input) {
       !input.nodes.length ||
       input.nodes.length > 50
     )
-      throw new HttpError(400, "单批请选择 1–50 个地区");
+      throw new HttpError(400, "單批請選擇 1–50 個地區");
     const catalog = input.nodes.some(
       (id) => typeof id === "string" && id.includes(":"),
     )
@@ -40,7 +40,7 @@ export async function startPing(input) {
       catalog.find((node) => node.id === id),
     );
     if (selected.some((node) => !node))
-      throw new HttpError(400, "无效的探测地区");
+      throw new HttpError(400, "無效的探測地區");
     locations = selected.map((node) => ({
       country: node.cc.toUpperCase(),
       city: node.city,
@@ -72,7 +72,7 @@ export async function startPing(input) {
 }
 export async function pingResult(id) {
   if (!/^[a-zA-Z0-9_-]{8,80}$/.test(id))
-    throw new HttpError(400, "无效的测量 ID");
+    throw new HttpError(400, "無效的測量 ID");
   return upstream(`https://api.globalping.io/v1/measurements/${id}`, {
     headers: { "Content-Type": "application/json" },
   });

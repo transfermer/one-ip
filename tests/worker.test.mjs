@@ -388,7 +388,7 @@ test("icon proxy rejects upstream redirects without forwarding Location", async 
     const response = await worker.fetch(request("/api/icons/github.com"), env);
     assert.equal(response.status, 502);
     assert.equal(response.headers.get("Location"), null);
-    assert.deepEqual(await response.json(), { error: "图标暂不可用" });
+    assert.deepEqual(await response.json(), { error: "圖標暫不可用" });
   });
 });
 

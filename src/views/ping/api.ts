@@ -63,7 +63,7 @@ async function runBatch(
       if (signal.aborted) abort();
     });
   }
-  throw new Error(t("部分节点尚未完成，可查看已返回结果或重新测试。"));
+  throw new Error(t("部分節點尚未完成，可查看已返回結果或重新測試。"));
 }
 
 export interface PingNode {
@@ -118,7 +118,7 @@ export async function runPing(
         nodes: input.nodes!.slice(i * 50, i * 50 + 50),
       }))
     : [input];
-  if (!batches.length) throw new Error(t("请选择至少一个地区"));
+  if (!batches.length) throw new Error(t("請選擇至少一個地區"));
   let collected: PingResponse["results"] = [];
   let final: PingResponse | undefined;
   for (let index = 0; index < batches.length; index++) {

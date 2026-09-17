@@ -17,8 +17,8 @@ export function LanguageSelect() {
           variant="ghost"
           size="icon"
           className="rounded-full text-muted-foreground md:size-9 md:rounded-lg"
-          aria-label="语言 / Language"
-          title="语言 / Language"
+          aria-label="語言 / Language"
+          title="語言 / Language"
         >
           <Languages aria-hidden="true" />
         </Button>
@@ -26,9 +26,9 @@ export function LanguageSelect() {
       <DropdownMenuContent align="end">
         <DropdownMenuRadioGroup
           value={locale}
-          onValueChange={(value) => setLocale(value === "en" ? "en" : "zh-CN")}
+          onValueChange={(value) => setLocale(value === "en" ? "en" : "zh-TW")}
         >
-          <DropdownMenuRadioItem value="zh-CN">中文</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="zh-TW">中文</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

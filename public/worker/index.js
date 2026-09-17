@@ -33,14 +33,14 @@ export default {
     try {
       const origin = request.headers.get("Origin");
       if (origin && origin !== url.origin)
-        throw new HttpError(403, "仅支持同源调用");
+        throw new HttpError(403, "僅支持同源調用");
       if (!["GET", "POST"].includes(request.method))
-        throw new HttpError(405, "不支持此请求方法");
+        throw new HttpError(405, "不支持此請求方法");
       const key = request.headers.get("CF-Connecting-IP") ?? "local";
       const limiter =
         request.method === "POST" ? env.ACTION_LIMITER : env.API_LIMITER;
       if (limiter && !(await limiter.limit({ key })).success)
-        throw new HttpError(429, "请求过于频繁，请一分钟后重试");
+        throw new HttpError(429, "請求過於頻繁，請一分鐘後重試");
       const path = url.pathname.slice(4).replace(/\/$/, "");
       if (path === "/dns" || path.startsWith("/dns/"))
         throw new HttpError(404, "接口不存在");
@@ -50,7 +50,7 @@ export default {
         (isAction && request.method !== "POST") ||
         (!isAction && request.method !== "GET")
       )
-        throw new HttpError(405, "不支持此请求方法");
+        throw new HttpError(405, "不支持此請求方法");
       if (path === "/browser/tls-fingerprint")
         return json(tlsFingerprint(request));
       if (path === "/browser/challenges")
@@ -67,7 +67,7 @@ export default {
         if (!data.ip || key === "local" || env.LOCAL_DEV === "true")
           throw new HttpError(
             503,
-            "本地环境没有真实访客 IP，请部署 Worker 后检测；不会使用示例 IP。",
+            "本地環境沒有真實訪客 IP，請部署 Worker 後檢測；不會使用示例 IP。",
           );
         return json(data);
       }
@@ -112,11 +112,11 @@ export default {
         return json(await pingResult(path.slice(13)));
       if (path.startsWith("/status/")) {
         const service = services.find((s) => s.id === path.slice(8));
-        if (!service) throw new HttpError(404, "未知服务");
+        if (!service) throw new HttpError(404, "未知服務");
         if (!service.url)
           throw new HttpError(
             503,
-            "该服务未提供已接入的公开状态接口，请查看官方状态页",
+            "該服務未提供已接入的公開狀態接口，請查看官方狀態頁",
           );
         const data = await (service.group === "VPS" ||
         [
@@ -141,12 +141,12 @@ export default {
       if (error instanceof HttpError)
         return json({ error: error.message }, error.status);
       if (error instanceof URIError)
-        return json({ error: "URL 编码无效" }, 400);
+        return json({ error: "URL 編碼無效" }, 400);
       // Never log visitor IP, request URL, credentials, or upstream error bodies.
       console.error(
         JSON.stringify({ event: "api_error", type: error?.name ?? "Error" }),
       );
-      return json({ error: "查询暂时失败，请稍后重试" }, 502);
+      return json({ error: "查詢暫時失敗，請稍後重試" }, 502);
     }
   },
 };

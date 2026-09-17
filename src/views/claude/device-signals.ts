@@ -29,7 +29,7 @@ export function probeFonts(
   ctx: Pick<CanvasRenderingContext2D, "font" | "measureText">,
   fonts: string[],
 ) {
-  const sample = "字体辨识 AaMm0123456789";
+  const sample = "字體辨識 AaMm0123456789";
   return fonts.filter((font) =>
     ["monospace", "serif", "sans-serif"].some((base) => {
       ctx.font = `72px ${base}`;

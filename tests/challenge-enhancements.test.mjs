@@ -73,7 +73,7 @@ test("configured challenge starts on mount, reports interaction, verifies token 
     await options.callback("token");
     assert.equal(request.token, "token");
     assert.equal(request.provider, "turnstile");
-    assert.ok(states.includes("验证通过"));
+    assert.ok(states.includes("驗證通過"));
     cleanup(); cleanup = undefined;
     assert.equal(request.signal.aborted, true);
     assert.equal(removed, true);

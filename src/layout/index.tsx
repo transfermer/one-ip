@@ -83,7 +83,7 @@ export function AppLayout() {
           <Link
             to="/"
             className="flex items-center gap-2 text-sm font-semibold"
-            aria-label={t("IP 网络工具概览")}
+            aria-label={t("IP 網絡工具概覽")}
           >
             <img src="/icon.svg" width="24" height="24" alt="" />
           </Link>
@@ -94,7 +94,7 @@ export function AppLayout() {
           </div>
         </header>
         <AnimatedSegmentedTabs
-          label={t("网络诊断工具")}
+          label={t("網絡診斷工具")}
           options={options}
           value={activeRoute}
           onValueChange={(value) => {
@@ -106,7 +106,7 @@ export function AppLayout() {
           highlightClassName="rounded-lg bg-primary/10 shadow-none ring-0"
           triggerClassName="h-9 flex-none rounded-lg border-0 px-2 text-[13px] text-muted-foreground hover:bg-accent/50 data-[state=active]:font-semibold data-[state=active]:text-primary"
           renderList={(list) => (
-            <nav ref={navRef} className="app-nav" aria-label={t("主导航")}>
+            <nav ref={navRef} className="app-nav" aria-label={t("主導航")}>
               {mobile && (
                 <Suspense fallback={null}>
                   <MobileNavGlass light={resolvedTheme === "light"} />
@@ -114,7 +114,7 @@ export function AppLayout() {
               )}
               <Link
                 to="/"
-                aria-label={t("IP 网络工具概览")}
+                aria-label={t("IP 網絡工具概覽")}
                 className="site-home-link flex size-9 shrink-0 items-center justify-center rounded-lg focus-visible:outline-2 focus-visible:outline-ring"
               >
                 <img src="/icon.svg" alt="" width="32" height="32" />
@@ -137,7 +137,7 @@ export function AppLayout() {
                 <Suspense
                   fallback={
                     <p className="status-line">
-                      <Pending>{t("正在加载页面…")}</Pending>
+                      <Pending>{t("正在加載頁面…")}</Pending>
                     </p>
                   }
                 >
@@ -155,7 +155,7 @@ export function AppLayout() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {t("使用文档")}
+              {t("使用文檔")}
             </a>
           </UnderlineHover>{" "}
           ·{" "}
@@ -164,11 +164,11 @@ export function AppLayout() {
           </UnderlineHover>{" "}
           ·{" "}
           <UnderlineHover asChild>
-            <Link to="/terms">{t("使用条款")}</Link>
+            <Link to="/terms">{t("使用條款")}</Link>
           </UnderlineHover>{" "}
           ·{" "}
           <UnderlineHover asChild>
-            <Link to="/privacy">{t("隐私政策")}</Link>
+            <Link to="/privacy">{t("隱私政策")}</Link>
           </UnderlineHover>{" "}
           ·{" "}
           <UnderlineHover asChild>
@@ -183,11 +183,11 @@ export function AppLayout() {
           </UnderlineHover>{" "}
           ·{" "}
           <UnderlineHover asChild>
-            <a href="mailto:ip@huzhihui.com">{t("联系作者")}</a>
+            <a href="mailto:ip@huzhihui.com">{t("聯繫作者")}</a>
           </UnderlineHover>
         </footer>
       </div>
-      <aside aria-label={t("站点通知")} className="update-notices">
+      <aside aria-label={t("站點通知")} className="update-notices">
         <AppUpdateChecker />
       </aside>
       <BuildInfo />

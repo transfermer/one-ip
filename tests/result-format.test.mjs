@@ -10,9 +10,9 @@ import {
 test("unavailable data is never interpreted as a clean detection", () => {
   const result = moduleReport("canvas", null);
   assert.equal(result.unavailable, true);
-  assert.equal(result.status, "无法检测");
-  assert.equal(moduleReport("canvas", {}).status, "已读取");
-  assert.equal(moduleReport("canvas", { lied: false }).status, "未发现差异");
+  assert.equal(result.status, "無法檢測");
+  assert.equal(moduleReport("canvas", {}).status, "已讀取");
+  assert.equal(moduleReport("canvas", { lied: false }).status, "未發現差異");
   assert.equal(moduleReport("canvas", { lied: true }).signal, true);
 });
 test("only true headless flags count as signals, not ratings or false values", () => {
@@ -23,7 +23,7 @@ test("only true headless flags count as signals, not ratings or false values", (
     headlessRating: 99,
   });
   assert.equal(result.issues.length, 2);
-  assert.ok(result.issues.includes("UA 含 Headless 标记"));
+  assert.ok(result.issues.includes("UA 含 Headless 標記"));
   assert.equal(
     moduleReport("headless", { headless: { webDriverIsOn: false } }).signal,
     false,
@@ -46,7 +46,7 @@ test("prototype anomalies and collection errors remain separate", () => {
   );
   assert.equal(
     moduleReport("errors", { data: [{ trustedName: "TypeError" }] }).status,
-    "存在读取错误",
+    "存在讀取錯誤",
   );
   assert.equal(moduleReport("errors", { data: [{}] }).signal, false);
 });
@@ -56,9 +56,9 @@ test("fingerprint summaries show values rather than hashes", () => {
     "1920 × 1080",
   );
   assert.equal(fingerprintSummary("deviceMemory", 8), "8 GB（近似值）");
-  assert.match(fingerprintSummary("fonts", ["Arial", "Helvetica"]), /2 种字体/);
+  assert.match(fingerprintSummary("fonts", ["Arial", "Helvetica"]), /2 種字體/);
   assert.equal(valueText(false), "否");
   assert.equal(valueText(null), "未提供");
   assert.equal(parseDetail("false"), false);
-  assert.equal(parseDetail("无法检测"), "无法检测");
+  assert.equal(parseDetail("無法檢測"), "無法檢測");
 });

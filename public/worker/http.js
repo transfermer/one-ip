@@ -17,7 +17,7 @@ export function json(data, status = 200) {
 }
 export function publicIp(value) {
   if (!isIP(value))
-    throw new HttpError(400, "请输入有效的公网 IPv4 或 IPv6 地址");
+    throw new HttpError(400, "請輸入有效的公網 IPv4 或 IPv6 地址");
   const ip =
     isIP(value) === 6
       ? new URL(`https://[${value}]/`).hostname.slice(1, -1)
@@ -36,7 +36,7 @@ export function publicIp(value) {
       /^2001:(db8|2|10|20):/.test(ip) ||
       /^2001::/.test(ip)
     )
-      throw new HttpError(400, "不支持私有、回环或保留地址");
+      throw new HttpError(400, "不支持私有、迴環或保留地址");
   } else {
     const [a, b, c] = ip.split(".").map(Number);
     if (
@@ -51,13 +51,13 @@ export function publicIp(value) {
       (a === 198 && (b === 18 || b === 19 || (b === 51 && c === 100))) ||
       (a === 203 && b === 0 && c === 113)
     )
-      throw new HttpError(400, "不支持私有、回环或保留地址");
+      throw new HttpError(400, "不支持私有、迴環或保留地址");
   }
   return ip;
 }
 export function target(value) {
   if (typeof value !== "string" || !value || value.length > 253)
-    throw new HttpError(400, "请输入有效的域名或 IP");
+    throw new HttpError(400, "請輸入有效的域名或 IP");
   const normalized = value.trim().replace(/\.$/, "").toLowerCase();
   if (isIP(normalized)) return publicIp(normalized);
   if (
@@ -66,7 +66,7 @@ export function target(value) {
     ) ||
     /\.(localhost|local|internal|test|invalid|example)$/.test(normalized)
   )
-    throw new HttpError(400, "请输入公网域名，不包含协议、路径或端口");
+    throw new HttpError(400, "請輸入公網域名，不包含協議、路徑或端口");
   return normalized;
 }
 export async function boundedJson(
@@ -75,7 +75,7 @@ export async function boundedJson(
   errorStatus = 502,
 ) {
   const reader = response.body?.getReader();
-  if (!reader) throw new HttpError(errorStatus, "JSON 内容为空");
+  if (!reader) throw new HttpError(errorStatus, "JSON 內容爲空");
   let size = 0;
   const chunks = [];
   try {
@@ -86,7 +86,7 @@ export async function boundedJson(
       if (size > maxBytes)
         throw new HttpError(
           errorStatus === 400 ? 413 : errorStatus,
-          "JSON 内容过大",
+          "JSON 內容過大",
         );
       chunks.push(value);
     }
@@ -102,7 +102,7 @@ export async function boundedJson(
   try {
     return JSON.parse(new TextDecoder().decode(bytes));
   } catch {
-    throw new HttpError(errorStatus, "内容不是有效 JSON");
+    throw new HttpError(errorStatus, "內容不是有效 JSON");
   }
 }
 export async function upstream(url, init = {}, maxBytes = 2_000_000) {
@@ -113,15 +113,15 @@ export async function upstream(url, init = {}, maxBytes = 2_000_000) {
       signal: AbortSignal.timeout(10_000),
     });
   } catch {
-    throw new HttpError(502, "外部数据源连接失败或超时");
+    throw new HttpError(502, "外部數據源連接失敗或超時");
   }
   if (!response.ok) {
     await response.body?.cancel();
     throw new HttpError(
       response.status === 429 ? 429 : 502,
       response.status === 429
-        ? "外部数据源限流，请稍后重试"
-        : `外部数据源暂不可用 (${response.status})`,
+        ? "外部數據源限流，請稍後重試"
+        : `外部數據源暫不可用 (${response.status})`,
     );
   }
   return boundedJson(response, maxBytes);
@@ -131,6 +131,6 @@ export async function inputJson(request) {
     throw new HttpError(415, "需要 application/json");
   const value = await boundedJson(request, 4096, 400);
   if (!value || typeof value !== "object" || Array.isArray(value))
-    throw new HttpError(400, "需要 JSON 对象");
+    throw new HttpError(400, "需要 JSON 對象");
   return value;
 }

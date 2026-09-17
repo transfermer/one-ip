@@ -17,12 +17,12 @@ import rawtargets from "./targets.json";
 const targets = rawtargets.map((item) => ({ ...item, name: t(item.name) }));
 
 const groups = [
-  ["cn", t("中国")],
+  ["cn", t("中國")],
   ["jp", t("日本")],
-  ["us", t("美国")],
+  ["us", t("美國")],
   ["gl", t("全球")],
-  ["crypto", t("加密货币")],
-  ["ecommerce", t("跨境电商")],
+  ["crypto", t("加密貨幣")],
+  ["ecommerce", t("跨境電商")],
 ];
 type ConnectivityRow = (typeof targets)[number] & {
   result?: ProbeResult;
@@ -59,16 +59,16 @@ function ObservedSite({ row }: { row: ConnectivityRow }) {
 const columns: ColumnDef<ConnectivityRow>[] = [
   {
     accessorKey: "name",
-    header: t("网站"),
+    header: t("網站"),
     cell: ({ row }) => <ObservedSite row={row.original} />,
   },
   {
     id: "samples",
-    header: t("测试记录"),
+    header: t("測試記錄"),
     cell: ({ row }) => (
       <div
         className="ping-dots"
-        aria-label={t("{0}/8 次测试", [
+        aria-label={t("{0}/8 次測試", [
           row.original.result?.samples.length ?? 0,
         ])}
       >
@@ -79,9 +79,9 @@ const columns: ColumnDef<ConnectivityRow>[] = [
               key={index}
               title={
                 sample == null
-                  ? t("等待测试")
+                  ? t("等待測試")
                   : sample < 0
-                    ? t("连接失败")
+                    ? t("連接失敗")
                     : `${sample}ms`
               }
               className={`ping-dot ${sample == null ? "" : sample < 0 ? "dot-fail" : sample < 100 ? "dot-good" : sample < 400 ? "dot-warn" : "dot-slow"}`}
@@ -93,7 +93,7 @@ const columns: ColumnDef<ConnectivityRow>[] = [
   },
   {
     id: "latency",
-    header: t("延迟"),
+    header: t("延遲"),
     cell: ({ row }) =>
       !row.original.started ? (
         "—"
@@ -178,7 +178,7 @@ function ConnectivityGroup({
         </h2>
         <div className="connectivity-actions">
           <span className="small muted">
-            {t("可读取响应")}{" "}
+            {t("可讀取響應")}{" "}
             <NumberTicker
               value={
                 tableRows.filter(
@@ -200,10 +200,10 @@ function ConnectivityGroup({
               }));
             }}
             aria-label={
-              busy ? t("{0}测试中...", [label]) : t("重新测试{0}", [label])
+              busy ? t("{0}測試中...", [label]) : t("重新測試{0}", [label])
             }
           >
-            {busy ? t("测试中...") : t("重新测试")}
+            {busy ? t("測試中...") : t("重新測試")}
           </ActionButton>
         </div>
       </div>
@@ -220,13 +220,13 @@ function ConnectivityGroup({
           {showLegend && (
             <div className="legend connectivity-legend mt-3 border-t pt-3 text-xs">
               <i className="dot-good" />
-              {t("优")}
+              {t("優")}
               <i className="dot-warn" />
               {t("良")}
               <i className="dot-slow" />
               {t("慢")}
               <i className="dot-fail" />
-              {t("连接失败")}
+              {t("連接失敗")}
             </div>
           )}
         </CardContent>
@@ -237,14 +237,14 @@ function ConnectivityGroup({
 
 export default function LinkPage() {
   useEffect(() => {
-    document.title = t("网站连通与出口 - IP 网络工具");
+    document.title = t("網站連通與出口 - IP 網絡工具");
   }, []);
   return (
     <>
-      <h1 className="sr-only">{t("网站连通与分流出口")}</h1>
+      <h1 className="sr-only">{t("網站連通與分流出口")}</h1>
       <SplitResults />
       <div className="section-heading connectivity-page-heading">
-        <h2>{t("网站连通性")}</h2>
+        <h2>{t("網站連通性")}</h2>
       </div>
       {groups.map(([cc, label], index) => (
         <ConnectivityGroup
@@ -256,7 +256,7 @@ export default function LinkPage() {
       ))}
       <p className="principle">
         {t(
-          "浏览器 HTTP 请求耗时，取 8 轮成功请求的中位数，非 ICMP Ping。请求被拦截或超时会显示连接失败。",
+          "瀏覽器 HTTP 請求耗時，取 8 輪成功請求的中位數，非 ICMP Ping。請求被攔截或超時會顯示連接失敗。",
         )}
       </p>
     </>

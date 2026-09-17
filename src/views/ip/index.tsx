@@ -61,7 +61,7 @@ export default function IpPage() {
       variant="ghost"
       size="icon"
       className="size-8 shrink-0 text-primary"
-      aria-label={searchOpen ? t("收起搜索") : t("展开搜索")}
+      aria-label={searchOpen ? t("收起搜索") : t("展開搜索")}
       aria-expanded={searchOpen}
       aria-controls={searchId}
       onClick={() => setSearchOpen((open) => !open)}
@@ -87,7 +87,7 @@ export default function IpPage() {
         <LookupForm
           grouped
           value={ip}
-          placeholder={t("输入 IPv4 或 IPv6 地址")}
+          placeholder={t("輸入 IPv4 或 IPv6 地址")}
           busy={query.isFetching}
           onSubmit={(value) =>
             value === ip
@@ -101,7 +101,7 @@ export default function IpPage() {
   const recent = (
     <div className="ip-recent-row">
       <div className="ip-recent">
-        <span>{history.entries.length ? t("最近查询") : t("推荐查询")}</span>
+        <span>{history.entries.length ? t("最近查詢") : t("推薦查詢")}</span>
         {(history.entries.length
           ? history.entries.map((entry) => entry.query)
           : ["1.1.1.1", "8.8.8.8", "223.5.5.5"]
@@ -126,11 +126,11 @@ export default function IpPage() {
   );
   return (
     <div className="lookup-page ip-detail-page">
-      <h1 className="sr-only">{t("IP 信息查询")}</h1>
+      <h1 className="sr-only">{t("IP 信息查詢")}</h1>
       <ErrorNotice error={query.error} />
       {query.isFetching && (
         <p className="status-line" role="status">
-          <Pending>{t("查询中…")}</Pending>
+          <Pending>{t("查詢中…")}</Pending>
         </p>
       )}
       {query.data ? (
@@ -143,7 +143,7 @@ export default function IpPage() {
       ) : (
         <div className="ip-dossier-top">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold">{t("IP 信息查询")}</span>
+            <span className="text-sm font-semibold">{t("IP 信息查詢")}</span>
           </div>
           {search}
           {recent}

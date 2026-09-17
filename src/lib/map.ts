@@ -16,7 +16,7 @@ export interface MapTileLayerSpec {
 const OSM_ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const TIANDITU_ATTRIBUTION =
-  '&copy; <a href="https://www.tianditu.gov.cn/">天地图</a>';
+  '&copy; <a href="https://www.tianditu.gov.cn/">天地圖</a>';
 const TIANDITU_SUBDOMAINS = ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"];
 
 let mapConfigPromise: Promise<MapConfig> | undefined;

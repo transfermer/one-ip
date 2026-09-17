@@ -1,125 +1,125 @@
 import { t } from "@/i18n";
 
 export const labels: Record<string, string> = {
-  navigator: t("浏览器环境"),
-  canvas: t("Canvas 绘图"),
-  audio: t("音频指纹"),
-  webgl: t("WebGL 图形"),
-  fonts: t("字体列表"),
-  clientRects: t("元素布局"),
-  ClientRects: t("元素布局"),
+  navigator: t("瀏覽器環境"),
+  canvas: t("Canvas 繪圖"),
+  audio: t("音頻指紋"),
+  webgl: t("WebGL 圖形"),
+  fonts: t("字體列表"),
+  clientRects: t("元素佈局"),
+  ClientRects: t("元素佈局"),
   screen: t("屏幕信息"),
-  timezone: t("时区"),
-  headless: t("无头浏览器特征"),
-  prototypeLies: t("原型接口异常"),
-  lies: t("数据一致性异常"),
-  errors: t("读取错误"),
-  userAgentData: t("浏览器客户端提示"),
-  domBlockers: t("内容拦截特征"),
-  fontPreferences: t("字体渲染偏好"),
-  screenFrame: t("屏幕边距"),
-  osCpu: t("系统与处理器"),
-  languages: t("语言列表"),
+  timezone: t("時區"),
+  headless: t("無頭瀏覽器特徵"),
+  prototypeLies: t("原型接口異常"),
+  lies: t("數據一致性異常"),
+  errors: t("讀取錯誤"),
+  userAgentData: t("瀏覽器客戶端提示"),
+  domBlockers: t("內容攔截特徵"),
+  fontPreferences: t("字體渲染偏好"),
+  screenFrame: t("屏幕邊距"),
+  osCpu: t("系統與處理器"),
+  languages: t("語言列表"),
   colorDepth: t("色深"),
-  deviceMemory: t("内存提示"),
+  deviceMemory: t("內存提示"),
   screenResolution: t("屏幕分辨率"),
-  hardwareConcurrency: t("逻辑处理器"),
-  sessionStorage: t("会话存储"),
-  localStorage: t("本地存储"),
-  indexedDB: t("IndexedDB 数据库"),
-  openDatabase: t("Web SQL 数据库"),
-  cpuClass: t("处理器类别"),
-  platform: t("系统平台"),
-  plugins: t("浏览器插件"),
-  touchSupport: t("触控能力"),
-  vendor: t("厂商"),
-  vendorFlavors: t("浏览器厂商特征"),
+  hardwareConcurrency: t("邏輯處理器"),
+  sessionStorage: t("會話存儲"),
+  localStorage: t("本地存儲"),
+  indexedDB: t("IndexedDB 數據庫"),
+  openDatabase: t("Web SQL 數據庫"),
+  cpuClass: t("處理器類別"),
+  platform: t("系統平臺"),
+  plugins: t("瀏覽器插件"),
+  touchSupport: t("觸控能力"),
+  vendor: t("廠商"),
+  vendorFlavors: t("瀏覽器廠商特徵"),
   cookiesEnabled: t("Cookie 支持"),
   colorGamut: t("色域"),
   invertedColors: t("反色偏好"),
-  forcedColors: t("强制颜色模式"),
-  monochrome: t("单色色阶"),
-  contrast: t("对比度偏好"),
-  reducedMotion: t("减少动画"),
-  reducedTransparency: t("减少透明度"),
-  hdr: t("高动态范围"),
-  math: t("数学运算指纹"),
-  pdfViewerEnabled: t("内置 PDF 阅读器"),
-  architecture: t("架构特征"),
-  applePay: t("Apple Pay 状态"),
-  privateClickMeasurement: t("私密点击归因状态"),
-  audioBaseLatency: t("音频基础延迟"),
-  dateTimeLocale: t("日期时间区域"),
-  webGlBasics: t("WebGL 基础信息"),
-  webGlExtensions: t("WebGL 扩展与参数"),
-  brands: t("浏览器品牌"),
+  forcedColors: t("強制顏色模式"),
+  monochrome: t("單色色階"),
+  contrast: t("對比度偏好"),
+  reducedMotion: t("減少動畫"),
+  reducedTransparency: t("減少透明度"),
+  hdr: t("高動態範圍"),
+  math: t("數學運算指紋"),
+  pdfViewerEnabled: t("內置 PDF 閱讀器"),
+  architecture: t("架構特徵"),
+  applePay: t("Apple Pay 狀態"),
+  privateClickMeasurement: t("私密點擊歸因狀態"),
+  audioBaseLatency: t("音頻基礎延遲"),
+  dateTimeLocale: t("日期時間區域"),
+  webGlBasics: t("WebGL 基礎信息"),
+  webGlExtensions: t("WebGL 擴展與參數"),
+  brands: t("瀏覽器品牌"),
   brand: t("品牌"),
   version: t("版本"),
-  mobile: t("移动设备"),
-  bitness: t("架构位数"),
-  model: t("设备型号"),
-  platformVersion: t("系统版本"),
-  userAgent: t("用户代理"),
-  appVersion: t("应用版本"),
-  language: t("首选语言"),
-  maxTouchPoints: t("最大触控点数"),
-  touchEvent: t("触控事件"),
-  touchStart: t("触控事件入口"),
+  mobile: t("移動設備"),
+  bitness: t("架構位數"),
+  model: t("設備型號"),
+  platformVersion: t("系統版本"),
+  userAgent: t("用戶代理"),
+  appVersion: t("應用版本"),
+  language: t("首選語言"),
+  maxTouchPoints: t("最大觸控點數"),
+  touchEvent: t("觸控事件"),
+  touchStart: t("觸控事件入口"),
   renderer: t("渲染器"),
-  unmaskedRenderer: t("显卡渲染器"),
-  unmaskedVendor: t("显卡厂商"),
-  shadingLanguageVersion: t("着色语言版本"),
-  width: t("宽度"),
+  unmaskedRenderer: t("顯卡渲染器"),
+  unmaskedVendor: t("顯卡廠商"),
+  shadingLanguageVersion: t("着色語言版本"),
+  width: t("寬度"),
   height: t("高度"),
-  availWidth: t("可用宽度"),
+  availWidth: t("可用寬度"),
   availHeight: t("可用高度"),
   pixelDepth: t("像素深度"),
-  lied: t("检测到数据差异"),
-  chromium: t("Chromium 内核"),
-  likeHeadless: t("类似无头环境的信号"),
-  stealth: t("接口异常信号"),
-  data: t("记录"),
-  totalLies: t("异常记录数"),
-  trustedName: t("错误类型"),
-  trustedMessage: t("错误说明"),
-  permissions: t("权限状态"),
-  parameters: t("图形参数"),
-  extensions: t("扩展列表"),
-  systemFonts: t("系统字体特征"),
-  platformEstimate: t("平台推测数据"),
-  fontsOS: t("字体对应系统"),
-  emojiSet: t("表情渲染样本"),
-  sampleSum: t("音频采样总和"),
-  noise: t("音频噪声特征"),
-  values: t("采样参数"),
-  dataURI: t("绘图样本"),
-  dataURI2: t("第二绘图样本"),
-  pixels: t("像素数据"),
-  pixels2: t("第二组像素数据"),
-  winding: t("路径填充支持"),
-  geometry: t("几何图形样本"),
-  text: t("文字绘图样本"),
-  noChrome: t("缺少 Chrome 全局对象"),
-  hasPermissionsBug: t("通知权限状态不一致"),
-  noPlugins: t("插件列表为空"),
-  noMimeTypes: t("MIME 类型列表为空"),
-  notificationIsDenied: t("通知权限被拒绝"),
-  hasKnownBgColor: t("命中特定背景颜色"),
-  prefersLightColor: t("偏好浅色外观"),
-  uaDataIsBlank: t("客户端提示为空"),
-  pdfIsDisabled: t("内置 PDF 阅读器未启用"),
-  screenIsAwry: t("屏幕参数存在差异"),
-  noTaskbar: t("未观察到任务栏预留空间"),
+  lied: t("檢測到數據差異"),
+  chromium: t("Chromium 內核"),
+  likeHeadless: t("類似無頭環境的信號"),
+  stealth: t("接口異常信號"),
+  data: t("記錄"),
+  totalLies: t("異常記錄數"),
+  trustedName: t("錯誤類型"),
+  trustedMessage: t("錯誤說明"),
+  permissions: t("權限狀態"),
+  parameters: t("圖形參數"),
+  extensions: t("擴展列表"),
+  systemFonts: t("系統字體特徵"),
+  platformEstimate: t("平臺推測數據"),
+  fontsOS: t("字體對應系統"),
+  emojiSet: t("表情渲染樣本"),
+  sampleSum: t("音頻採樣總和"),
+  noise: t("音頻噪聲特徵"),
+  values: t("採樣參數"),
+  dataURI: t("繪圖樣本"),
+  dataURI2: t("第二繪圖樣本"),
+  pixels: t("像素數據"),
+  pixels2: t("第二組像素數據"),
+  winding: t("路徑填充支持"),
+  geometry: t("幾何圖形樣本"),
+  text: t("文字繪圖樣本"),
+  noChrome: t("缺少 Chrome 全局對象"),
+  hasPermissionsBug: t("通知權限狀態不一致"),
+  noPlugins: t("插件列表爲空"),
+  noMimeTypes: t("MIME 類型列表爲空"),
+  notificationIsDenied: t("通知權限被拒絕"),
+  hasKnownBgColor: t("命中特定背景顏色"),
+  prefersLightColor: t("偏好淺色外觀"),
+  uaDataIsBlank: t("客戶端提示爲空"),
+  pdfIsDisabled: t("內置 PDF 閱讀器未啓用"),
+  screenIsAwry: t("屏幕參數存在差異"),
+  noTaskbar: t("未觀察到任務欄預留空間"),
   noWebShare: t("未提供 Web Share"),
-  noContentIndex: t("未提供内容索引"),
-  noContactsManager: t("未提供联系人接口"),
-  noDownlinkMax: t("未提供最大下行带宽"),
-  webDriverIsOn: t("WebDriver 状态或接口异常"),
-  hasHeadlessUA: t("UA 含 Headless 标记"),
-  hasIframeProxy: t("iframe 接口存在异常"),
-  hasHighChromeIndex: t("Chrome 对象出现位置异常"),
-  hasBadChromeRuntime: t("Chrome Runtime 行为异常"),
-  hasToStringProxy: t("函数字符串转换异常"),
+  noContentIndex: t("未提供內容索引"),
+  noContactsManager: t("未提供聯繫人接口"),
+  noDownlinkMax: t("未提供最大下行帶寬"),
+  webDriverIsOn: t("WebDriver 狀態或接口異常"),
+  hasHeadlessUA: t("UA 含 Headless 標記"),
+  hasIframeProxy: t("iframe 接口存在異常"),
+  hasHighChromeIndex: t("Chrome 對象出現位置異常"),
+  hasBadChromeRuntime: t("Chrome Runtime 行爲異常"),
+  hasToStringProxy: t("函數字符串轉換異常"),
 };
 export function fieldLabel(key: string) {
   return labels[key] ?? key;
@@ -142,22 +142,22 @@ export function valueText(value: unknown): string {
   if (typeof value === "boolean") return value ? t("是") : t("否");
   if (typeof value === "string") {
     if (!value) return t("空值");
-    if (value.startsWith("data:image/")) return t("绘图样本（可查看预览）");
+    if (value.startsWith("data:image/")) return t("繪圖樣本（可查看預覽）");
     return value.length > 160
       ? t("{0}…（共 {1} 字符）", [value.slice(0, 160), value.length])
       : value;
   }
   if (Array.isArray(value)) {
-    if (!value.length) return t("空列表（0 项）");
+    if (!value.length) return t("空列表（0 項）");
     if (value.every((item) => item === null || typeof item !== "object"))
       return (
         value.map(valueText).slice(0, 5).join("、") +
-        (value.length > 5 ? t(" 等 {0} 项", [value.length]) : "")
+        (value.length > 5 ? t(" 等 {0} 項", [value.length]) : "")
       );
-    return t("{0} 项记录", [value.length]);
+    return t("{0} 項記錄", [value.length]);
   }
   if (typeof value === "object")
-    return t("{0} 个字段", [Object.keys(value).length]);
+    return t("{0} 個字段", [Object.keys(value).length]);
   return String(value);
 }
 export function fingerprintSummary(name: string, value: unknown) {
@@ -178,16 +178,16 @@ export function fingerprintSummary(name: string, value: unknown) {
     return value.join(" × ");
   if (name === "deviceMemory" && typeof value === "number")
     return t("{0} GB（近似值）", [value]);
-  if (name === "hardwareConcurrency") return t("{0} 个逻辑处理器", [value]);
+  if (name === "hardwareConcurrency") return t("{0} 個邏輯處理器", [value]);
   if (name === "fonts" && Array.isArray(value))
-    return t("{0} 种字体 · {1}", [value.length, value.slice(0, 3).join("、")]);
-  if (name === "canvas") return t("已生成文字与几何绘图样本");
+    return t("{0} 種字體 · {1}", [value.length, value.slice(0, 3).join("、")]);
+  if (name === "canvas") return t("已生成文字與幾何繪圖樣本");
   if (name === "webGlBasics")
     return String(
-      data.unmaskedRenderer || data.renderer || t("已读取图形接口信息"),
+      data.unmaskedRenderer || data.renderer || t("已讀取圖形接口信息"),
     );
   if (name === "audio" && typeof value === "number" && value < 0)
-    return t("未取得有效音频指纹（点击查看状态码）");
+    return t("未取得有效音頻指紋（點擊查看狀態碼）");
   return valueText(value);
 }
 export type ModuleReport = {
@@ -212,8 +212,8 @@ export function moduleReport(name: string, value: unknown): ModuleReport {
   });
   if (value === null || value === undefined)
     return result(
-      t("无法检测"),
-      t("未取得结果，可能不支持该接口或读取受限。"),
+      t("無法檢測"),
+      t("未取得結果，可能不支持該接口或讀取受限。"),
       [],
       true,
     );
@@ -223,13 +223,13 @@ export function moduleReport(name: string, value: unknown): ModuleReport {
     const issues = Object.entries(records)
       .filter(([, entries]) => Array.isArray(entries) && entries.length)
       .map(([key, entries]) =>
-        t("{0}：{1} 条异常记录", [key, (entries as unknown[]).length]),
+        t("{0}：{1} 條異常記錄", [key, (entries as unknown[]).length]),
       );
     return result(
-      issues.length ? t("发现异常信号") : t("未发现异常信号"),
+      issues.length ? t("發現異常信號") : t("未發現異常信號"),
       issues.length
-        ? t("{0} 个接口有异常记录，点击查看具体原因。", [issues.length])
-        : t("本次检查未记录接口异常，不代表所有接口都已验证。"),
+        ? t("{0} 個接口有異常記錄，點擊查看具體原因。", [issues.length])
+        : t("本次檢查未記錄接口異常，不代表所有接口都已驗證。"),
       issues,
     );
   }
@@ -240,50 +240,50 @@ export function moduleReport(name: string, value: unknown): ModuleReport {
         .map(([key]) => fieldLabel(key)),
     );
     return result(
-      issues.length ? t("发现相关信号") : t("未发现相关信号"),
+      issues.length ? t("發現相關信號") : t("未發現相關信號"),
       issues.length
-        ? t("{0} 项信号：{1}。普通浏览器设置也可能触发。", [
+        ? t("{0} 項信號：{1}。普通瀏覽器設置也可能觸發。", [
             issues.length,
             issues.slice(0, 3).join("、"),
           ])
-        : t("已执行的检查未命中无头或接口异常特征。"),
+        : t("已執行的檢查未命中無頭或接口異常特徵。"),
       issues,
     );
   }
   if (name === "errors") {
     const errors = Array.isArray(data.data) ? data.data : [];
     return result(
-      errors.length ? t("存在读取错误") : t("无读取错误"),
+      errors.length ? t("存在讀取錯誤") : t("無讀取錯誤"),
       errors.length
-        ? t("{0} 条读取错误，相关检测可能不完整；这不是伪装结论。", [
+        ? t("{0} 條讀取錯誤，相關檢測可能不完整；這不是僞裝結論。", [
             errors.length,
           ])
-        : t("采集过程中未记录读取错误。"),
+        : t("採集過程中未記錄讀取錯誤。"),
     );
   }
   if (data.lied === true || (typeof data.lied === "number" && data.lied > 0))
     return result(
-      t("发现差异"),
-      t("模块记录了数据或接口差异，请结合详情核对。"),
-      [t("检测模块的差异标记已触发")],
+      t("發現差異"),
+      t("模塊記錄了數據或接口差異，請結合詳情覈對。"),
+      [t("檢測模塊的差異標記已觸發")],
     );
   const observed =
     name === "fonts" && Array.isArray(data.fonts)
-      ? t("读取到 {0} 种字体。", [data.fonts.length])
+      ? t("讀取到 {0} 種字體。", [data.fonts.length])
       : name === "webgl"
         ? String(
             asRecord(data.parameters).UNMASKED_RENDERER_WEBGL ??
-              t("已读取图形参数。"),
+              t("已讀取圖形參數。"),
           )
         : name === "timezone"
-          ? String(data.location ?? data.zone ?? t("已读取时区信息。"))
-          : t("已取得检测数据。");
+          ? String(data.location ?? data.zone ?? t("已讀取時區信息。"))
+          : t("已取得檢測數據。");
   return result(
-    data.lied === false || data.lied === 0 ? t("未发现差异") : t("已读取"),
+    data.lied === false || data.lied === 0 ? t("未發現差異") : t("已讀取"),
     observed +
       (data.lied === false || data.lied === 0
-        ? t(" 本模块未标记差异。")
-        : t(" 未提供明确的差异判定。")),
+        ? t(" 本模塊未標記差異。")
+        : t(" 未提供明確的差異判定。")),
   );
 }
 

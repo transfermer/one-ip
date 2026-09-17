@@ -10,12 +10,12 @@ export function ipProfile(data: CoffeeIp) {
       ? data.trust_score
       : null;
   const companyTypes: Record<string, string> = {
-    isp: t("网络运营商"),
-    hosting: t("托管服务商"),
-    business: t("商业企业"),
-    education: t("教育机构"),
-    government: t("政府机构"),
-    banking: t("金融机构"),
+    isp: t("網絡運營商"),
+    hosting: t("託管服務商"),
+    business: t("商業企業"),
+    education: t("教育機構"),
+    government: t("政府機構"),
+    banking: t("金融機構"),
   };
   const companyType = data.company_type?.trim().toLowerCase();
   const company = companyType
@@ -23,15 +23,15 @@ export function ipProfile(data: CoffeeIp) {
     : t("未知");
   const conflict = data.isResidential === true && data.is_datacenter === true;
   const type = data.is_public_service
-    ? t("公共服务")
+    ? t("公共服務")
     : conflict
-      ? t("类型标记冲突")
+      ? t("類型標記衝突")
       : data.is_mobile
-        ? t("移动网络")
+        ? t("移動網絡")
         : data.isResidential
           ? t("家庭住宅 IP")
           : data.is_datacenter
-            ? t("数据中心")
+            ? t("數據中心")
             : t("未知");
   const country = data.countryCode?.trim().toUpperCase();
   const registered = data.registered_country_code?.trim().toUpperCase();
@@ -43,8 +43,8 @@ export function ipProfile(data: CoffeeIp) {
     ["VPN", data.is_vpn],
     [t("代理"), data.is_proxy],
     ["Tor", data.is_tor],
-    [t("爬虫标记"), data.is_crawler],
-    [t("滥用标记"), data.is_abuser],
+    [t("爬蟲標記"), data.is_crawler],
+    [t("濫用標記"), data.is_abuser],
     ["Bogon", data.is_bogon],
   ];
   const detected = flags
@@ -66,36 +66,36 @@ export function ipProfile(data: CoffeeIp) {
     sameCountry === true &&
     clear;
   const seriousFlags = [
-    ...(data.is_abuser ? [t("滥用标记")] : []),
+    ...(data.is_abuser ? [t("濫用標記")] : []),
     ...(data.is_bogon ? ["Bogon"] : []),
     ...threats,
   ];
   const risk = seriousFlags.length
     ? {
         severity: "danger" as const,
-        title: t("发现风险信号"),
+        title: t("發現風險信號"),
         flags: [...new Set([...detected, ...threats])],
         description: t(
-          "数据源返回滥用、保留地址或威胁记录。建议核实网络来源，必要时更换出口后重新检测。",
+          "數據源返回濫用、保留地址或威脅記錄。建議覈實網絡來源，必要時更換出口後重新檢測。",
         ),
       }
     : score !== null && score < 45 && !data.is_public_service
       ? {
           severity: "danger" as const,
-          title: t("信誉分偏低"),
+          title: t("信譽分偏低"),
           flags: detected,
           description: t(
-            "当前信誉分为 {0}/100，建议结合网络标记核实使用风险。",
+            "當前信譽分爲 {0}/100，建議結合網絡標記覈實使用風險。",
             [score],
           ),
         }
       : detected.length
         ? {
             severity: "notice" as const,
-            title: t("检测到网络标记"),
+            title: t("檢測到網絡標記"),
             flags: detected,
             description: t(
-              "代理、VPN、Tor 或爬虫标记可能影响部分网站的访问验证；标记本身不等于恶意行为。",
+              "代理、VPN、Tor 或爬蟲標記可能影響部分網站的訪問驗證；標記本身不等於惡意行爲。",
             ),
           }
         : null;
@@ -116,48 +116,48 @@ export function ipProfile(data: CoffeeIp) {
             ? "B"
             : "C";
   let grade = t("信息不足");
-  let explanation = t("部分类型或风险数据缺失，暂不判断配置档位。");
+  let explanation = t("部分類型或風險數據缺失，暫不判斷配置檔位。");
   let tone: "good" | "warn" | "bad" | "neutral" = "neutral";
   if (data.is_public_service) {
-    grade = t("公共服务网络");
+    grade = t("公共服務網絡");
     explanation = t(
-      "公共 DNS、CDN 等服务可能使用任播，不按个人住宅或机房出口评定档位。",
+      "公共 DNS、CDN 等服務可能使用任播，不按個人住宅或機房出口評定檔位。",
     );
   } else if (conflict) {
-    grade = t("类型待确认");
+    grade = t("類型待確認");
     explanation = t(
-      "数据源同时返回住宅与数据中心标记，不能据此认定为优质住宅。",
+      "數據源同時返回住宅與數據中心標記，不能據此認定爲優質住宅。",
     );
     tone = "warn";
   } else if (detected.length || threats.length) {
-    grade = t("存在网络标记");
-    explanation = t("已返回 {0}；代理、VPN 等标记本身不等于恶意行为。", [
+    grade = t("存在網絡標記");
+    explanation = t("已返回 {0}；代理、VPN 等標記本身不等於惡意行爲。", [
       [...detected, ...threats].join("、"),
     ]);
     tone = data.is_abuser || data.is_bogon || threats.length ? "bad" : "warn";
   } else if (preferred) {
-    grade = t("住宅优选");
+    grade = t("住宅優選");
     explanation = t(
-      "住宅 IP、ISP 厂商、注册地一致、信誉分 ≥ 90，且六项网络标记均未检出。",
+      "住宅 IP、ISP 廠商、註冊地一致、信譽分 ≥ 90，且六項網絡標記均未檢出。",
     );
     tone = "good";
   } else if (score !== null && type !== t("未知") && clear) {
     grade =
       score >= 90
         ? data.is_mobile
-          ? t("高信誉网络")
+          ? t("高信譽網絡")
           : data.is_datacenter
-            ? t("高信誉机房")
+            ? t("高信譽機房")
             : data.isResidential
-              ? t("高信誉住宅")
-              : t("高信誉网络")
+              ? t("高信譽住宅")
+              : t("高信譽網絡")
         : score >= 75
-          ? t("信誉良好")
+          ? t("信譽良好")
           : score >= 45
-            ? t("信誉一般")
-            : t("信誉偏低");
+            ? t("信譽一般")
+            : t("信譽偏低");
     explanation = t(
-      "按数据源信誉分分档：90–100 高信誉，75–89 良好，45–74 一般，0–44 偏低。",
+      "按數據源信譽分分檔：90–100 高信譽，75–89 良好，45–74 一般，0–44 偏低。",
     );
     tone = score >= 75 ? "good" : score >= 45 ? "warn" : "bad";
   }
@@ -168,9 +168,9 @@ export function ipProfile(data: CoffeeIp) {
     passed: boolean | null;
   }[] = [
     {
-      label: t("IP 类型"),
+      label: t("IP 類型"),
       value: type,
-      requirement: t("住宅且非机房、非移动网络"),
+      requirement: t("住宅且非機房、非移動網絡"),
       passed:
         data.is_public_service ||
         conflict ||
@@ -183,38 +183,38 @@ export function ipProfile(data: CoffeeIp) {
             : null,
     },
     {
-      label: t("厂商类型"),
+      label: t("廠商類型"),
       value: company,
-      requirement: t("厂商类型为 ISP"),
+      requirement: t("廠商類型爲 ISP"),
       passed: companyType ? companyType === "isp" : null,
     },
     {
-      label: t("注册地对照"),
+      label: t("註冊地對照"),
       value:
         sameCountry === null
-          ? t("待确认")
+          ? t("待確認")
           : sameCountry
-            ? t("注册地一致")
-            : t("注册地不同"),
-      requirement: t("注册国家与定位国家一致"),
+            ? t("註冊地一致")
+            : t("註冊地不同"),
+      requirement: t("註冊國家與定位國家一致"),
       passed: sameCountry,
     },
     {
-      label: t("网络标记"),
+      label: t("網絡標記"),
       value:
         detected.length || threats.length
-          ? t("有标记")
+          ? t("有標記")
           : unknownFlags
-            ? t("缺少 {0} 项数据", [unknownFlags])
-            : t("6 项均未检出"),
-      requirement: t("六项标记均未检出，且无已知威胁"),
+            ? t("缺少 {0} 項數據", [unknownFlags])
+            : t("6 項均未檢出"),
+      requirement: t("六項標記均未檢出，且無已知威脅"),
       passed:
         detected.length || threats.length ? false : unknownFlags ? null : true,
     },
     {
-      label: t("IP 信誉分"),
+      label: t("IP 信譽分"),
       value: score === null ? t("未知") : `${score} / 100`,
-      requirement: t("信誉分 ≥ 90"),
+      requirement: t("信譽分 ≥ 90"),
       passed: score === null ? null : score >= 90,
     },
   ];

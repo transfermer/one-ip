@@ -20,14 +20,14 @@ export function useIpLatency(ip: string) {
   const [catalogLoaded, setCatalogLoaded] = useState(false);
   const controller = useRef<AbortController | null>(null);
   const names: Record<string, string> = {
-    us: t("美国"),
-    de: t("德国"),
-    gb: t("英国"),
-    fr: t("法国"),
+    us: t("美國"),
+    de: t("德國"),
+    gb: t("英國"),
+    fr: t("法國"),
     jp: t("日本"),
     ca: t("加拿大"),
-    cn: t("中国"),
-    kr: t("韩国"),
+    cn: t("中國"),
+    kr: t("韓國"),
   };
   const start = useCallback(async () => {
     controller.current?.abort();
@@ -45,7 +45,7 @@ export function useIpLatency(ip: string) {
       setNodes(selected);
       setCatalogLoaded(true);
       const ids = selected.flatMap((item) => (item.node ? [item.node.id] : []));
-      if (!ids.length) throw new Error(t("暂无可用优选探针"));
+      if (!ids.length) throw new Error(t("暫無可用優選探針"));
       await runPing(
         { host: ip, nodes: ids, preferred: true },
         run.signal,
@@ -55,7 +55,7 @@ export function useIpLatency(ip: string) {
       );
     } catch (error) {
       if (!run.signal.aborted)
-        setError(error instanceof Error ? error.message : t("查询失败"));
+        setError(error instanceof Error ? error.message : t("查詢失敗"));
     } finally {
       if (!run.signal.aborted) setBusy(false);
     }

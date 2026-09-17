@@ -41,7 +41,7 @@ function site(
 export const scenarioGroups: ScenarioGroup[] = [
   {
     id: "ai",
-    label: t("AI 应用"),
+    label: t("AI 應用"),
     targets: [
       {
         ...site("claude", "Claude", "https://claude.ai", "/cdn-cgi/trace"),
@@ -59,7 +59,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "commerce",
-    label: t("跨境电商"),
+    label: t("跨境電商"),
     targets: [
       fromCatalog("Amazon"),
       fromCatalog("shopify.com", "Shopify"),
@@ -71,7 +71,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "social",
-    label: t("社交与短视频"),
+    label: t("社交與短視頻"),
     targets: [
       fromCatalog("TikTok"),
       site(
@@ -90,7 +90,7 @@ export const scenarioGroups: ScenarioGroup[] = [
       fromCatalog("Reddit"),
       site(
         "xiaohongshu",
-        "小红书",
+        "小紅書",
         "https://www.xiaohongshu.com",
         "https://fe-video-qc.xhscdn.com/fe-platform/ed8fe781ce9e16c1bfac2cd962f0721edabe2e49.ico",
       ),
@@ -98,7 +98,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "crypto",
-    label: t("加密货币"),
+    label: t("加密貨幣"),
     targets: [
       fromCatalog("coinbase.com", "Coinbase"),
       fromCatalog("binance.com", "Binance"),
@@ -109,19 +109,19 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "streaming",
-    label: t("流媒体影音"),
+    label: t("流媒體影音"),
     quality: "streaming",
     targets: [
       fromCatalog("YouTube"),
       fromCatalog("Netflix"),
       fromCatalog("Twitch"),
       fromCatalog("Spotify"),
-      fromCatalog("哔哩哔哩"),
+      fromCatalog("嗶哩嗶哩"),
     ],
   },
   {
     id: "gaming",
-    label: t("游戏平台"),
+    label: t("遊戲平臺"),
     quality: "gaming",
     targets: [
       fromCatalog("Steam"),
@@ -138,7 +138,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "remote",
-    label: t("办公协作"),
+    label: t("辦公協作"),
     quality: "rtc",
     targets: [
       fromCatalog("Zoom"),
@@ -155,7 +155,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "api",
-    label: t("开发与软件源"),
+    label: t("開發與軟件源"),
     targets: [
       site("github", "GitHub", "https://github.com"),
       fromCatalog("npm"),
@@ -167,7 +167,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "hosting",
-    label: t("云服务与托管"),
+    label: t("雲服務與託管"),
     inbound: true,
     targets: [
       site("cloudflare", "Cloudflare", "https://www.cloudflare.com"),
@@ -179,7 +179,7 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "search",
-    label: t("搜索与资讯"),
+    label: t("搜索與資訊"),
     targets: [
       fromCatalog("Google"),
       fromCatalog("Bing"),
@@ -190,19 +190,19 @@ export const scenarioGroups: ScenarioGroup[] = [
   },
   {
     id: "domestic",
-    label: t("国内常用"),
+    label: t("國內常用"),
     targets: [
-      fromCatalog("淘宝"),
-      fromCatalog("京东"),
+      fromCatalog("淘寶"),
+      fromCatalog("京東"),
       fromCatalog("微信"),
       fromCatalog("新浪微博"),
-      fromCatalog("网易"),
+      fromCatalog("網易"),
       site("douyin", "抖音", "https://www.douyin.com"),
     ],
   },
   {
     id: "communication",
-    label: t("邮箱与通信"),
+    label: t("郵箱與通信"),
     targets: [
       site("telegram", "Telegram", "https://web.telegram.org", "/favicon.ico"),
       fromCatalog("LINE"),

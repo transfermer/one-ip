@@ -26,7 +26,7 @@ test("Tianditu uses the Web Mercator base and annotation layers", () => {
   assert.match(layers[0].url, /T=vec_w/);
   assert.match(layers[1].url, /T=cva_w/);
   assert.match(layers[0].url, /tk=key%26value/);
-  assert.match(layers[0].options.attribution, /天地图/);
+  assert.match(layers[0].options.attribution, /天地圖/);
 });
 
 test("a Tianditu tile failure switches to OpenStreetMap", () => {

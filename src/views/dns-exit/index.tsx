@@ -24,14 +24,14 @@ const columns: ColumnDef<Resolver>[] = [
   },
   {
     accessorKey: "geo",
-    header: t("归属地 / 运营商"),
+    header: t("歸屬地 / 運營商"),
     cell: ({ row }) => (
-      <OverflowDetailText text={row.original.geo} title={t("DNS 归属信息")} />
+      <OverflowDetailText text={row.original.geo} title={t("DNS 歸屬信息")} />
     ),
   },
   {
     id: "sources",
-    header: t("检测来源"),
+    header: t("檢測來源"),
     cell: ({ row }) => (
       <div className="flex flex-wrap gap-1.5">
         {row.original.sources.map((source) => (
@@ -47,7 +47,7 @@ const columns: ColumnDef<Resolver>[] = [
   },
   {
     id: "samples",
-    header: t("观察次数"),
+    header: t("觀察次數"),
     cell: ({ row }) => <NumberTicker value={row.original.samples} />,
   },
 ];
@@ -75,24 +75,24 @@ export default function DnsExitPage() {
     : (query.data ?? progress.data);
   return (
     <>
-      <PageHeading title={t("DNS 出口查询")} description="" />
+      <PageHeading title={t("DNS 出口查詢")} description="" />
       <div className="toolbar">
         <ActionButton
           busy={query.isFetching}
           onClick={() => setRound((n) => n + 1)}
         >
-          {query.isFetching ? t("检测中...") : t("重新检测")}
+          {query.isFetching ? t("檢測中...") : t("重新檢測")}
         </ActionButton>
         <span className="small muted">
           <NumberTicker value={state?.count ?? 0} />/{dnsSampleCount}
-          {t("次采样 ·")} {state?.failed ?? 0}
-          {t("次失败")}
+          {t("次採樣 ·")} {state?.failed ?? 0}
+          {t("次失敗")}
         </span>
       </div>
       <ErrorNotice error={query.error} />
       {state && state.failed > 0 && (
         <p className="small muted mb-3">
-          {t("部分探测失败，不代表没有 DNS 泄漏。")}{" "}
+          {t("部分探測失敗，不代表沒有 DNS 泄漏。")}{" "}
           {Object.entries(state.failures)
             .map(([source, count]) => `${source}: ${count}`)
             .join(" · ")}
@@ -109,9 +109,9 @@ export default function DnsExitPage() {
             animateEntries
             empty={
               query.isFetching ? (
-                <Pending>{t("正在等待解析结果...")}</Pending>
+                <Pending>{t("正在等待解析結果...")}</Pending>
               ) : (
-                t("未检测到 DNS 出口")
+                t("未檢測到 DNS 出口")
               )
             }
           />
@@ -119,7 +119,7 @@ export default function DnsExitPage() {
       </Card>
       <p className="small muted mt-3">
         {t(
-          "相同出口合并显示；出口数量取决于实际解析路径，不代表设备配置了相同数量的 DNS。",
+          "相同出口合併顯示；出口數量取決於實際解析路徑，不代表設備配置了相同數量的 DNS。",
         )}
       </p>
     </>

@@ -55,9 +55,9 @@ export function PrivacyToggle() {
   const [hidden, setHidden] = useAtom(hideIpAtom);
   return (
     <label className="privacy-toggle">
-      <span>{t("隐藏IP")}</span>
+      <span>{t("隱藏IP")}</span>
       <Switch
-        aria-label={t("隐藏 IP 地址")}
+        aria-label={t("隱藏 IP 地址")}
         checked={hidden}
         onCheckedChange={setHidden}
       />
@@ -134,7 +134,7 @@ export function Facts({
     </dl>
   );
 }
-export function Pending({ children = t("检测中…") }: { children?: ReactNode }) {
+export function Pending({ children = t("檢測中…") }: { children?: ReactNode }) {
   return <SweepShine role="status">{children}</SweepShine>;
 }
 export function ErrorNotice({ error }: { error: unknown }) {
@@ -178,7 +178,7 @@ export function ActionButton({
 export function DataTable<T>({
   data,
   columns,
-  empty = t("暂无数据"),
+  empty = t("暫無數據"),
   className = "",
   getRowId,
   getRowClassName,
@@ -314,7 +314,7 @@ export function DataTable<T>({
 }
 export function ReadingLinks({
   links,
-  title = t("拓展阅读"),
+  title = t("拓展閱讀"),
 }: {
   links: { path: string; title: string }[];
   title?: string;

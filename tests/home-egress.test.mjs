@@ -39,8 +39,8 @@ test("domestic egress comes first and external IPv4 remains separate", () => {
   const proxy = { ip: "192.0.2.2" };
   const result = render([{ data: ipv4 }, { data: proxy }, failed], [{ data: ipv6 }, { data: { ip: "192.0.2.3" } }]);
   assert.ok(result.indexOf(ipv4.ip) < result.indexOf(proxy.ip));
-  assert.ok(result.includes("IPv4 · 国内探测"));
-  assert.ok(result.includes("IPv4 · 外部探测"));
+  assert.ok(result.includes("IPv4 · 國內探測"));
+  assert.ok(result.includes("IPv4 · 外部探測"));
   assert.ok(!result.includes(ipv6.ip));
   assert.ok(!result.includes("192.0.2.3"));
 });
@@ -51,13 +51,13 @@ test("matching domestic and external IPv4 produces one card", () => {
 });
 test("failed domestic probe never promotes a proxy or routed IPv6 to local egress", () => {
   const result = render([failed, { data: ipv4 }, failed], [{ data: ipv6 }]);
-  assert.ok(!result.includes("未获取到 IPv"));
-  assert.ok(result.includes("IPv4 · 外部探测"));
+  assert.ok(!result.includes("未獲取到 IPv"));
+  assert.ok(result.includes("IPv4 · 外部探測"));
   assert.ok(!result.includes(ipv6.ip));
 });
 test("IPv6 and failed probes do not create overview cards", () => {
   const result = render([{ data: ipv4 }, failed, { data: ipv6 }], []);
-  assert.ok(!result.includes("IPv6 · 外部探测"));
+  assert.ok(!result.includes("IPv6 · 外部探測"));
   assert.ok(!result.includes(ipv6.ip));
 });
 

@@ -27,64 +27,64 @@ export function ipProfileFields(
     [
       t("家庭住宅 IP"),
       t(
-        "分配给家庭或个人宽带用户的地址。住宅标记不保证独享，也不排除被用作代理。",
+        "分配給家庭或個人寬帶用戶的地址。住宅標記不保證獨享，也不排除被用作代理。",
       ),
     ],
     [
-      t("移动网络"),
+      t("移動網絡"),
       t(
-        "由蜂窝移动网络提供的地址，可能由多个设备共享，连接变化时出口可能改变。",
+        "由蜂窩移動網絡提供的地址，可能由多個設備共享，連接變化時出口可能改變。",
       ),
     ],
     [
-      t("数据中心"),
+      t("數據中心"),
       t(
-        "服务器托管、云服务、CDN 或 IP 租赁等网络的地址。适合部署服务，不等于存在风险。",
+        "服務器託管、雲服務、CDN 或 IP 租賃等網絡的地址。適合部署服務，不等於存在風險。",
       ),
     ],
     [
-      t("公共服务"),
-      t("公共 DNS、CDN 等服务地址，可能使用任播，不能按普通个人上网出口理解。"),
+      t("公共服務"),
+      t("公共 DNS、CDN 等服務地址，可能使用任播，不能按普通個人上網出口理解。"),
     ],
     [
-      t("类型标记冲突"),
-      t("数据源同时返回住宅和数据中心标记，暂不能确认具体用途。"),
+      t("類型標記衝突"),
+      t("數據源同時返回住宅和數據中心標記，暫不能確認具體用途。"),
     ],
-    [t("未知"), t("未返回足够的类型标记，不能把缺失数据当成住宅或安全证明。")],
+    [t("未知"), t("未返回足夠的類型標記，不能把缺失數據當成住宅或安全證明。")],
   ];
   const companies = [
     [
       "isp",
-      t("网络运营商"),
-      t("提供互联网接入或网络传输服务的组织；旗下地址不一定都是家庭宽带。"),
+      t("網絡運營商"),
+      t("提供互聯網接入或網絡傳輸服務的組織；旗下地址不一定都是家庭寬帶。"),
     ],
     [
       "hosting",
-      t("托管服务商"),
-      t("经营服务器托管、云计算、CDN 等业务的组织。"),
+      t("託管服務商"),
+      t("經營服務器託管、雲計算、CDN 等業務的組織。"),
     ],
     [
       "business",
-      t("商业企业"),
-      t("企业自用网络或其他商业组织，不能仅据此判断住宅或机房。"),
+      t("商業企業"),
+      t("企業自用網絡或其他商業組織，不能僅據此判斷住宅或機房。"),
     ],
-    ["education", t("教育机构"), t("学校、大学和科研教育组织使用的网络。")],
+    ["education", t("教育機構"), t("學校、大學和科研教育組織使用的網絡。")],
     [
       "government",
-      t("政府机构"),
-      t("政府及公共行政组织使用的网络，不代表特殊访问权限。"),
+      t("政府機構"),
+      t("政府及公共行政組織使用的網絡，不代表特殊訪問權限。"),
     ],
     [
       "banking",
-      t("金融机构"),
-      t("银行或金融组织使用的网络，不代表更高信誉或投资安全。"),
+      t("金融機構"),
+      t("銀行或金融組織使用的網絡，不代表更高信譽或投資安全。"),
     ],
     [
       "other",
-      t("其他类型"),
-      t("数据源返回了未收录的业务类型，保留原始值，不作高低判断。"),
+      t("其他類型"),
+      t("數據源返回了未收錄的業務類型，保留原始值，不作高低判斷。"),
     ],
-    ["unknown", t("未知"), t("数据源未提供厂商类型。")],
+    ["unknown", t("未知"), t("數據源未提供廠商類型。")],
   ];
   const rawCompany = data.company_type?.trim().toLowerCase();
   const companyKey = !rawCompany
@@ -104,54 +104,54 @@ export function ipProfileFields(
   const registrationOptions = [
     [
       "same",
-      t("注册地一致"),
-      t("定位国家与注册国家一致，可作归属参考，但不能单独证明原生线路。"),
+      t("註冊地一致"),
+      t("定位國家與註冊國家一致，可作歸屬參考，但不能單獨證明原生線路。"),
     ],
     [
       "different",
-      t("注册地不同"),
-      t("可能来自跨境运营、地址调配或数据库差异，不等于有风险。"),
+      t("註冊地不同"),
+      t("可能來自跨境運營、地址調配或數據庫差異，不等於有風險。"),
     ],
-    ["unknown", t("待确认"), t("缺少注册国家或定位国家，暂不能比较。")],
+    ["unknown", t("待確認"), t("缺少註冊國家或定位國家，暫不能比較。")],
     [
       "na",
-      t("不适用"),
-      t("公共服务可能在多个地区提供服务，不用单点国家比较判断原生性。"),
+      t("不適用"),
+      t("公共服務可能在多個地區提供服務，不用單點國家比較判斷原生性。"),
     ],
   ];
   const flags: [string, string, boolean | undefined][] = [
     [
       "VPN",
-      t("被数据源识别为 VPN 出口；属于网络用途标记，不等同于恶意流量。"),
+      t("被數據源識別爲 VPN 出口；屬於網絡用途標記，不等同於惡意流量。"),
       data.is_vpn,
     ],
-    [t("代理"), t("被识别为代理出口，可能影响网站的访问验证。"), data.is_proxy],
+    [t("代理"), t("被識別爲代理出口，可能影響網站的訪問驗證。"), data.is_proxy],
     [
       "Tor",
-      t("被识别为 Tor 出口，部分服务可能限制这类匿名网络。"),
+      t("被識別爲 Tor 出口，部分服務可能限制這類匿名網絡。"),
       data.is_tor,
     ],
     [
-      t("爬虫标记"),
-      t("被识别为自动化抓取或爬虫相关地址，需要结合实际用途判断。"),
+      t("爬蟲標記"),
+      t("被識別爲自動化抓取或爬蟲相關地址，需要結合實際用途判斷。"),
       data.is_crawler,
     ],
     [
-      t("滥用标记"),
-      t("数据源记录到滥用活动或相关黑名单信号，建议核实。"),
+      t("濫用標記"),
+      t("數據源記錄到濫用活動或相關黑名單信號，建議覈實。"),
       data.is_abuser,
     ],
     [
       "Bogon",
-      t("私有、保留或尚未分配等不应出现在公共互联网路由中的地址。"),
+      t("私有、保留或尚未分配等不應出現在公共互聯網路由中的地址。"),
       data.is_bogon,
     ],
   ];
   const fields: Field[] = [
     {
-      label: t("IP 类型"),
+      label: t("IP 類型"),
       value: profile.checks[0].value,
-      detail: t("这里表示网络用途，IPv4 / IPv6 表示地址协议，两者是不同维度。"),
+      detail: t("這裏表示網絡用途，IPv4 / IPv6 表示地址協議，兩者是不同維度。"),
       options: typeOptions.map(([label, description]) => ({
         label,
         description,
@@ -159,9 +159,9 @@ export function ipProfileFields(
       })),
     },
     {
-      label: t("厂商类型"),
+      label: t("廠商類型"),
       value: profile.checks[1].value,
-      detail: t("当前厂商：{0}", [data.company_name || data.isp || t("未知")]),
+      detail: t("當前廠商：{0}", [data.company_name || data.isp || t("未知")]),
       options: companies.map(([key, label, description]) => ({
         label,
         description,
@@ -169,10 +169,10 @@ export function ipProfileFields(
       })),
     },
     {
-      label: t("注册地对照"),
+      label: t("註冊地對照"),
       value: registrationOptions.find(([key]) => key === registration)![1],
       detail: t(
-        "定位国家：{0}；注册国家：{1}。国家一致不等于已验证原生线路。",
+        "定位國家：{0}；註冊國家：{1}。國家一致不等於已驗證原生線路。",
         [
           data.country || country || t("未知"),
           data.registered_country || registered || t("未知"),
@@ -185,9 +185,9 @@ export function ipProfileFields(
       })),
     },
     {
-      label: t("网络标记"),
+      label: t("網絡標記"),
       value: profile.checks[3].value,
-      detail: t("未检出只表示当前数据源没有返回该标记，未知表示缺少数据。"),
+      detail: t("未檢出只表示當前數據源沒有返回該標記，未知表示缺少數據。"),
       options: [
         ...flags.map(([label, description, value]) => ({
           label,
@@ -195,22 +195,22 @@ export function ipProfileFields(
           current: value === true,
           status:
             value === true
-              ? t("已检测到")
+              ? t("已檢測到")
               : value === false
-                ? t("未检测到")
+                ? t("未檢測到")
                 : t("未知"),
         })),
         {
-          label: t("其他情报"),
+          label: t("其他情報"),
           description: threats.length
             ? threats.join(" · ")
-            : t("其他威胁情报记录，与上述六项网络标记分别展示。"),
+            : t("其他威脅情報記錄，與上述六項網絡標記分別展示。"),
           status: riskThreats.length
-            ? t("已检测到")
+            ? t("已檢測到")
             : threats.length
-              ? t("仅信息")
+              ? t("僅信息")
               : data.intelligence?.threats
-                ? t("未检测到")
+                ? t("未檢測到")
                 : t("未知"),
           current: riskThreats.length > 0,
         },

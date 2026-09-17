@@ -18,7 +18,7 @@ export async function getGeo(
       options(),
     );
     if (!data.ip || (!data.country && !data.isp))
-      throw new Error(t("归属信息不完整"));
+      throw new Error(t("歸屬信息不完整"));
     return { ...data, ip, source: "ip.sb" };
   } catch {
     signal?.throwIfAborted();
@@ -33,7 +33,7 @@ export async function getGeo(
       longitude?: number;
       timezone?: { id?: string };
     }>(`https://ipwho.is/${encodeURIComponent(ip)}`, options());
-    if (!data.success) throw new Error(t("归属信息暂不可用，请稍后重试"));
+    if (!data.success) throw new Error(t("歸屬信息暫不可用，請稍後重試"));
     return {
       ip,
       country: data.country,
@@ -88,7 +88,7 @@ export async function getDomesticIp(signal?: AbortSignal): Promise<Geo> {
       if (signal?.aborted) throw error;
     }
   }
-  throw new Error(t("国内出口未知：目标站点可能限制跨域读取"));
+  throw new Error(t("國內出口未知：目標站點可能限制跨域讀取"));
 }
 export interface Site {
   note?: string;
@@ -137,7 +137,7 @@ export async function detectSite(
   signal?: AbortSignal,
 ): Promise<Geo> {
   if (site.method === "unsupported")
-    throw new Error(t(site.note ?? "未获取到可读取的出口 IP"));
+    throw new Error(t(site.note ?? "未獲取到可讀取的出口 IP"));
   signal = signal
     ? AbortSignal.any([signal, AbortSignal.timeout(3000)])
     : AbortSignal.timeout(3000);
@@ -168,7 +168,7 @@ export async function detectSite(
       )?.[1];
     }
     if (!ip || !/^[\da-fA-F:.]+$/.test(ip))
-      throw new Error(t("未获取到可读取的出口 IP"));
+      throw new Error(t("未獲取到可讀取的出口 IP"));
     geo = { ip, source: site.name };
   } else {
     const headers = await request<Headers>(
@@ -181,7 +181,7 @@ export async function detectSite(
       headers.get("x-request-ip") ??
       headers.get("x-response-cinfo");
     if (!ip || !/^[\da-fA-F:.]+$/.test(ip))
-      throw new Error(t("未获取到可读取的出口 IP"));
+      throw new Error(t("未獲取到可讀取的出口 IP"));
     geo = { ip, source: site.name };
   }
   return geo;
@@ -206,6 +206,6 @@ export async function getBrowserIp(
       ? !data.ip.includes(":")
       : !/^\d{1,3}(\.\d{1,3}){3}$/.test(data.ip))
   )
-    throw new Error(t("未获取到有效 IP"));
+    throw new Error(t("未獲取到有效 IP"));
   return { ip: data.ip, source: "ipify" };
 }

@@ -8,7 +8,7 @@ export async function lookupRegistration(query) {
   if (/^AS\d+$/i.test(raw)) {
     const asn = Number(raw.slice(2));
     if (!Number.isSafeInteger(asn) || asn < 1 || asn > 4294967295)
-      throw new HttpError(400, "无效的 AS 号");
+      throw new HttpError(400, "無效的 AS 號");
     path = `autnum/${asn}`;
   } else if (isIP(raw)) path = `ip/${encodeURIComponent(publicIp(raw))}`;
   else {
@@ -16,11 +16,11 @@ export async function lookupRegistration(query) {
     try {
       ascii = new URL(`https://${raw}`).hostname;
     } catch {
-      throw new HttpError(400, "请输入有效的域名、IP 或 AS 号");
+      throw new HttpError(400, "請輸入有效的域名、IP 或 AS 號");
     }
     // Reject paths/userinfo instead of silently querying a different resource.
     if (/[\s/@?#:]/.test(raw))
-      throw new HttpError(400, "仅输入域名，不包含路径或协议");
+      throw new HttpError(400, "僅輸入域名，不包含路徑或協議");
     const domain = target(ascii);
     path = `domain/${encodeURIComponent(domain)}`;
     const bootstrap = await upstream("https://data.iana.org/rdap/dns.json", {
@@ -30,7 +30,7 @@ export async function lookupRegistration(query) {
       suffixes.includes(domain.split(".").at(-1)),
     )?.[1];
     const base = urls?.find((url) => url.startsWith("https://"));
-    if (!base) throw new HttpError(422, "该域名后缀暂无可用的 HTTPS RDAP 服务");
+    if (!base) throw new HttpError(422, "該域名後綴暫無可用的 HTTPS RDAP 服務");
     endpoint = new URL(path, base.endsWith("/") ? base : `${base}/`).href;
   }
   const options = {
@@ -52,7 +52,7 @@ export async function lookupRegistration(query) {
     if (!base) throw error;
     data = await upstream(new URL(path, base).href, options);
   }
-  return { source: "RDAP · 注册局实时数据", query: raw, data };
+  return { source: "RDAP · 註冊局實時數據", query: raw, data };
 }
 
 function ipNumber(ip) {

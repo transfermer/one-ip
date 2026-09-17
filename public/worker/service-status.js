@@ -1,9 +1,9 @@
 export function normalizeStatus(data) {
   if (data.status?.indicator) return data;
   const states = {
-    UP: { indicator: "none", description: "正常运行" },
-    HASISSUES: { indicator: "minor", description: "存在服务故障" },
-    UNDERMAINTENANCE: { indicator: "maintenance", description: "维护中" },
+    UP: { indicator: "none", description: "正常運行" },
+    HASISSUES: { indicator: "minor", description: "存在服務故障" },
+    UNDERMAINTENANCE: { indicator: "maintenance", description: "維護中" },
   };
   const status = states[data.page?.status];
   if (!status) return data;

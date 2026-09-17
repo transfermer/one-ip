@@ -38,14 +38,14 @@ export function HomePage() {
   const mobile = useIsMobile();
   const browserTools = useAvailableTools("browser");
   const navigationGroups = [
-    { label: t("网络检测"), icon: Network, tools: toolGroups.network },
-    { label: t("浏览器检测"), icon: Fingerprint, tools: browserTools },
-    { label: t("AI 检测"), icon: Sparkles, tools: toolGroups.ai },
+    { label: t("網絡檢測"), icon: Network, tools: toolGroups.network },
+    { label: t("瀏覽器檢測"), icon: Fingerprint, tools: browserTools },
+    { label: t("AI 檢測"), icon: Sparkles, tools: toolGroups.ai },
     {
-      label: t("服务状态"),
+      label: t("服務狀態"),
       icon: Activity,
       tools: [
-        { path: "/status/", label: t("全部服务") },
+        { path: "/status/", label: t("全部服務") },
         { path: "/status/openai", label: "OpenAI" },
         { path: "/status/claude", label: "Claude" },
       ],
@@ -114,7 +114,7 @@ export function HomePage() {
     `${mobile}-${orderedTargets.map(({ target }) => target.name).join("|")}`,
   );
   useEffect(() => {
-    document.title = t("概览 - IP 网络工具");
+    document.title = t("概覽 - IP 網絡工具");
   }, []);
   const probes = useQueries({
     queries: [
@@ -139,7 +139,7 @@ export function HomePage() {
         query,
         data: query.data,
         version: 4,
-        label: index === 0 ? t("IPv4 · 国内探测") : t("IPv4 · 外部探测"),
+        label: index === 0 ? t("IPv4 · 國內探測") : t("IPv4 · 外部探測"),
       },
     ];
   });
@@ -169,14 +169,14 @@ export function HomePage() {
   return (
     <div className="home-page">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h1 className="text-sm font-semibold">{t("网络概览")}</h1>
+        <h1 className="text-sm font-semibold">{t("網絡概覽")}</h1>
         <ActionButton
           size="sm"
           variant="outline"
           busy={refreshing}
           onClick={refresh}
         >
-          {refreshing ? t("检测中...") : t("重新检测")}
+          {refreshing ? t("檢測中...") : t("重新檢測")}
         </ActionButton>
       </div>
       <div className="home-overview home-ip-overview">
@@ -207,7 +207,7 @@ export function HomePage() {
                   : null,
                 company.is_public_service === true
                   ? {
-                      label: t("公共服务"),
+                      label: t("公共服務"),
                       color: "bg-primary/15 text-primary dark:bg-primary/20",
                     }
                   : null,
@@ -219,13 +219,13 @@ export function HomePage() {
                   : null,
                 company.is_datacenter === true && !company.is_public_service
                   ? {
-                      label: t("机房 IP"),
+                      label: t("機房 IP"),
                       color: "bg-primary/5 text-primary dark:bg-primary/10",
                     }
                   : null,
                 company.is_mobile === true
                   ? {
-                      label: t("移动网络"),
+                      label: t("移動網絡"),
                       color: "bg-primary/15 text-primary dark:bg-primary/20",
                     }
                   : null,
@@ -250,7 +250,7 @@ export function HomePage() {
               {data && (
                 <Link
                   to={`/network/ip/${encodeURIComponent(data.ip)}`}
-                  aria-label={`${label} · ${t("IP 信息查询")}`}
+                  aria-label={`${label} · ${t("IP 信息查詢")}`}
                   className="absolute inset-0 z-10 rounded-[inherit] transition-colors hover:bg-primary/[0.025] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
                 />
               )}
@@ -272,7 +272,7 @@ export function HomePage() {
                 <div className="home-address-row">
                   <div className="ip-value">
                     {pending ? (
-                      <Pending>{t("加载中...")}</Pending>
+                      <Pending>{t("加載中...")}</Pending>
                     ) : geo ? (
                       <>
                         <CountryFlag code={geo.country_code} />
@@ -280,7 +280,7 @@ export function HomePage() {
                       </>
                     ) : (
                       <span className="muted">
-                        {t("未获取到 IPv")}
+                        {t("未獲取到 IPv")}
                         {version}
                       </span>
                     )}
@@ -298,7 +298,7 @@ export function HomePage() {
                         {score === 100 && (
                           <Crown size={13} aria-hidden="true" />
                         )}
-                        {score === 100 ? t("满分信誉") : t("IP 信誉分")}
+                        {score === 100 ? t("滿分信譽") : t("IP 信譽分")}
                       </span>
                       <strong>
                         <NumberTicker value={score} />
@@ -308,7 +308,7 @@ export function HomePage() {
                 </div>
                 <div className="primary-ip-meta text-sm text-muted-foreground">
                   {loading ? (
-                    <Pending>{t("正在查询归属信息…")}</Pending>
+                    <Pending>{t("正在查詢歸屬信息…")}</Pending>
                   ) : geo?.country || geo?.city || geo?.isp ? (
                     <>
                       <p>
@@ -325,13 +325,13 @@ export function HomePage() {
                     </>
                   ) : data ? (
                     <div className="flex items-center justify-between gap-2 text-xs">
-                      <span>{t("归属信息暂不可用")}</span>
+                      <span>{t("歸屬信息暫不可用")}</span>
                       <button
                         type="button"
                         className="relative z-20 shrink-0 text-primary"
                         onClick={() => geoByIp.get(data.ip)?.refetch()}
                       >
-                        {t("重试")}
+                        {t("重試")}
                       </button>
                     </div>
                   ) : null}
@@ -343,7 +343,7 @@ export function HomePage() {
         <Card className="home-connectivity-card">
           <CardHeader>
             <div className="row-between">
-              <CardTitle>{t("网络连通性")}</CardTitle>
+              <CardTitle>{t("網絡連通性")}</CardTitle>
               <UnderlineHover asChild>
                 <Link className="small muted" to="/network/connectivity/">
                   {t("查看更多 ›")}
@@ -367,7 +367,7 @@ export function HomePage() {
       <BrowserSummary />
       <Card className="home-shortcuts">
         <CardHeader>
-          <CardTitle>{t("热门功能")}</CardTitle>
+          <CardTitle>{t("熱門功能")}</CardTitle>
         </CardHeader>
         <CardContent>
           <Link to="/ai/claude" className="shortcut-feature">
@@ -375,9 +375,9 @@ export function HomePage() {
               <SiteLogo website="https://claude.ai" />
             </span>
             <span className="shortcut-label">
-              <strong>{t("Claude 中国用户检测")}</strong>
+              <strong>{t("Claude 中國用戶檢測")}</strong>
               <span className="shortcut-description">
-                {t("检查语言、时区与设备信号，了解浏览器暴露的环境特征。")}
+                {t("檢查語言、時區與設備信號，瞭解瀏覽器暴露的環境特徵。")}
               </span>
             </span>
             <ArrowRight className="shortcut-arrow" aria-hidden="true" />
@@ -386,38 +386,38 @@ export function HomePage() {
             {[
               {
                 path: "/ai/gpt",
-                label: t("ChatGPT 检测"),
-                description: t("检查 AI 服务响应与访问出口"),
+                label: t("ChatGPT 檢測"),
+                description: t("檢查 AI 服務響應與訪問出口"),
                 icon: () => <SiteLogo website="https://chatgpt.com" />,
               },
               {
                 path: "/network/connectivity",
-                label: t("网站连通与出口"),
-                description: t("核对网站连通性、响应延迟和实际出口"),
+                label: t("網站連通與出口"),
+                description: t("覈對網站連通性、響應延遲和實際出口"),
                 icon: Network,
               },
               {
                 path: "/browser/challenges",
-                label: t("人机检测"),
-                description: t("体验验证码，查看验证结果"),
+                label: t("人機檢測"),
+                description: t("體驗驗證碼，查看驗證結果"),
                 icon: ShieldCheck,
               },
               {
                 path: "/browser/consistency",
-                label: t("环境一致性"),
-                description: t("核对浏览器环境与设备信号"),
+                label: t("環境一致性"),
+                description: t("覈對瀏覽器環境與設備信號"),
                 icon: Search,
               },
               {
                 path: "/browser/fingerprint",
-                label: t("浏览器指纹"),
-                description: t("查看指纹组成与变化"),
+                label: t("瀏覽器指紋"),
+                description: t("查看指紋組成與變化"),
                 icon: Fingerprint,
               },
               {
                 path: "/status/",
-                label: t("服务状态"),
-                description: t("查看平台故障与服务动态"),
+                label: t("服務狀態"),
+                description: t("查看平臺故障與服務動態"),
                 icon: Activity,
               },
             ].map((tool) => (
@@ -445,7 +445,7 @@ export function HomePage() {
             </CardTitle>
             <UnderlineHover asChild>
               <Link className="small muted" to="/docs/api">
-                {t("API 文档")}
+                {t("API 文檔")}
               </Link>
             </UnderlineHover>
           </div>

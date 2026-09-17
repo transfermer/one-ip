@@ -42,11 +42,11 @@ export async function probeAiDomain(
       status: "response",
       description: readable
         ? t(
-            "已读取并校验 {0} 的边缘网络响应；不代表登录、对话或验证码一定可用。",
+            "已讀取並校驗 {0} 的邊緣網絡響應；不代表登錄、對話或驗證碼一定可用。",
             [domain],
           )
         : t(
-            "收到 {0}{1} 的资源响应；不代表登录或对话可用，也无法读取跨域 HTTP 状态码。",
+            "收到 {0}{1} 的資源響應；不代表登錄或對話可用，也無法讀取跨域 HTTP 狀態碼。",
             [domain, path],
           ),
     };
@@ -59,7 +59,7 @@ export async function probeAiDomain(
     median: null,
     status: "unknown",
     description: t(
-      "探测未取得有效响应（单次限时 3 秒），已跳过；可能超时、被内容拦截或受站点防护限制。",
+      "探測未取得有效響應（單次限時 3 秒），已跳過；可能超時、被內容攔截或受站點防護限制。",
     ),
   };
 }

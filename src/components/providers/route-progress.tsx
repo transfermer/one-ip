@@ -17,7 +17,7 @@ export function RouteProgress() {
       trickle: !reducedMotion,
       speed: reducedMotion ? 0 : 200,
       template: t(
-        '<div class="bar" role="progressbar" aria-label="页面切换"><div class="peg"></div></div>',
+        '<div class="bar" role="progressbar" aria-label="頁面切換"><div class="peg"></div></div>',
       ),
     });
     return () => {

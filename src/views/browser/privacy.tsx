@@ -33,7 +33,7 @@ export default function Privacy() {
                 ).state,
               ] as [string, string];
             } catch {
-              return [name, t("不支持查询")] as [string, string];
+              return [name, t("不支持查詢")] as [string, string];
             }
           },
         ),
@@ -42,15 +42,15 @@ export default function Privacy() {
   });
   async function testMedia(kind: "camera" | "microphone") {
     setBusy(true);
-    setMessage(t("等待授权…"));
+    setMessage(t("等待授權…"));
     try {
       const stream = await navigator.mediaDevices.getUserMedia(
         kind === "camera" ? { video: true } : { audio: true },
       );
       stream.getTracks().forEach((track) => track.stop());
-      if (alive.current) setMessage(t("已获得授权，媒体流已立即关闭。"));
+      if (alive.current) setMessage(t("已獲得授權，媒體流已立即關閉。"));
     } catch {
-      if (alive.current) setMessage(t("未获得媒体访问权限或设备不可用。"));
+      if (alive.current) setMessage(t("未獲得媒體訪問權限或設備不可用。"));
     } finally {
       if (alive.current) {
         setBusy(false);
@@ -60,12 +60,12 @@ export default function Privacy() {
   }
   function locate() {
     setBusy(true);
-    setMessage(t("等待定位授权…"));
+    setMessage(t("等待定位授權…"));
     navigator.geolocation.getCurrentPosition(
       (position) => {
         if (!alive.current) return;
         setMessage(
-          t("纬度 {0}，经度 {1}，精度约 {2} 米。", [
+          t("緯度 {0}，經度 {1}，精度約 {2} 米。", [
             position.coords.latitude.toFixed(5),
             position.coords.longitude.toFixed(5),
             Math.round(position.coords.accuracy),
@@ -76,7 +76,7 @@ export default function Privacy() {
       },
       () => {
         if (alive.current) {
-          setMessage(t("未获得定位结果，可能未授权或位置服务不可用。"));
+          setMessage(t("未獲得定位結果，可能未授權或位置服務不可用。"));
           setBusy(false);
           void permissions.refetch();
         }
@@ -86,7 +86,7 @@ export default function Privacy() {
   }
   return (
     <>
-      <ToolCard title={t("权限与能力")}>
+      <ToolCard title={t("權限與能力")}>
         <Facts
           rows={[
             ...(permissions.data ?? []),
@@ -97,7 +97,7 @@ export default function Privacy() {
               "Service Worker",
               "serviceWorker" in navigator ? t("支持 API") : t("不支持"),
             ],
-            ["DNT", navigator.doNotTrack ?? t("未设置")],
+            ["DNT", navigator.doNotTrack ?? t("未設置")],
             [
               "GPC",
               String(
@@ -113,25 +113,25 @@ export default function Privacy() {
             disabled={busy || !navigator.geolocation}
             onClick={locate}
           >
-            {t("测试定位")}
+            {t("測試定位")}
           </Button>
           <Button
             variant="outline"
             disabled={busy || !navigator.mediaDevices?.getUserMedia}
             onClick={() => testMedia("camera")}
           >
-            {t("测试摄像头权限")}
+            {t("測試攝像頭權限")}
           </Button>
           <Button
             variant="outline"
             disabled={busy || !navigator.mediaDevices?.getUserMedia}
             onClick={() => testMedia("microphone")}
           >
-            {t("测试麦克风权限")}
+            {t("測試麥克風權限")}
           </Button>
         </div>
         <p className="small muted mt-2" role="status">
-          {message || t("点击后才申请权限；媒体测试结束即关闭，不录制内容。")}
+          {message || t("點擊後才申請權限；媒體測試結束即關閉，不錄製內容。")}
         </p>
       </ToolCard>
       <div className="mt-3">

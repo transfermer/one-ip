@@ -23,11 +23,11 @@ const featured = ["9", "4", "10", "5", "0", "19", "15", "1"].map((id) =>
   services.find((service) => service.id === id)!,
 );
 const statusLabels: Record<string, string> = {
-  none: t("正常运行"),
-  minor: t("轻微故障"),
-  major: t("严重故障"),
+  none: t("正常運行"),
+  minor: t("輕微故障"),
+  major: t("嚴重故障"),
   critical: t("重大故障"),
-  maintenance: t("维护中"),
+  maintenance: t("維護中"),
 };
 export function PlatformSummary() {
   const ref = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ export function PlatformSummary() {
     <div ref={ref} className="grid grid-cols-1 gap-3 mb-3 md:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>{t("AI 访问概览")}</CardTitle>
+          <CardTitle>{t("AI 訪問概覽")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div
@@ -130,12 +130,12 @@ export function PlatformSummary() {
                     }}
                   >
                     {query.isPending ? (
-                      <Pending>{t("待检测")}</Pending>
+                      <Pending>{t("待檢測")}</Pending>
                     ) : latency == null || latency < 0 ? (
                       query.data?.status === "restricted" ? (
-                        t("检测受限")
+                        t("檢測受限")
                       ) : (
-                        t("未连通")
+                        t("未連通")
                       )
                     ) : (
                       `${latency} ms`
@@ -147,7 +147,7 @@ export function PlatformSummary() {
           </div>
           <p className="home-note mt-3">
             {t(
-              "显示本次探测资源的 HTTP 响应耗时；未连通表示本次探测失败。点击平台可查看详情并打开官网。",
+              "顯示本次探測資源的 HTTP 響應耗時；未連通表示本次探測失敗。點擊平臺可查看詳情並打開官網。",
             )}
           </p>
         </CardContent>
@@ -155,10 +155,10 @@ export function PlatformSummary() {
       <Card>
         <CardHeader>
           <div className="row-between">
-            <CardTitle>{t("服务状态")}</CardTitle>
+            <CardTitle>{t("服務狀態")}</CardTitle>
             <UnderlineHover asChild>
               <Link to="/status" className="small muted">
-                {t("全部服务 ›")}
+                {t("全部服務 ›")}
               </Link>
             </UnderlineHover>
           </div>
@@ -202,9 +202,9 @@ export function PlatformSummary() {
                       }}
                     >
                       {query.isPending ? (
-                        <Pending>{t("查询中")}</Pending>
+                        <Pending>{t("查詢中")}</Pending>
                       ) : (
-                        (statusLabels[indicator ?? ""] ?? t("待确认"))
+                        (statusLabels[indicator ?? ""] ?? t("待確認"))
                       )}
                     </span>
                   </div>
@@ -212,7 +212,7 @@ export function PlatformSummary() {
               })}
           </div>
           <p className="home-note mt-3">
-            {t("来自官方状态源；点击服务查看组件与事件。")}
+            {t("來自官方狀態源；點擊服務查看組件與事件。")}
           </p>
         </CardContent>
       </Card>

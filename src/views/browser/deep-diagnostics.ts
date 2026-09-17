@@ -16,13 +16,13 @@ export function collectDeepDiagnostics(
 ): Promise<DiagnosticResult> {
   return new Promise((resolve, reject) => {
     const frame = document.createElement("iframe");
-    frame.title = t("本地浏览器深度检测");
+    frame.title = t("本地瀏覽器深度檢測");
     frame.setAttribute("aria-hidden", "true");
     frame.tabIndex = -1;
     // Keep layout APIs measurable while keeping probes out of the visible page.
     frame.style.cssText = `position:fixed;left:-100000px;top:0;width:${innerWidth}px;height:${innerHeight}px;border:0;pointer-events:none`;
     const timer = setTimeout(
-      () => finish(new Error(t("检测超时，部分浏览器可能限制了检测接口。"))),
+      () => finish(new Error(t("檢測超時，部分瀏覽器可能限制了檢測接口。"))),
       30000,
     );
     function cleanup() {
@@ -36,7 +36,7 @@ export function collectDeepDiagnostics(
       reject(error);
     }
     function onAbort() {
-      finish(new DOMException(t("检测已取消"), "AbortError"));
+      finish(new DOMException(t("檢測已取消"), "AbortError"));
     }
     function onMessage(event: MessageEvent) {
       if (
@@ -46,19 +46,19 @@ export function collectDeepDiagnostics(
       )
         return;
       if (event.data.error) {
-        finish(new Error(t("深度检测未完成，请重试。")));
+        finish(new Error(t("深度檢測未完成，請重試。")));
         return;
       }
       const result = event.data.result;
       if (!result?.modules || typeof result.duration !== "number") {
-        finish(new Error(t("检测结果无效。")));
+        finish(new Error(t("檢測結果無效。")));
         return;
       }
       const modules = Object.entries(result.modules).map(
         ([name, value]): DiagnosticModule => ({
           name,
           status:
-            value === null || value === undefined ? t("无法检测") : t("已完成"),
+            value === null || value === undefined ? t("無法檢測") : t("已完成"),
           detail: JSON.stringify(value, null, 2) ?? t("未提供"),
         }),
       );

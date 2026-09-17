@@ -13,16 +13,16 @@ import { detectSignal, summarizeSignals } from "./score";
 import { SIGNALS } from "../../../vendor/claude-environment/signals";
 
 const labels = [
-  "系统时区",
-  "浏览器语言",
-  "已安装中文字体",
-  "厂商及软件字体",
+  "系統時區",
+  "瀏覽器語言",
+  "已安裝中文字體",
+  "廠商及軟件字體",
   "WebRTC 地址暴露",
-  "浏览器 / WebView 标记",
-  "设备厂商标记",
-  "日期格式区域",
-  "时区偏移",
-  "Emoji 渲染风格",
+  "瀏覽器 / WebView 標記",
+  "設備廠商標記",
+  "日期格式區域",
+  "時區偏移",
+  "Emoji 渲染風格",
 ];
 
 export function EnvironmentScore() {
@@ -83,7 +83,7 @@ export function EnvironmentScore() {
         ]
       : [],
   );
-  const band = { low: t("低风险"), medium: t("中风险"), high: t("高风险") }[
+  const band = { low: t("低風險"), medium: t("中風險"), high: t("高風險") }[
     result.band
   ];
   const color = {
@@ -99,12 +99,12 @@ export function EnvironmentScore() {
         definition.id === "language" ||
         definition.id === "intlLocale",
     )
-      ? [t("核对系统时区、浏览器语言和区域格式是否符合实际使用环境。")]
+      ? [t("覈對系統時區、瀏覽器語言和區域格式是否符合實際使用環境。")]
       : []),
     ...(hits.some(({ definition }) => definition.id === "webrtcLeak")
       ? [
           t(
-            "检测到 ICE 地址候选，请在 WebRTC 页面核对公网地址及 UDP 路由；候选地址不一定代表泄露。",
+            "檢測到 ICE 地址候選，請在 WebRTC 頁面覈對公網地址及 UDP 路由；候選地址不一定代表泄露。",
           ),
         ]
       : []),
@@ -115,26 +115,26 @@ export function EnvironmentScore() {
     )
       ? [
           t(
-            "字体、设备和 Emoji 属于弱环境线索，正常系统也可能命中，不建议仅为降低分数修改或删除它们。",
+            "字體、設備和 Emoji 屬於弱環境線索，正常系統也可能命中，不建議僅爲降低分數修改或刪除它們。",
           ),
         ]
       : []),
     ...(!result.complete
       ? [
           t(
-            "部分检测未完成，请查看日志定位失败项，检查网络或浏览器限制后重试。",
+            "部分檢測未完成，請查看日誌定位失敗項，檢查網絡或瀏覽器限制後重試。",
           ),
         ]
       : []),
     t(
-      "结合上方网络卡片确认连通情况；这些环境信号不能确定 Claude 如何识别用户，也不能预测账号状态。",
+      "結合上方網絡卡片確認連通情況；這些環境信號不能確定 Claude 如何識別用戶，也不能預測賬號狀態。",
     ),
   ];
   function renderLogs() {
     return (
       <div
         role="log"
-        aria-label={t("检测日志")}
+        aria-label={t("檢測日誌")}
         aria-live="polite"
         className="max-h-72 overflow-auto font-mono text-xs leading-6"
       >
@@ -162,7 +162,7 @@ export function EnvironmentScore() {
                       : "shrink-0 text-emerald-600"
                 }
               >
-                [{pending ? t("检测中") : unavailable ? t("未完成") : t("完成")}
+                [{pending ? t("檢測中") : unavailable ? t("未完成") : t("完成")}
                 ]
               </span>
               <div className="min-w-0 flex-1 break-words">
@@ -171,11 +171,11 @@ export function EnvironmentScore() {
                   {" "}
                   ·{" "}
                   {pending
-                    ? t("等待结果…")
+                    ? t("等待結果…")
                     : query.isError
-                      ? t("检测失败或超时")
+                      ? t("檢測失敗或超時")
                       : definition.id === "webrtcLeak" && hidden
-                        ? t("IP 已隐藏")
+                        ? t("IP 已隱藏")
                         : query.data?.raw}
                 </span>
               </div>
@@ -197,14 +197,14 @@ export function EnvironmentScore() {
     <Card>
       <CardHeader>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <CardTitle>{t("Claude 中国用户检测")}</CardTitle>
+          <CardTitle>{t("Claude 中國用戶檢測")}</CardTitle>
           <ActionButton
             size="sm"
             variant="ghost"
             busy={busy}
             onClick={() => queries.forEach((query) => void query.refetch())}
           >
-            {busy ? t("检测中…") : t("重新检测")}
+            {busy ? t("檢測中…") : t("重新檢測")}
           </ActionButton>
         </div>
       </CardHeader>
@@ -222,15 +222,15 @@ export function EnvironmentScore() {
                 </span>
               </div>
               <span className={`text-sm font-medium ${color}`}>
-                {busy ? t("检测中…") : result.complete ? band : t("检测不完整")}
+                {busy ? t("檢測中…") : result.complete ? band : t("檢測不完整")}
               </span>
             </div>
             <p className="text-xs leading-5 text-muted-foreground">
               {busy
-                ? t("正在检测环境特征…")
+                ? t("正在檢測環境特徵…")
                 : result.complete
-                  ? t("环境信号评分，非 Claude 官方判定")
-                  : t("当前分数仅包含已完成项目，不作完整风险分档。")}
+                  ? t("環境信號評分，非 Claude 官方判定")
+                  : t("當前分數僅包含已完成項目，不作完整風險分檔。")}
             </p>
           </div>
           <div
@@ -250,7 +250,7 @@ export function EnvironmentScore() {
             ))}
             {!busy && !hits.length && (
               <span className="text-sm text-muted-foreground">
-                {t("本次无命中信号")}
+                {t("本次無命中信號")}
               </span>
             )}
             {busy && (
@@ -258,7 +258,7 @@ export function EnvironmentScore() {
                 className="col-span-full text-xs text-muted-foreground"
                 role="status"
               >
-                {t("检测进度：{0}/{1}", [completed, SIGNALS.length])}
+                {t("檢測進度：{0}/{1}", [completed, SIGNALS.length])}
               </p>
             )}
           </div>
@@ -266,7 +266,7 @@ export function EnvironmentScore() {
         <div className="flex items-center justify-between border-t pt-3">
           <details className="min-w-0 flex-1 text-sm">
             <summary className="w-fit cursor-pointer text-muted-foreground hover:text-foreground">
-              {t("建议与检测说明")}
+              {t("建議與檢測說明")}
             </summary>
             <div className="mt-3 space-y-3 pr-3 text-xs leading-6 text-muted-foreground">
               {!busy && (
@@ -278,7 +278,7 @@ export function EnvironmentScore() {
               )}
               <p>
                 {t(
-                  "采用开源项目的 10 项检测与原始权重。分数为项目启发式规则，不是 Claude 官方判定或封禁概率；Emoji 项使用 UA 推测。",
+                  "採用開源項目的 10 項檢測與原始權重。分數爲項目啓發式規則，不是 Claude 官方判定或封禁概率；Emoji 項使用 UA 推測。",
                 )}
               </p>
               <a
@@ -287,7 +287,7 @@ export function EnvironmentScore() {
                 rel="noreferrer"
                 className="underline underline-offset-4"
               >
-                {t("检测源码：FuckClaude（MIT）")}
+                {t("檢測源碼：FuckClaude（MIT）")}
               </a>
             </div>
           </details>
@@ -297,14 +297,14 @@ export function EnvironmentScore() {
             className="shrink-0 self-start text-muted-foreground"
             onClick={() => setOpen(true)}
           >
-            {t("查看检测日志")}
+            {t("查看檢測日誌")}
           </Button>
         </div>
         <ResponsiveDialog
           open={open}
           onOpenChange={setOpen}
-          title={t("检测日志")}
-          description={t("本次检测结果与各项环境信号详情。")}
+          title={t("檢測日誌")}
+          description={t("本次檢測結果與各項環境信號詳情。")}
         >
           {renderLogs()}
         </ResponsiveDialog>

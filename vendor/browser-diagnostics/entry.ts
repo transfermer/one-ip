@@ -67,7 +67,7 @@ async function run() {
 }
 run().catch(() =>
   parent.postMessage(
-    { type: "local-browser-diagnostics", error: "检测未完成，请重试。" },
+    { type: "local-browser-diagnostics", error: "檢測未完成，請重試。" },
     new URL(document.baseURI).origin,
   ),
 );

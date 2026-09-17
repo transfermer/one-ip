@@ -68,10 +68,10 @@ function validationLabel(status: string) {
     case "valid":
       return t("有效");
     case "invalid":
-      return t("无效");
+      return t("無效");
     case "notfound":
     case "unknown":
-      return t("未声明 ROA");
+      return t("未聲明 ROA");
     default:
       return t("未知");
   }
@@ -137,14 +137,14 @@ function edgeWidth(share: number) {
 }
 
 function snapshotDate(value?: string | number) {
-  if (!value) return t("当前");
+  if (!value) return t("當前");
   const timestamp =
     typeof value === "number" && value < 1_000_000_000_000
       ? value * 1000
       : value;
   const date = new Date(timestamp);
   return Number.isNaN(date.getTime())
-    ? t("当前")
+    ? t("當前")
     : new Intl.DateTimeFormat(undefined, {
         year: "numeric",
         month: "2-digit",
@@ -223,7 +223,7 @@ function RouteTopologyChart({
         className="ip-route-graph-svg"
         viewBox={`0 0 ${GRAPH_WIDTH} ${height}`}
         role="img"
-        aria-label={t("{0} 的 BGP 宣告关系", [
+        aria-label={t("{0} 的 BGP 宣告關係", [
           topology.origins.map((item) => asnLabel(item.asn)).join("、"),
         ])}
       >
@@ -231,10 +231,10 @@ function RouteTopologyChart({
           {t("源 AS")}
         </text>
         <text x={DIRECT_X} y="16" className="ip-route-column-label">
-          {t("直接上游 · 路径占比")}
+          {t("直接上游 · 路徑佔比")}
         </text>
         <text x={SECONDARY_X} y="16" className="ip-route-column-label">
-          {t("二级上游 · 蓝框 = Tier 1")}
+          {t("二級上游 · 藍框 = Tier 1")}
         </text>
 
         <g className="ip-route-graph-edges" aria-hidden="true">
@@ -355,13 +355,13 @@ function AnnouncementChart({
         className="ip-route-graph-svg"
         viewBox={`0 0 ${GRAPH_WIDTH} ${height}`}
         role="img"
-        aria-label={t("{0} 的 BGP 宣告关系", [displayIp])}
+        aria-label={t("{0} 的 BGP 宣告關係", [displayIp])}
       >
         <text x={ORIGIN_X} y="16" className="ip-route-column-label">
-          {t("查询地址")}
+          {t("查詢地址")}
         </text>
         <text x={DIRECT_X} y="16" className="ip-route-column-label">
-          {t("BGP 前缀")}
+          {t("BGP 前綴")}
         </text>
         <text x={SECONDARY_X} y="16" className="ip-route-column-label">
           {t("宣告 ASN")}
@@ -395,7 +395,7 @@ function AnnouncementChart({
           x={ORIGIN_X}
           y={centerY}
           width={ORIGIN_WIDTH}
-          eyebrow={t("查询地址")}
+          eyebrow={t("查詢地址")}
           title={displayIp}
           className="is-origin"
         />
@@ -403,7 +403,7 @@ function AnnouncementChart({
           x={DIRECT_X}
           y={centerY}
           width={DIRECT_WIDTH}
-          eyebrow={t("BGP 前缀")}
+          eyebrow={t("BGP 前綴")}
           title={prefix}
           className="is-prefix"
         />
@@ -413,7 +413,7 @@ function AnnouncementChart({
             x={SECONDARY_X}
             y={columnY(asns.length, index, height)}
             width={SECONDARY_WIDTH}
-            eyebrow={asn === String(currentAsn) ? t("当前 ASN") : t("宣告 ASN")}
+            eyebrow={asn === String(currentAsn) ? t("當前 ASN") : t("宣告 ASN")}
             title={
               asn === String(currentAsn) && currentAsnName
                 ? `${asnLabel(asn)} · ${currentAsnName}`
@@ -446,7 +446,7 @@ function RouteList({
         <span>
           {itemName(item, currentAsn, currentAsnName)}
           {secondary && item.via?.length ? (
-            <small>{t("经 {0}", [item.via.map(asnLabel).join(" / ")])}</small>
+            <small>{t("經 {0}", [item.via.map(asnLabel).join(" / ")])}</small>
           ) : null}
         </span>
       </div>
@@ -460,15 +460,15 @@ function RouteList({
   );
 
   return (
-    <div className="ip-route-graph-list" aria-label={t("路由路径明细")}>
+    <div className="ip-route-graph-list" aria-label={t("路由路徑明細")}>
       <div className="ip-route-list-heading">{t("源 AS")}</div>
       {topology.origins.map((item) => row(item, false, false))}
-      <div className="ip-route-list-heading">{t("直接上游 · 路径占比")}</div>
+      <div className="ip-route-list-heading">{t("直接上游 · 路徑佔比")}</div>
       {topology.direct.map((item) => row(item))}
       {!!topology.secondary.length && (
         <>
           <div className="ip-route-list-heading">
-            {t("二级上游 · 蓝色 = Tier 1")}
+            {t("二級上游 · 藍色 = Tier 1")}
           </div>
           {topology.secondary.map((item) => row(item, true))}
         </>
@@ -503,19 +503,19 @@ export default function IpRouteGraph({
   const topology = data?.topology;
   const title = (
     <div className="ip-route-graph-heading">
-      <span className="ip-route-graph-heading-title">{t("BGP 路由拓扑")}</span>
+      <span className="ip-route-graph-heading-title">{t("BGP 路由拓撲")}</span>
       <button
         type="button"
         className="ip-route-graph-toggle"
         aria-expanded={expanded}
         onClick={() => setExpanded((value) => !value)}
       >
-        {expanded ? t("收起") : t("展开")}
+        {expanded ? t("收起") : t("展開")}
       </button>
       {topology && (
         <span className="ip-route-graph-heading-sub">
           {data?.prefix} · {topology.observedPaths.toLocaleString()}{" "}
-          {t("条观测路径")}
+          {t("條觀測路徑")}
         </span>
       )}
     </div>
@@ -526,11 +526,11 @@ export default function IpRouteGraph({
       {expanded &&
         (network.isPending ? (
           <div className="ip-route-graph-state">
-            <Pending>{t("正在读取路由数据…")}</Pending>
+            <Pending>{t("正在讀取路由數據…")}</Pending>
           </div>
         ) : network.isError || !data?.routeAvailable || !data.prefix ? (
           <p className="ip-route-graph-state text-muted-foreground">
-            {t("路由数据暂不可用")}
+            {t("路由數據暫不可用")}
           </p>
         ) : topology ? (
           <>
@@ -542,7 +542,7 @@ export default function IpRouteGraph({
                 disabled
               >
                 <span>{snapshotDate(topology.queryTime)}</span>
-                <small>{t("当前 · {0} 上游", [topology.direct.length])}</small>
+                <small>{t("當前 · {0} 上游", [topology.direct.length])}</small>
               </button>
             </div>
             <RouteTopologyChart
@@ -566,7 +566,7 @@ export default function IpRouteGraph({
             )}
             <p className="ip-route-graph-note">
               {t(
-                "当前快照来自 RIPE RIS；连线粗细 = 观测路径占比，蓝色 = Tier 1 骨干。",
+                "當前快照來自 RIPE RIS；連線粗細 = 觀測路徑佔比，藍色 = Tier 1 骨幹。",
               )}
             </p>
           </>
@@ -581,7 +581,7 @@ export default function IpRouteGraph({
                 </span>
               </div>
               <span className="shrink-0">
-                {asns.length} {t("个宣告 ASN")}
+                {asns.length} {t("個宣告 ASN")}
               </span>
             </div>
             <AnnouncementChart
@@ -602,7 +602,7 @@ export default function IpRouteGraph({
             )}
             <p className="ip-route-graph-note">
               {t(
-                "当前数据源只返回 BGP 前缀和宣告 ASN，不包含完整 AS Path；图中展示宣告关系，不代表端到端上下游路径。",
+                "當前數據源只返回 BGP 前綴和宣告 ASN，不包含完整 AS Path；圖中展示宣告關係，不代表端到端上下游路徑。",
               )}
             </p>
           </>

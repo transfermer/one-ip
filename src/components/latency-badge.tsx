@@ -60,7 +60,7 @@ export function LatencyBadge({
       ref={ref}
       className="ping-ms latency-badge"
       title={t(
-        "浏览器 HTTP 请求耗时中位数；颜色与显示的中位数一致，非 ICMP 延迟",
+        "瀏覽器 HTTP 請求耗時中位數；顏色與顯示的中位數一致，非 ICMP 延遲",
       )}
     >
       <AnimatedValue value={pending}>
@@ -72,7 +72,7 @@ export function LatencyBadge({
             ms
           </>
         ) : (
-          <span>{result?.samples.length ? t("未连通") : "—"}</span>
+          <span>{result?.samples.length ? t("未連通") : "—"}</span>
         )}
       </AnimatedValue>
     </span>

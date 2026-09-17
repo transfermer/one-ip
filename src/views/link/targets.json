@@ -23,7 +23,7 @@
   },
   {
     "cc": "cn",
-    "name": "哔哩哔哩",
+    "name": "嗶哩嗶哩",
     "slug": "bilibili",
     "host": "www.bilibili.com",
     "url": "https://www.bilibili.com/favicon.ico",
@@ -31,7 +31,7 @@
   },
   {
     "cc": "cn",
-    "name": "京东",
+    "name": "京東",
     "slug": "jd",
     "host": "www.jd.com",
     "url": "https://www.jd.com/favicon.ico",
@@ -39,7 +39,7 @@
   },
   {
     "cc": "cn",
-    "name": "腾讯QQ",
+    "name": "騰訊QQ",
     "host": "www.qq.com",
     "url": "https://www.qq.com/favicon.ico",
     "icon": "https://icons.duckduckgo.com/ip3/qq.com.ico"
@@ -52,7 +52,7 @@
   },
   {
     "cc": "cn",
-    "name": "小红书",
+    "name": "小紅書",
     "slug": "xiaohongshu",
     "url": "https://fe-static.xhscdn.com/favicon.ico",
     "icon": "https://icons.duckduckgo.com/ip3/xiaohongshu.com.ico"
@@ -75,14 +75,14 @@
   },
   {
     "cc": "cn",
-    "name": "网易",
+    "name": "網易",
     "host": "www.163.com",
     "url": "https://www.163.com/favicon.ico",
     "icon": "https://icons.duckduckgo.com/ip3/163.com.ico"
   },
   {
     "cc": "cn",
-    "name": "淘宝",
+    "name": "淘寶",
     "host": "www.taobao.com",
     "url": "https://www.taobao.com/favicon.ico",
     "icon": "https://icons.duckduckgo.com/ip3/www.taobao.com.ico"

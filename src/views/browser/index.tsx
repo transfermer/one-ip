@@ -40,24 +40,24 @@ import { TlsFingerprint } from "./tls-fingerprint";
 import { withDetectionAnimation } from "./with-feedback";
 
 const columns: ColumnDef<Check>[] = [
-  { accessorKey: "name", header: t("项目") },
+  { accessorKey: "name", header: t("項目") },
   {
     accessorKey: "status",
-    header: t("结果"),
+    header: t("結果"),
     cell: ({ row }) => t(row.original.status),
   },
   {
     accessorKey: "detail",
-    header: t("说明"),
+    header: t("說明"),
     cell: ({ row }) => <CompactText text={row.original.detail} />,
   },
 ];
 const titles: Record<string, string> = {
-  environment: t("环境信息"),
-  fingerprint: t("指纹检测"),
-  consistency: t("环境一致性"),
-  automation: t("自动化特征"),
-  privacy: t("权限与隐私"),
+  environment: t("環境信息"),
+  fingerprint: t("指紋檢測"),
+  consistency: t("環境一致性"),
+  automation: t("自動化特徵"),
+  privacy: t("權限與隱私"),
 };
 function FingerprintPanel() {
   const [algorithm, setAlgorithm] = useState<FingerprintAlgorithm | "tls">(
@@ -74,7 +74,7 @@ function FingerprintPanel() {
                 ? "FingerprintJS (5.2.0)"
                 : algorithm === "tls"
                   ? "JA3/JA4"
-                  : t("FingerprintJS2（旧版）")}
+                  : t("FingerprintJS2（舊版）")}
               <ChevronDown aria-hidden="true" />
             </Button>
           </DropdownMenuTrigger>
@@ -90,7 +90,7 @@ function FingerprintPanel() {
                 FingerprintJS (5.2.0)
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="legacy">
-                {t("FingerprintJS2（旧版）")}
+                {t("FingerprintJS2（舊版）")}
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="tls">
                 JA3/JA4 Fingerprint
@@ -133,7 +133,7 @@ function FingerprintResults({
       },
       () => {
         if (active) {
-          setError(new Error(t("指纹检测未完成，请检查浏览器限制后重试。")));
+          setError(new Error(t("指紋檢測未完成，請檢查瀏覽器限制後重試。")));
           setBusy(false);
         }
       },
@@ -149,28 +149,28 @@ function FingerprintResults({
       const next = await withDetectionAnimation(() => fingerprint(algorithm));
       setPrevious(result);
       setResult(next);
-      toast.success(t("指纹检测完成"));
+      toast.success(t("指紋檢測完成"));
     } catch {
-      toast.error(t("指纹检测失败，请重试"));
-      setError(new Error(t("指纹检测未完成，请检查浏览器限制后重试。")));
+      toast.error(t("指紋檢測失敗，請重試"));
+      setError(new Error(t("指紋檢測未完成，請檢查瀏覽器限制後重試。")));
     } finally {
       setBusy(false);
     }
   }
   return (
     <>
-      <ToolCard title={t("浏览器指纹")}>
+      <ToolCard title={t("瀏覽器指紋")}>
         <div className="row-between gap-3">
           <p className="small muted">
-            {t("在本地计算，仅比较当前页面内的结果。")}
+            {t("在本地計算，僅比較當前頁面內的結果。")}
           </p>
           <Button disabled={busy} onClick={run}>
             {busy ? (
-              <Pending>{t("检测中…")}</Pending>
+              <Pending>{t("檢測中…")}</Pending>
             ) : result ? (
-              t("再次检测")
+              t("再次檢測")
             ) : (
-              t("开始检测")
+              t("開始檢測")
             )}
           </Button>
         </div>
@@ -181,23 +181,23 @@ function FingerprintResults({
               [t("FingerprintJS 版本"), result.version],
               ["Visitor ID", result.visitorId],
               [
-                t("与上次比较"),
+                t("與上次比較"),
                 previous
                   ? previous.visitorId === result.visitorId
                     ? t("相同")
-                    : t("发生变化")
-                  : t("尚无上次结果"),
+                    : t("發生變化")
+                  : t("尚無上次結果"),
               ],
             ]}
           />
         )}
         <p className="small muted mt-2">
-          {t("标识相同不代表同一设备；指纹不是验证码，也没有“通过”结论。")}
+          {t("標識相同不代表同一設備；指紋不是驗證碼，也沒有“通過”結論。")}
         </p>
       </ToolCard>
       {result && (
         <div className="mt-3">
-          <ToolCard title={t("指纹组成")}>
+          <ToolCard title={t("指紋組成")}>
             <DataTable
               className="fingerprint-table"
               getRowId={(row) => row.name}
@@ -207,14 +207,14 @@ function FingerprintResults({
               columns={[
                 {
                   accessorKey: "name",
-                  header: t("项目"),
+                  header: t("項目"),
                   cell: ({ row }) => (
                     <UnderlineHover asChild>
                       <button
                         type="button"
                         className="max-w-full truncate text-left text-primary focus-visible:outline-ring"
                         onClick={() => setDetail(row.original)}
-                        aria-label={t("查看 {0} 详情", [row.original.name])}
+                        aria-label={t("查看 {0} 詳情", [row.original.name])}
                       >
                         {fieldLabel(row.original.name)}
                       </button>
@@ -223,7 +223,7 @@ function FingerprintResults({
                 },
                 {
                   accessorKey: "value",
-                  header: t("检测数据"),
+                  header: t("檢測數據"),
                   cell: ({ row }) => (
                     <CompactText
                       text={fingerprintSummary(
@@ -235,7 +235,7 @@ function FingerprintResults({
                 },
                 {
                   id: "change",
-                  header: t("与上次比较"),
+                  header: t("與上次比較"),
                   cell: ({ row }) => {
                     const before = previous?.components.find(
                       (item) => item.name === row.original.name,
@@ -243,7 +243,7 @@ function FingerprintResults({
                     return before
                       ? before.value === row.original.value
                         ? t("相同")
-                        : t("变化")
+                        : t("變化")
                       : "—";
                   },
                 },
@@ -257,8 +257,8 @@ function FingerprintResults({
         onOpenChange={(open) => {
           if (!open) setDetail(null);
         }}
-        title={t("{0} · 详情", [detail ? fieldLabel(detail.name) : t("指纹")])}
-        description={t("本次检测读取的指纹组成数据。")}
+        title={t("{0} · 詳情", [detail ? fieldLabel(detail.name) : t("指紋")])}
+        description={t("本次檢測讀取的指紋組成數據。")}
       >
         {detail && (
           <FormattedResult
@@ -297,18 +297,18 @@ function Checks({ page }: { page: string }) {
                 await withDetectionAnimation(() =>
                   query.refetch({ throwOnError: true }),
                 );
-                toast.success(t("{0}检测完成", [titles[page]]));
+                toast.success(t("{0}檢測完成", [titles[page]]));
               } catch {
-                toast.error(t("检测失败，请重试"));
+                toast.error(t("檢測失敗，請重試"));
               } finally {
                 setRefreshing(false);
               }
             }}
           >
             {query.isFetching || refreshing ? (
-              <Pending>{t("检测中…")}</Pending>
+              <Pending>{t("檢測中…")}</Pending>
             ) : (
-              t("重新检测")
+              t("重新檢測")
             )}
           </Button>
         </div>
@@ -319,12 +319,12 @@ function Checks({ page }: { page: string }) {
         data={query.data ?? []}
         columns={columns}
         empty={
-          query.isFetching ? <Pending>{t("检测中…")}</Pending> : t("暂无结果")
+          query.isFetching ? <Pending>{t("檢測中…")}</Pending> : t("暫無結果")
         }
       />
       <p className="small muted mt-3">
         {t(
-          "仅展示可观察到的信号，不能据此判断浏览器品牌、真人身份或验证码通过率。",
+          "僅展示可觀察到的信號，不能據此判斷瀏覽器品牌、真人身份或驗證碼通過率。",
         )}
       </p>
     </ToolCard>
@@ -335,7 +335,7 @@ export default function BrowserPage({ page }: { page: string }) {
     <div className="browser-diagnostics">
       <PageHeading title={titles[page]} description="" />
       {page === "environment" ? (
-        <ToolCard title={t("浏览器环境")}>
+        <ToolCard title={t("瀏覽器環境")}>
           <Facts
             rows={environmentRows().map(([name, value]) => [
               name,

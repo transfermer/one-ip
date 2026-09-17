@@ -31,7 +31,7 @@ export async function request<T>(
         const response = await fetch(url, { ...init, signal });
         if (mode === "opaque") return undefined as T;
         if (!response.ok) {
-          let message = t("请求失败 ({0})", [response.status]);
+          let message = t("請求失敗 ({0})", [response.status]);
           try {
             const body = await response.json();
             if (typeof body.error === "string") message = t(body.error);
@@ -70,7 +70,7 @@ export function parseTrace(text: string) {
       }),
   );
   if (!fields.ip || !/^[\da-fA-F:.]+$/.test(fields.ip))
-    throw new Error(t("目标站点未返回可读取的出口 IP"));
+    throw new Error(t("目標站點未返回可讀取的出口 IP"));
   return {
     ip: fields.ip,
     country_code: fields.loc,

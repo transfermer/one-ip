@@ -43,7 +43,7 @@ const bands = [
   { size: 45, range: "0–44", label: t("偏低") },
   { size: 30, range: "45–74", label: t("一般") },
   { size: 15, range: "75–89", label: t("良好") },
-  { size: 10, range: "90–100", label: t("高信誉") },
+  { size: 10, range: "90–100", label: t("高信譽") },
 ];
 
 export function IpReputationScale({
@@ -87,9 +87,9 @@ export function IpReputationScale({
           style: {
             text:
               value === 0
-                ? t("0 低信誉")
+                ? t("0 低信譽")
                 : value === 100
-                  ? t("100 高信誉")
+                  ? t("100 高信譽")
                   : String(value),
             fill: muted,
             fontSize: 10,
@@ -161,8 +161,8 @@ export function IpReputationScale({
       role="img"
       aria-label={
         profile.score === null
-          ? t("信誉分未知")
-          : t("信誉分 {0}/100，位于{1}区间", [
+          ? t("信譽分未知")
+          : t("信譽分 {0}/100，位於{1}區間", [
               profile.score,
               bands[profile.scoreBand!].label,
             ])
@@ -208,7 +208,7 @@ export default function IpProfileGraph({
   }, [data.ip]);
   return (
     <>
-      <ToolCard title={t("IP 画像")}>
+      <ToolCard title={t("IP 畫像")}>
         <dl ref={fieldsRef} className="ip-profile-fields">
           {fields.map((field, index) => (
             <div key={field.label}>
@@ -216,7 +216,7 @@ export default function IpProfileGraph({
                 <span>{field.label}</span>
                 <button
                   type="button"
-                  aria-label={t("解释 {0}", [field.label])}
+                  aria-label={t("解釋 {0}", [field.label])}
                   onClick={() => setSelected(index)}
                 >
                   <Info size={14} aria-hidden="true" />
@@ -225,7 +225,7 @@ export default function IpProfileGraph({
               <dd className="flex flex-wrap items-center gap-1">
                 <Badge variant={field.tone ?? "info"}>{field.value}</Badge>
                 {field.special && (
-                  <Badge variant="outline">{t("特殊类型")}</Badge>
+                  <Badge variant="outline">{t("特殊類型")}</Badge>
                 )}
               </dd>
             </div>
@@ -237,12 +237,12 @@ export default function IpProfileGraph({
             if (!open) setSelected(null);
           }}
           title={active?.label ?? ""}
-          description={t("查看各类含义与当前 IP 的归类")}
+          description={t("查看各類含義與當前 IP 的歸類")}
         >
           {active && (
             <>
               <div className="ip-profile-current">
-                <span>{t("当前 IP")}</span>
+                <span>{t("當前 IP")}</span>
                 <strong>{active.value}</strong>
                 {active.detail && <p>{active.detail}</p>}
               </div>
@@ -257,7 +257,7 @@ export default function IpProfileGraph({
                       {option.status ? (
                         <span>{option.status}</span>
                       ) : (
-                        option.current && <span>{t("当前归类")}</span>
+                        option.current && <span>{t("當前歸類")}</span>
                       )}
                     </dt>
                     <dd>{option.description}</dd>

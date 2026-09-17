@@ -23,11 +23,11 @@ export function UpdateAvailableNotice({
   open,
   onOpenChange,
   onUpdate,
-  title = t("发现新版本"),
-  description = t("新版本已经准备好，更新后即可使用。"),
+  title = t("發現新版本"),
+  description = t("新版本已經準備好，更新後即可使用。"),
   updateLabel = t("更新"),
   updatingLabel = t("正在更新…"),
-  closeLabel = t("关闭更新提示"),
+  closeLabel = t("關閉更新提示"),
   resetUpdatingAfterUpdate = false,
 }: UpdateAvailableNoticeProps) {
   const [updating, setUpdating] = useAtom(updatePendingAtom);
@@ -40,7 +40,7 @@ export function UpdateAvailableNotice({
     try {
       await onUpdate?.();
     } catch {
-      setError(t("更新失败，请重试。"));
+      setError(t("更新失敗，請重試。"));
       setUpdating(false);
     } finally {
       if (resetUpdatingAfterUpdate) {

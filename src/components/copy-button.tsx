@@ -20,7 +20,7 @@ export function CopyButton({
     const timer = setTimeout(() => setCopied(false), 2000);
     return () => clearTimeout(timer);
   }, [copied]);
-  const label = copied ? t("已复制") : t("复制");
+  const label = copied ? t("已複製") : t("複製");
   return (
     <Button
       type="button"
@@ -34,7 +34,7 @@ export function CopyButton({
           await navigator.clipboard.writeText(value);
           setCopied(true);
         } catch {
-          toast.error(t("自动复制失败，请长按或选中链接复制。"));
+          toast.error(t("自動複製失敗，請長按或選中鏈接複製。"));
         }
       }}
     >

@@ -76,10 +76,10 @@ export function AppUpdateChecker() {
         url.searchParams.set("t", Date.now().toString());
         window.location.replace(url.toString());
       }}
-      title={t("新版本，等你来体验")}
-      description={t("准备好了，就来体验新版吧。")}
-      updateLabel={t("体验新版")}
-      updatingLabel={t("正在为你切换…")}
+      title={t("新版本，等你來體驗")}
+      description={t("準備好了，就來體驗新版吧。")}
+      updateLabel={t("體驗新版")}
+      updatingLabel={t("正在爲你切換…")}
     />
   );
 }

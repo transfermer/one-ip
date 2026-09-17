@@ -5,10 +5,10 @@ import { HttpError, target, upstream } from "./http.js";
 export function subdomainTarget(value) {
   // Reject URL syntax before IDN conversion, which can otherwise normalize it.
   if (typeof value !== "string" || /[\s/:@%*?#\\]/.test(value.trim()))
-    throw new HttpError(400, "请输入公网域名，不包含协议、路径或端口");
+    throw new HttpError(400, "請輸入公網域名，不包含協議、路徑或端口");
   const domain = domainToASCII(value.trim().replace(/\.$/, ""));
   if (isIP(domain))
-    throw new HttpError(400, "请输入公网域名，不包含协议、路径或端口");
+    throw new HttpError(400, "請輸入公網域名，不包含協議、路徑或端口");
   return target(domain);
 }
 
@@ -17,7 +17,7 @@ export function certificateNames(records, domain) {
     !Array.isArray(records) ||
     records.some((r) => !r || typeof r.name_value !== "string")
   )
-    throw new HttpError(502, "证书日志数据格式异常");
+    throw new HttpError(502, "證書日誌數據格式異常");
   const names = new Set();
   for (const record of records) {
     for (const raw of record.name_value.split(/\r?\n/)) {

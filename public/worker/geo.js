@@ -19,7 +19,7 @@ export function cfGeo(request) {
 export async function geoIp(ip) {
   publicIp(ip);
   const data = await upstream(`https://ipwho.is/${encodeURIComponent(ip)}`);
-  if (!data.success) throw new Error("IP 归属地数据源未返回有效结果");
+  if (!data.success) throw new Error("IP 歸屬地數據源未返回有效結果");
   return {
     ip: data.ip,
     country: data.country,
@@ -39,7 +39,7 @@ export async function secondaryGeo(ip) {
   const data = await upstream(
     `https://api.ip.sb/geoip/${encodeURIComponent(ip)}`,
   );
-  if (!data.ip) throw new Error("第二归属地数据源未返回结果");
+  if (!data.ip) throw new Error("第二歸屬地數據源未返回結果");
   return {
     ip: data.ip,
     country: data.country,

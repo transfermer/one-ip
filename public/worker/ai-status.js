@@ -1,7 +1,7 @@
 import { boundedJson, HttpError, upstream } from "./http.js";
 import { parseTelegramStatus } from "./telegram-status.js";
 
-const unavailable = () => new HttpError(502, "官方状态数据暂不可用");
+const unavailable = () => new HttpError(502, "官方狀態數據暫不可用");
 
 async function pageText(url) {
   const response = await fetch(url, { signal: AbortSignal.timeout(10_000) });
@@ -85,8 +85,8 @@ export function parseDeepSeek(xml) {
           ? "maintenance"
           : "none",
       description: incidents.length
-        ? "存在公开服务事件"
-        : "订阅源未报告未解决事件",
+        ? "存在公開服務事件"
+        : "訂閱源未報告未解決事件",
     },
     incidents,
   };
@@ -125,7 +125,7 @@ export function parseGemini(data) {
   return {
     status: {
       indicator: incidents.length ? "minor" : "none",
-      description: incidents.length ? "存在服务故障" : "正常运行",
+      description: incidents.length ? "存在服務故障" : "正常運行",
     },
     incidents,
   };
@@ -155,7 +155,7 @@ export async function getAiStatus(service) {
     } catch {
       throw new HttpError(
         502,
-        "DeepSeek 官方订阅源连接失败，请稍后重试或查看官方页面。",
+        "DeepSeek 官方訂閱源連接失敗，請稍後重試或查看官方頁面。",
       );
     }
     try {
@@ -163,7 +163,7 @@ export async function getAiStatus(service) {
     } catch {
       throw new HttpError(
         502,
-        "DeepSeek 官方状态数据解析失败，请查看官方页面。",
+        "DeepSeek 官方狀態數據解析失敗，請查看官方頁面。",
       );
     }
   }
@@ -246,8 +246,8 @@ export function parseGrokFeed(xml) {
     status: {
       indicator: incidents.length ? "minor" : "none",
       description: incidents.length
-        ? "存在公开服务事件"
-        : "订阅源未报告未解决事件",
+        ? "存在公開服務事件"
+        : "訂閱源未報告未解決事件",
     },
     incidents,
   };

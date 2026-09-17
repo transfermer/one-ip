@@ -49,7 +49,7 @@ export function QuickChecks() {
                 void rtc.refetch();
               }}
             >
-              {busy ? <Pending>{t("检测中…")}</Pending> : t("重新检测")}
+              {busy ? <Pending>{t("檢測中…")}</Pending> : t("重新檢測")}
             </Button>
           </div>
         </CardHeader>
@@ -65,11 +65,11 @@ export function QuickChecks() {
             </UnderlineHover>
             <span className="min-w-0 text-muted-foreground">
               {dns.isFetching ? (
-                <Pending>{t("采样中…")}</Pending>
+                <Pending>{t("採樣中…")}</Pending>
               ) : dns.data ? (
                 <IpText ip={dns.data.ip} />
               ) : (
-                t("暂不可用")
+                t("暫不可用")
               )}
             </span>
           </div>
@@ -84,11 +84,11 @@ export function QuickChecks() {
             </UnderlineHover>
             <span className="min-w-0 text-muted-foreground">
               {rtc.isFetching ? (
-                <Pending>{t("采样中…")}</Pending>
+                <Pending>{t("採樣中…")}</Pending>
               ) : rtc.data ? (
                 <CompactText text={rtc.data.verdict} />
               ) : (
-                t("暂不可用")
+                t("暫不可用")
               )}
             </span>
           </div>
@@ -98,13 +98,13 @@ export function QuickChecks() {
             </p>
           )}
           <p className="home-note mt-3">
-            {t("DNS 单次采样；未采集到地址不代表没有泄漏，点击查看完整检测。")}
+            {t("DNS 單次採樣；未採集到地址不代表沒有泄漏，點擊查看完整檢測。")}
           </p>
         </CardContent>
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>{t("全球 Ping / 地址查询")}</CardTitle>
+          <CardTitle>{t("全球 Ping / 地址查詢")}</CardTitle>
         </CardHeader>
         <CardContent>
           <form
@@ -118,8 +118,8 @@ export function QuickChecks() {
           >
             <InputGroup>
               <InputGroupInput
-                aria-label={t("快速查询 IP 或域名")}
-                placeholder={t("输入 IP 或域名")}
+                aria-label={t("快速查詢 IP 或域名")}
+                placeholder={t("輸入 IP 或域名")}
                 value={target}
                 onChange={(event) => setTarget(event.target.value)}
               />
@@ -154,13 +154,13 @@ export function QuickChecks() {
                       : "/network/whois"
                   }
                 >
-                  {t("WHOIS 查询")}
+                  {t("WHOIS 查詢")}
                 </Link>
               </Button>
             </div>
           </form>
           <p className="home-note mt-3">
-            {t("进入详情后选择地区并开始测量，默认优选模式。")}
+            {t("進入詳情後選擇地區並開始測量，默認優選模式。")}
           </p>
         </CardContent>
       </Card>

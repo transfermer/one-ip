@@ -11,24 +11,24 @@ import { BrowserSummary } from "@/views/browser/summary";
 import { ArrowUpRight } from "lucide-react";
 
 const descriptions: Record<string, string> = {
-  "/network/ip": t("查询归属地、运营商、ASN 和地图位置"),
-  "/network/subdomains": t("查询证书透明度日志中记录的子域名"),
-  "/network/whois": t("查看域名、IP 和 AS 注册资料"),
-  "/network/connectivity": t("查看地图、网站分流出口、连通性和访问延迟"),
-  "/network/ping": t("从全球探针测量延迟与丢包"),
-  "/network/dns": t("查看域名解析经过的出口网络"),
-  "/network/cdn": t("查看内容分发网络的接入节点"),
-  "/browser/environment": t("浏览器、系统、语言、屏幕和硬件信息"),
-  "/browser/fingerprint": t("查看指纹组成，比较重复检测的变化"),
-  "/browser/consistency": t("核对环境差异，运行浏览器深度检测"),
-  "/browser/automation": t("查看可观察到的自动化相关信号"),
-  "/browser/privacy": t("检查 WebRTC 出口与网站访问权限"),
-  "/browser/challenges": t("体验第三方验证码并查看本次结果"),
+  "/network/ip": t("查詢歸屬地、運營商、ASN 和地圖位置"),
+  "/network/subdomains": t("查詢證書透明度日誌中記錄的子域名"),
+  "/network/whois": t("查看域名、IP 和 AS 註冊資料"),
+  "/network/connectivity": t("查看地圖、網站分流出口、連通性和訪問延遲"),
+  "/network/ping": t("從全球探針測量延遲與丟包"),
+  "/network/dns": t("查看域名解析經過的出口網絡"),
+  "/network/cdn": t("查看內容分發網絡的接入節點"),
+  "/browser/environment": t("瀏覽器、系統、語言、屏幕和硬件信息"),
+  "/browser/fingerprint": t("查看指紋組成，比較重複檢測的變化"),
+  "/browser/consistency": t("覈對環境差異，運行瀏覽器深度檢測"),
+  "/browser/automation": t("查看可觀察到的自動化相關信號"),
+  "/browser/privacy": t("檢查 WebRTC 出口與網站訪問權限"),
+  "/browser/challenges": t("體驗第三方驗證碼並查看本次結果"),
 };
 const titles = {
-  network: t("网络检测概述"),
-  browser: t("浏览器检测概述"),
-  ai: t("AI 检测概述"),
+  network: t("網絡檢測概述"),
+  browser: t("瀏覽器檢測概述"),
+  ai: t("AI 檢測概述"),
 };
 export default function ModuleOverview({
   group,
@@ -40,7 +40,7 @@ export default function ModuleOverview({
     <div className="space-y-3">
       <PageHeading title={titles[group]} description="" />
       {group === "network" && (
-        <ToolCard title={t("当前网络响应")}>
+        <ToolCard title={t("當前網絡響應")}>
           <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
             {homeTargets.map((target) => (
               <ConnectivityTile key={target.name} target={target} />
@@ -65,7 +65,7 @@ export default function ModuleOverview({
                 </span>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">
                   {descriptions[tool.path] ??
-                    t("查看 {0} 网络响应、出口对照与相关入口", [tool.label])}
+                    t("查看 {0} 網絡響應、出口對照與相關入口", [tool.label])}
                 </p>
               </Link>
             </CardContent>

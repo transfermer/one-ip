@@ -85,7 +85,7 @@ export async function sampleDnsSource(
   );
   signal.throwIfAborted();
   const results = parseDnsResponse(source.name, data);
-  if (!results.length) throw new Error(t("未获取到 DNS 出口"));
+  if (!results.length) throw new Error(t("未獲取到 DNS 出口"));
   return results;
 }
 
@@ -157,6 +157,6 @@ export async function detectDnsExits(
     );
   }
   if (!state.results.length)
-    throw new Error(t("DNS 出口检测失败，可能受网络、代理或跨域限制"));
+    throw new Error(t("DNS 出口檢測失敗，可能受網絡、代理或跨域限制"));
   return state;
 }

@@ -1,18 +1,18 @@
 import en from "./en.json" with { type: "json" };
 
-export type Locale = "zh-CN" | "en";
+export type Locale = "zh-TW" | "en";
 const storageKey = "ip-tools:locale";
 
 export function resolveLocale(
   saved: string | null,
   languages: readonly string[],
 ): Locale {
-  if (saved === "zh-CN" || saved === "en") return saved;
-  return languages[0]?.toLowerCase().startsWith("zh") ? "zh-CN" : "en";
+  if (saved === "zh-TW" || saved === "en") return saved;
+  return languages[0]?.toLowerCase().startsWith("zh") ? "zh-TW" : "en";
 }
 
 function initialLocale(): Locale {
-  if (typeof window === "undefined") return "zh-CN";
+  if (typeof window === "undefined") return "zh-TW";
   // The URL also keeps language switching usable when storage is blocked.
   const override = new URL(window.location.href).searchParams.get("lang");
   let saved: string | null = null;
@@ -22,7 +22,7 @@ function initialLocale(): Locale {
     /* Storage may be disabled. */
   }
   return resolveLocale(
-    override === "en" || override === "zh-CN" ? override : saved,
+    override === "en" || override === "zh-TW" ? override : saved,
     navigator.languages,
   );
 }
@@ -31,8 +31,8 @@ export const locale = initialLocale();
 const messages: Record<string, string> = en;
 
 export function t(message: string, values: readonly unknown[] = []): string {
-  const upstream = message.match(/^外部数据源暂不可用 \((\d{3})\)$/);
-  if (upstream) return t("外部数据源暂不可用 ({0})", [upstream[1]]);
+  const upstream = message.match(/^外部數據源暫不可用 \((\d{3})\)$/);
+  if (upstream) return t("外部數據源暫不可用 ({0})", [upstream[1]]);
   const translated = locale === "en" ? (messages[message] ?? message) : message;
   return translated.replace(/\{(\d+)\}/g, (match, index: string) =>
     Number(index) < values.length ? String(values[Number(index)]) : match,
@@ -53,13 +53,13 @@ export function setLocale(next: Locale) {
 
 export function initializeLocale() {
   document.documentElement.lang = locale;
-  document.title = t("IP 网络工具概览");
+  document.title = t("IP 網絡工具概覽");
   const description = document.querySelector('meta[name="description"]');
   if (description)
     description.setAttribute(
       "content",
       t(
-        "IP 查询、网站分流、WebRTC 检测、全球 Ping、服务状态和 WHOIS 查询工具。",
+        "IP 查詢、網站分流、WebRTC 檢測、全球 Ping、服務狀態和 WHOIS 查詢工具。",
       ),
     );
 }

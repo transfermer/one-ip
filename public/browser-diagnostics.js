@@ -4676,6 +4676,6 @@
 	    PARENT_PHANTOM?.remove();
 	    parent.postMessage({ type: 'local-browser-diagnostics', result: JSON.parse(JSON.stringify(result)) }, new URL(document.baseURI).origin);
 	}
-	run().catch(() => parent.postMessage({ type: 'local-browser-diagnostics', error: '检测未完成，请重试。' }, new URL(document.baseURI).origin));
+	run().catch(() => parent.postMessage({ type: 'local-browser-diagnostics', error: '檢測未完成，請重試。' }, new URL(document.baseURI).origin));
 
 })();

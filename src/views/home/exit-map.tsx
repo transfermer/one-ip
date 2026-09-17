@@ -122,7 +122,7 @@ export default function ExitMap({
         button.type = "button";
         button.style.cssText =
           "display:block;text-align:left;padding:6px 0;width:100%";
-        button.textContent = `${site.domain ?? site.name} · ${site.geo?.ip} · ${t("已读取出口")}`;
+        button.textContent = `${site.domain ?? site.name} · ${site.geo?.ip} · ${t("已讀取出口")}`;
         button.onclick = () => onSelect(site.name);
         content.append(button);
       }
@@ -133,7 +133,7 @@ export default function ExitMap({
         location ||
         `${group.position[0].toFixed(2)}, ${group.position[1].toFixed(2)}`;
       const detail = document.createElement("span");
-      detail.textContent = `${group.sites.length} ${t("个站点")} · ${group.sites[0].domain ?? group.sites[0].name}${group.sites.length > 1 ? " …" : ""}`;
+      detail.textContent = `${group.sites.length} ${t("個站點")} · ${group.sites[0].domain ?? group.sites[0].name}${group.sites.length > 1 ? " …" : ""}`;
       label.append(title, detail);
       let marker = markers.current.get(key);
       if (!marker) {
@@ -171,7 +171,7 @@ export default function ExitMap({
         .getElement()
         ?.setAttribute(
           "aria-label",
-          `${location} · ${group.sites.length} ${t("个站点")}`,
+          `${location} · ${group.sites.length} ${t("個站點")}`,
         );
       if (marker.getPopup()) marker.setPopupContent(content);
       else marker.bindPopup(content);
@@ -205,7 +205,7 @@ export default function ExitMap({
     <section className="mb-2 space-y-1.5">
       <div className="flex items-center justify-between gap-2">
         <span className="text-sm font-medium">
-          {t("出口地图")} · {groups.size} {t("个位置")}
+          {t("出口地圖")} · {groups.size} {t("個位置")}
         </span>
         <Button
           size="sm"
@@ -228,7 +228,7 @@ export default function ExitMap({
         <div
           ref={container}
           className="exit-map relative z-0 h-[280px] min-w-0 sm:h-[360px]"
-          aria-label={t("出口地图")}
+          aria-label={t("出口地圖")}
         />
         {!mapOnly && (
           <div className="flex min-h-0 flex-col border-t bg-background lg:border-t-0 lg:border-l">
@@ -239,19 +239,19 @@ export default function ExitMap({
               <div
                 className="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 role="group"
-                aria-label={t("站点分类")}
+                aria-label={t("站點分類")}
               >
                 {[
                   ["all", "全部"],
-                  ["ai", "AI 服务"],
-                  ["crypto", "加密货币"],
-                  ["ecommerce", "跨境电商"],
-                  ["media", "流媒体"],
-                  ["social", "社交社区"],
-                  ["dev", "开发平台"],
-                  ["tools", "实用工具"],
-                  ["static", "静态资源"],
-                  ["speed", "测速服务"],
+                  ["ai", "AI 服務"],
+                  ["crypto", "加密貨幣"],
+                  ["ecommerce", "跨境電商"],
+                  ["media", "流媒體"],
+                  ["social", "社交社區"],
+                  ["dev", "開發平臺"],
+                  ["tools", "實用工具"],
+                  ["static", "靜態資源"],
+                  ["speed", "測速服務"],
                 ].map(([value, label]) => (
                   <Button
                     key={value}
@@ -285,16 +285,16 @@ export default function ExitMap({
             <div className="flex max-h-60 flex-wrap content-start gap-1.5 overflow-y-auto p-2.5 lg:max-h-[326px]">
               {shownRows.map((row) => {
                 const status = !row.visible
-                  ? t("等待检测")
+                  ? t("等待檢測")
                   : row.pending
-                    ? t("检测中…")
+                    ? t("檢測中…")
                     : row.reachable === false
-                      ? t("访问受阻")
+                      ? t("訪問受阻")
                       : !row.geo
-                        ? t("出口不可读")
+                        ? t("出口不可讀")
                         : row.geoPending
-                          ? t("查询中…")
-                          : t("已读取出口");
+                          ? t("查詢中…")
+                          : t("已讀取出口");
                 const color = !row.visible
                   ? "bg-muted text-muted-foreground"
                   : row.pending || row.geoPending
@@ -340,7 +340,7 @@ export default function ExitMap({
       </div>
       {tileError && (
         <p className="text-xs text-muted-foreground">
-          {t("地图底图加载失败，请检查网络后刷新；出口列表仍可使用。")}
+          {t("地圖底圖加載失敗，請檢查網絡後刷新；出口列表仍可使用。")}
         </p>
       )}
     </section>

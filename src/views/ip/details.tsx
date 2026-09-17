@@ -54,8 +54,8 @@ export function IpDetails({
     typeof value !== "boolean"
       ? chip(t("未知"))
       : value
-        ? chip(t("已检测到"), "bad")
-        : chip(t("未检测到"), "good");
+        ? chip(t("已檢測到"), "bad")
+        : chip(t("未檢測到"), "good");
   const number = (value?: number) =>
     typeof value === "number" && Number.isFinite(value) ? (
       <NumberTicker
@@ -76,8 +76,8 @@ export function IpDetails({
       : null;
   const rpki: Record<string, string> = {
     valid: t("有效"),
-    invalid: t("无效"),
-    notfound: t("未声明 ROA"),
+    invalid: t("無效"),
+    notfound: t("未聲明 ROA"),
     unknown: t("未知"),
   };
   return (
@@ -97,8 +97,8 @@ export function IpDetails({
                   type="button"
                   variant="ghost"
                   size="icon-sm"
-                  aria-label={hidden ? t("显示 IP 地址") : t("隐藏 IP 地址")}
-                  title={hidden ? t("显示 IP 地址") : t("隐藏 IP 地址")}
+                  aria-label={hidden ? t("顯示 IP 地址") : t("隱藏 IP 地址")}
+                  title={hidden ? t("顯示 IP 地址") : t("隱藏 IP 地址")}
                   aria-pressed={hidden}
                   onClick={() => setHidden((value) => !value)}
                 >
@@ -127,7 +127,7 @@ export function IpDetails({
           >
             <span className={score === 100 ? "ip-perfect-label" : undefined}>
               {score === 100 && <Crown size={13} aria-hidden="true" />}
-              {score === 100 ? t("满分信誉") : t("IP 信誉分")}
+              {score === 100 ? t("滿分信譽") : t("IP 信譽分")}
             </span>
             <strong>
               {score == null ? "—" : <NumberTicker value={score} />}
@@ -162,9 +162,9 @@ export function IpDetails({
       )}
       <Suspense
         fallback={
-          <ToolCard title={t("IP 画像")}>
+          <ToolCard title={t("IP 畫像")}>
             <div className="ip-profile-loading">
-              <Pending>{t("正在加载图谱…")}</Pending>
+              <Pending>{t("正在加載圖譜…")}</Pending>
             </div>
           </ToolCard>
         }
@@ -177,44 +177,44 @@ export function IpDetails({
         />
       </Suspense>
       <div className="ip-dossier-grid">
-        <ToolCard title={t("网络属性")}>
+        <ToolCard title={t("網絡屬性")}>
           <IpFacts
             rows={[
-              [t("注册国家"), d.registered_country],
-              [t("数据中心"), yesNo(d.is_datacenter)],
-              [t("移动网络"), yesNo(d.is_mobile)],
-              [t("企业信息"), d.company_name],
-              [t("机房名称"), d.datacenter_name || "—"],
+              [t("註冊國家"), d.registered_country],
+              [t("數據中心"), yesNo(d.is_datacenter)],
+              [t("移動網絡"), yesNo(d.is_mobile)],
+              [t("企業信息"), d.company_name],
+              [t("機房名稱"), d.datacenter_name || "—"],
             ]}
           />
         </ToolCard>
-        <ToolCard title={t("ASN / 运营商")}>
+        <ToolCard title={t("ASN / 運營商")}>
           <IpFacts
             rows={[
               ["ASN", d.asn ? `AS${d.asn}` : undefined],
-              [t("服务商"), d.isp],
-              [t("ASN 归属"), d.asname],
-              [t("ASN 组织"), d.asOrganization],
+              [t("服務商"), d.isp],
+              [t("ASN 歸屬"), d.asname],
+              [t("ASN 組織"), d.asOrganization],
 
               ["CIDR", d.cidr],
-              [t("ASN 自报类型"), d.asn_kind],
-              [t("ASN IPv4 总量"), number(d.asn_ipv4_count)],
-              [t("ASN 注册日期"), d.asn_allocated],
+              [t("ASN 自報類型"), d.asn_kind],
+              [t("ASN IPv4 總量"), number(d.asn_ipv4_count)],
+              [t("ASN 註冊日期"), d.asn_allocated],
             ]}
           />
         </ToolCard>
-        <ToolCard title={t("技术指标")}>
+        <ToolCard title={t("技術指標")}>
           <IpFacts
             rows={[
-              [t("地址类型"), d.ip.includes(":") ? "IPv6" : "IPv4"],
+              [t("地址類型"), d.ip.includes(":") ? "IPv6" : "IPv4"],
               [
-                t("IP 范围"),
+                t("IP 範圍"),
                 d.range?.first && d.range?.last
                   ? `${d.range.first} – ${d.range.last}`
                   : undefined,
               ],
-              [t("地址数量"), number(d.range?.count)],
-              [t("预估带宽"), d.asn_tbps],
+              [t("地址數量"), number(d.range?.count)],
+              [t("預估帶寬"), d.asn_tbps],
               ["Bogon", riskFlag(d.is_bogon)],
               [t("Reddit 限制"), riskFlag(d.reddit_blocked)],
               ["PTR", d.rdns || "—"],
@@ -227,62 +227,62 @@ export function IpDetails({
             ]}
           />
         </ToolCard>
-        <ToolCard title={t("风险深度检测")}>
+        <ToolCard title={t("風險深度檢測")}>
           <IpFacts
             rows={[
               ["VPN", riskFlag(d.is_vpn)],
               [t("代理"), riskFlag(d.is_proxy)],
               ["Tor", riskFlag(d.is_tor)],
-              [t("爬虫标记"), riskFlag(d.is_crawler)],
-              [t("滥用标记"), riskFlag(d.is_abuser)],
+              [t("爬蟲標記"), riskFlag(d.is_crawler)],
+              [t("濫用標記"), riskFlag(d.is_abuser)],
               [
-                t("滥用评分"),
+                t("濫用評分"),
                 d.intelligence?.abuser_score_raw ?? d.abuser_score,
               ],
             ]}
           />
         </ToolCard>
       </div>
-      <ToolCard title={t("IP 情报（威胁指标）")}>
+      <ToolCard title={t("IP 情報（威脅指標）")}>
         <IpFacts
           rows={[
             [
-              t("风险标记"),
+              t("風險標記"),
               Array.isArray(d.intelligence?.threats)
                 ? threats.length
                   ? chip(threats.join(" · "), "bad")
-                  : chip(t("未发现明显威胁"), "good")
+                  : chip(t("未發現明顯威脅"), "good")
                 : chip(t("未知")),
             ],
-            [t("滥用等级"), d.intelligence?.abuser_level],
+            [t("濫用等級"), d.intelligence?.abuser_level],
             [
-              t("HTTP 蜜罐黑名单"),
+              t("HTTP 蜜罐黑名單"),
               d.intelligence?.rep_threat == null
                 ? chip(t("未知"))
                 : JSON.stringify(d.intelligence.rep_threat),
             ],
             [
-              t("VPN 线索"),
+              t("VPN 線索"),
               d.vpn_trace == null
                 ? "—"
                 : typeof d.vpn_trace === "string"
                   ? d.vpn_trace
                   : JSON.stringify(d.vpn_trace),
             ],
-            [t("访问评估"), d.ai_verdict?.label],
+            [t("訪問評估"), d.ai_verdict?.label],
             [
-              t("评估置信度"),
+              t("評估置信度"),
               d.ai_verdict?.confidence == null ? (
                 "—"
               ) : (
                 <span key="confidence">{number(d.ai_verdict.confidence)}%</span>
               ),
             ],
-            [t("评估依据"), d.ai_verdict?.reasoning],
+            [t("評估依據"), d.ai_verdict?.reasoning],
           ]}
         />
       </ToolCard>
-      <ToolCard title={t("地理位置 · 多源对比")}>
+      <ToolCard title={t("地理位置 · 多源對比")}>
         {mobile ? (
           data.sources.length ? (
             <ul className="ip-geo-mobile">
@@ -300,7 +300,7 @@ export function IpDetails({
                   </div>
                   {source.latitude != null && source.longitude != null && (
                     <p>
-                      {t("纬度")} {source.latitude} · {t("经度")}{" "}
+                      {t("緯度")} {source.latitude} · {t("經度")}{" "}
                       {source.longitude}
                     </p>
                   )}
@@ -309,16 +309,16 @@ export function IpDetails({
             </ul>
           ) : (
             <p className="text-xs text-muted-foreground">
-              {t("未获取到归属地数据")}
+              {t("未獲取到歸屬地數據")}
             </p>
           )
         ) : (
           <DataTable<Geo>
             className="ip-geo-table"
             columns={[
-              { accessorKey: "source", header: t("数据来源") },
-              { accessorKey: "country", header: t("国家 / 地区") },
-              { accessorKey: "region", header: t("地区") },
+              { accessorKey: "source", header: t("數據來源") },
+              { accessorKey: "country", header: t("國家 / 地區") },
+              { accessorKey: "region", header: t("地區") },
               {
                 accessorKey: "city",
                 header: t("城市"),
@@ -328,11 +328,11 @@ export function IpDetails({
                   </span>
                 ),
               },
-              { accessorKey: "latitude", header: t("纬度") },
-              { accessorKey: "longitude", header: t("经度") },
+              { accessorKey: "latitude", header: t("緯度") },
+              { accessorKey: "longitude", header: t("經度") },
             ]}
             data={data.sources}
-            empty={t("未获取到归属地数据")}
+            empty={t("未獲取到歸屬地數據")}
           />
         )}
       </ToolCard>
@@ -349,7 +349,7 @@ export function IpDetails({
         }
       />
       {!!d.related_domains?.length && (
-        <ToolCard title={t("关联域名")}>
+        <ToolCard title={t("關聯域名")}>
           <IpFacts
             rows={d.related_domains.map((item) => [item.domain, item.via])}
           />
@@ -357,7 +357,7 @@ export function IpDetails({
       )}
       <div className="ip-dossier-grid">
         {!!d.location_history?.length && (
-          <ToolCard title={t("位置历史")}>
+          <ToolCard title={t("位置歷史")}>
             <IpFacts
               rows={d.location_history.map((row) => [
                 seen(row.seen_at),
@@ -367,7 +367,7 @@ export function IpDetails({
           </ToolCard>
         )}
         {!!d.asn_history?.length && (
-          <ToolCard title={t("ASN 历史")}>
+          <ToolCard title={t("ASN 歷史")}>
             <IpFacts
               rows={d.asn_history.map((row) => [
                 seen(row.seen_at),
@@ -377,7 +377,7 @@ export function IpDetails({
           </ToolCard>
         )}
         {!!d.company_history?.length && (
-          <ToolCard title={t("企业历史")}>
+          <ToolCard title={t("企業歷史")}>
             <IpFacts
               rows={d.company_history.map((row) => [
                 seen(row.seen_at),
@@ -390,7 +390,7 @@ export function IpDetails({
         )}
       </div>
       {!!d.dc_neighbors?.length && (
-        <ToolCard title={t("关联网络地址")}>
+        <ToolCard title={t("關聯網絡地址")}>
           {mobile ? (
             <ul className="divide-y divide-border/60">
               {d.dc_neighbors.map((row, index) => (
@@ -404,7 +404,7 @@ export function IpDetails({
                     </span>
                     <time
                       className="shrink-0 whitespace-nowrap text-[11px] tabular-nums text-muted-foreground"
-                      aria-label={t("记录时间")}
+                      aria-label={t("記錄時間")}
                     >
                       {seen(row.seen_at)}
                     </time>
@@ -431,10 +431,10 @@ export function IpDetails({
                   cell: ({ row }) => <IpText ip={row.original.ip} />,
                 },
                 { accessorKey: "city", header: t("城市") },
-                { accessorKey: "company", header: t("企业信息") },
+                { accessorKey: "company", header: t("企業信息") },
                 {
                   accessorKey: "seen_at",
-                  header: t("记录时间"),
+                  header: t("記錄時間"),
                   cell: ({ row }) => seen(row.original.seen_at),
                 },
               ]}
@@ -445,9 +445,9 @@ export function IpDetails({
       )}
       <Suspense
         fallback={
-          <ToolCard title={t("BGP 路由拓扑")}>
+          <ToolCard title={t("BGP 路由拓撲")}>
             <div className="ip-route-graph-state">
-              <Pending>{t("正在读取路由数据…")}</Pending>
+              <Pending>{t("正在讀取路由數據…")}</Pending>
             </div>
           </ToolCard>
         }
@@ -461,7 +461,7 @@ export function IpDetails({
       <div className="flex flex-wrap gap-2">
         <Button size="sm" variant="outline" asChild>
           <Link to={`/network/ping/?host=${encodeURIComponent(d.ip)}`}>
-            {t("全球延迟测试")}
+            {t("全球延遲測試")}
           </Link>
         </Button>
       </div>

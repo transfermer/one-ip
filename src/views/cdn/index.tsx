@@ -24,40 +24,40 @@ type Row = {
 const columns: ColumnDef<Row>[] = [
   {
     accessorKey: "name",
-    header: t("厂商"),
+    header: t("廠商"),
     cell: ({ row }) => (
       <span className="site-cell">
         <SiteLogo website={providerWebsite(row.original.name)} />
-        <OverflowDetailText text={row.original.name} title={t("CDN 厂商")} />
+        <OverflowDetailText text={row.original.name} title={t("CDN 廠商")} />
       </span>
     ),
   },
   {
     id: "node",
-    header: t("节点 / 响应标识"),
+    header: t("節點 / 響應標識"),
     cell: ({ row }) =>
       row.original.loading ? (
-        <Pending>{t("检测中...")}</Pending>
+        <Pending>{t("檢測中...")}</Pending>
       ) : (
         <OverflowDetailText text={row.original.node ?? t("未知")} />
       ),
   },
   {
     accessorKey: "cache",
-    header: t("缓存"),
+    header: t("緩存"),
     cell: ({ row }) => (
       <OverflowDetailText
         text={row.original.cache ?? "—"}
-        title={t("缓存状态")}
+        title={t("緩存狀態")}
       />
     ),
   },
   {
     id: "status",
-    header: t("状态"),
+    header: t("狀態"),
     cell: ({ row }) =>
       row.original.loading ? (
-        <Pending>{t("检测中...")}</Pending>
+        <Pending>{t("檢測中...")}</Pending>
       ) : (
         <OverflowDetailText text={row.original.error ?? t("已完成")} />
       ),
@@ -82,7 +82,7 @@ export default function CdnPage() {
             ? text.match(/^colo=(.+)$/m)?.[1]?.trim()
             : text.trim();
           if (!node || node.length > 200 || node.includes("<"))
-            throw new Error(t("未返回有效节点标识"));
+            throw new Error(t("未返回有效節點標識"));
           return { node, cache: "—" };
         }
         const headers = await request<Headers>(
@@ -103,7 +103,7 @@ export default function CdnPage() {
           if (key === "server" && !/bunnycdn-[\w-]+/i.test(value)) return [];
           return [`${key}: ${value}`];
         });
-        if (!values.length) throw new Error(t("节点头未公开或跨域受限"));
+        if (!values.length) throw new Error(t("節點頭未公開或跨域受限"));
         return {
           node: values.join(" · "),
           cache:
@@ -115,14 +115,14 @@ export default function CdnPage() {
   const busy = queries.some((query) => query.isFetching);
   return (
     <>
-      <PageHeading title={t("CDN 命中节点")} description="" />
+      <PageHeading title={t("CDN 命中節點")} description="" />
       <div className="toolbar">
         <ActionButton busy={busy} onClick={() => setRound((n) => n + 1)}>
-          {busy ? t("检测中...") : t("重新检测")}
+          {busy ? t("檢測中...") : t("重新檢測")}
         </ActionButton>
         <span className="small muted">
           {queries.filter((query) => query.isSuccess).length}/{providers.length}{" "}
-          {t("可读取")}
+          {t("可讀取")}
         </span>
       </div>
       <Card>

@@ -3,9 +3,9 @@ import { test } from "node:test";
 import { matchEnvironment, probeFonts, pixelSummary, collectDeviceSignals } from "../src/views/claude/device-signals.ts";
 
 test("language and device matches preserve observed signals without inferring nationality", () => {
-  const result = matchEnvironment("MicroMessenger HarmonyOS", "Asia/Shanghai", ["en-US", "zh-CN"]);
+  const result = matchEnvironment("MicroMessenger HarmonyOS", "Asia/Shanghai", ["en-US", "zh-TW"]);
   assert.equal(result.timezoneMatch, true);
-  assert.deepEqual(result.chineseLanguages, ["zh-CN"]);
+  assert.deepEqual(result.chineseLanguages, ["zh-TW"]);
   assert.ok(result.browsers.includes("WeChat"));
   assert.ok(result.devices.includes("HarmonyOS"));
   assert.equal(matchEnvironment("Safari", "Asia/Singapore", ["en-US"]).timezoneMatch, false);

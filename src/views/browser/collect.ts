@@ -19,17 +19,17 @@ export async function consistencyChecks(): Promise<Check[]> {
         nav.userAgentData.platform,
         nav.maxTouchPoints,
       ),
-      name: t("UA / Client Hints 平台"),
+      name: t("UA / Client Hints 平臺"),
     });
   } else
     checks.push({
-      name: t("UA / Client Hints 平台"),
-      status: "无法检测",
-      detail: t("浏览器未提供 Client Hints。"),
+      name: t("UA / Client Hints 平臺"),
+      status: "無法檢測",
+      detail: t("瀏覽器未提供 Client Hints。"),
     });
   const frame = document.createElement("iframe");
   frame.hidden = true;
-  frame.title = t("环境一致性检测");
+  frame.title = t("環境一致性檢測");
   try {
     document.body.append(frame);
     const win = frame.contentWindow as (Window & typeof globalThis) | null;
@@ -45,14 +45,14 @@ export async function consistencyChecks(): Promise<Check[]> {
           hardwareConcurrency: win.navigator.hardwareConcurrency,
           timezone: win.Intl.DateTimeFormat().resolvedOptions().timeZone,
         },
-        t("主页面 / iframe"),
+        t("主頁面 / iframe"),
       ),
     );
   } catch {
     checks.push({
-      name: t("主页面 / iframe"),
-      status: "无法检测",
-      detail: t("浏览器限制了子页面读取。"),
+      name: t("主頁面 / iframe"),
+      status: "無法檢測",
+      detail: t("瀏覽器限制了子頁面讀取。"),
     });
   } finally {
     frame.remove();
@@ -71,24 +71,24 @@ export async function consistencyChecks(): Promise<Check[]> {
         worker!.postMessage("read");
       },
     );
-    checks.push(compareContexts(snapshot, data, t("主页面 / Worker")));
+    checks.push(compareContexts(snapshot, data, t("主頁面 / Worker")));
   } catch {
     checks.push({
-      name: t("主页面 / Worker"),
-      status: "无法检测",
-      detail: t("Worker 未返回结果，可能被策略限制。"),
+      name: t("主頁面 / Worker"),
+      status: "無法檢測",
+      detail: t("Worker 未返回結果，可能被策略限制。"),
     });
   } finally {
     clearTimeout(timeout);
     worker?.terminate();
   }
   checks.push({
-    name: t("首选语言"),
+    name: t("首選語言"),
     status: !nav.languages.length
-      ? "无法检测"
+      ? "無法檢測"
       : nav.language === nav.languages[0]
         ? "一致"
-        : "存在差异",
+        : "存在差異",
     detail: `language: ${nav.language}；languages[0]: ${nav.languages[0] ?? t("未提供")}。`,
   });
   return checks;
@@ -99,30 +99,30 @@ export function automationChecks(): Check[] {
       name: "WebDriver",
       status:
         typeof navigator.webdriver !== "boolean"
-          ? "无法检测"
+          ? "無法檢測"
           : navigator.webdriver
-            ? "检测到特征"
-            : "未发现特征",
-      detail: t("navigator.webdriver = {0}；该值可被浏览器或扩展改变。", [
+            ? "檢測到特徵"
+            : "未發現特徵",
+      detail: t("navigator.webdriver = {0}；該值可被瀏覽器或擴展改變。", [
         String(navigator.webdriver),
       ]),
     },
     {
       name: "Headless UA",
       status: /HeadlessChrome/i.test(navigator.userAgent)
-        ? "检测到特征"
-        : "未发现特征",
-      detail: t("检查 User-Agent 中是否明确包含 HeadlessChrome。"),
+        ? "檢測到特徵"
+        : "未發現特徵",
+      detail: t("檢查 User-Agent 中是否明確包含 HeadlessChrome。"),
     },
     {
-      name: t("历史自动化全局标记"),
+      name: t("歷史自動化全局標記"),
       status: ["_phantom", "callPhantom", "__nightmare"].some(
         (key) => key in window,
       )
-        ? "检测到特征"
-        : "未发现特征",
+        ? "檢測到特徵"
+        : "未發現特徵",
       detail: t(
-        "仅检查 PhantomJS / Nightmare 常见标记，不能覆盖所有自动化工具。",
+        "僅檢查 PhantomJS / Nightmare 常見標記，不能覆蓋所有自動化工具。",
       ),
     },
   ];
@@ -152,14 +152,14 @@ export async function fingerprint(algorithm: FingerprintAlgorithm = "modern") {
   const result = await (await load({ monitoring: false })).get();
   const components = Object.entries(result.components).map(([name, value]) => ({
     name,
-    value: "error" in value ? t("无法检测") : hashComponents({ [name]: value }),
+    value: "error" in value ? t("無法檢測") : hashComponents({ [name]: value }),
     detail:
       "error" in value
-        ? t("浏览器未提供或限制读取")
+        ? t("瀏覽器未提供或限制讀取")
         : JSON.stringify(value.value),
   }));
   const element = document.createElement("span");
-  element.textContent = "Browser diagnostics 字体 Aa 0123";
+  element.textContent = "Browser diagnostics 字體 Aa 0123";
   element.style.cssText =
     "position:fixed;left:-10000px;top:0;font:17px Arial;visibility:hidden;white-space:nowrap";
   try {

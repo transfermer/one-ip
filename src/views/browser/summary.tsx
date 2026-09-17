@@ -19,9 +19,9 @@ export function BrowserSummary() {
     <Card className="mb-3">
       <CardHeader>
         <div className="row-between">
-          <CardTitle>{t("浏览器环境")}</CardTitle>
+          <CardTitle>{t("瀏覽器環境")}</CardTitle>
           <Link className="small muted" to="/browser/environment">
-            {t("查看完整检测 ›")}
+            {t("查看完整檢測 ›")}
           </Link>
         </div>
       </CardHeader>
@@ -36,10 +36,10 @@ export function BrowserSummary() {
         {(query.isPending || query.data) && (
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-border/50 pt-2 text-sm">
             <span className="grow text-muted-foreground">
-              {t("浏览器指纹 · Visitor ID")}
+              {t("瀏覽器指紋 · Visitor ID")}
             </span>
             {query.isPending ? (
-              <Pending>{t("检测中…")}</Pending>
+              <Pending>{t("檢測中…")}</Pending>
             ) : (
               <Link
                 className="max-w-full break-all font-mono text-xs text-primary [.home-page_&]:text-foreground"
@@ -52,9 +52,9 @@ export function BrowserSummary() {
         )}
         <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3 text-sm text-primary [.home-page_&]:text-muted-foreground">
           {[
-            { path: "fingerprint", name: t("指纹检测") },
-            { path: "consistency", name: t("环境一致性") },
-            { path: "privacy", name: t("权限与隐私") },
+            { path: "fingerprint", name: t("指紋檢測") },
+            { path: "consistency", name: t("環境一致性") },
+            { path: "privacy", name: t("權限與隱私") },
           ].map((tool) => (
             <UnderlineHover asChild key={tool.path}>
               <Link to={`/browser/${tool.path}`}>{tool.name} ›</Link>

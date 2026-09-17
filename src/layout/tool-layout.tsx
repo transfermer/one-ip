@@ -10,7 +10,7 @@ export function ToolLayout({ group }: { group: keyof typeof toolGroups }) {
   const tools = useAvailableTools(group);
   return (
     <>
-      <nav className="tool-subnav" aria-label={t("工具导航")}>
+      <nav className="tool-subnav" aria-label={t("工具導航")}>
         <NavLink to={`/${group}`} end>
           {t("概述")}
         </NavLink>

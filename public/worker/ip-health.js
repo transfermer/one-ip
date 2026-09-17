@@ -4,7 +4,7 @@ export async function ipHealth(request, env) {
   const url = new URL(request.url);
   const format = url.searchParams.get("format") ?? "json";
   if (!["json", "text"].includes(format))
-    throw new HttpError(400, "format 仅支持 json 或 text");
+    throw new HttpError(400, "format 僅支持 json 或 text");
   const target = url.searchParams.get("ip");
   if (
     target === null &&
@@ -12,7 +12,7 @@ export async function ipHealth(request, env) {
   )
     throw new HttpError(
       503,
-      "无法获取真实访客 IP，请指定 ip 参数或部署 Worker 后检测",
+      "無法獲取真實訪客 IP，請指定 ip 參數或部署 Worker 後檢測",
     );
   const ip = publicIp(target ?? request.headers.get("CF-Connecting-IP"));
   const data = await upstream(
@@ -23,9 +23,9 @@ export async function ipHealth(request, env) {
   try {
     returnedIp = publicIp(data?.ip);
   } catch {
-    throw new HttpError(502, "IP 数据源返回的地址无效");
+    throw new HttpError(502, "IP 數據源返回的地址無效");
   }
-  if (returnedIp !== ip) throw new HttpError(502, "IP 数据源返回的地址不匹配");
+  if (returnedIp !== ip) throw new HttpError(502, "IP 數據源返回的地址不匹配");
   const score =
     typeof data.trust_score === "number" &&
     Number.isFinite(data.trust_score) &&

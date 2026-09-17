@@ -1,6 +1,6 @@
 import { HttpError, upstream } from "./http.js";
 
-const unavailable = () => new HttpError(502, "官方状态数据暂不可用");
+const unavailable = () => new HttpError(502, "官方狀態數據暫不可用");
 const summary = (indicator, description, incidents) => ({
   status: { indicator, description },
   ...(incidents ? { incidents } : {}),
@@ -44,7 +44,7 @@ export function parseGoogleCloud(data) {
       : active.length
         ? "minor"
         : "none",
-    active.length ? "存在服务故障" : "正常运行",
+    active.length ? "存在服務故障" : "正常運行",
     active.map((item) => ({
       id: item.id,
       name: item.external_desc,
@@ -71,7 +71,7 @@ export function parseAws(data) {
       : active.length
         ? "minor"
         : "none",
-    active.length ? "存在服务故障" : "正常运行",
+    active.length ? "存在服務故障" : "正常運行",
     active.map((item) => ({
       id: item.arn,
       name: `${item.service_name} (${item.region_name}) — ${item.summary}`,
@@ -136,7 +136,7 @@ export function parseAliyun(data) {
       : active.length
         ? "minor"
         : "none",
-    active.length ? "存在服务故障或提示" : "正常运行",
+    active.length ? "存在服務故障或提示" : "正常運行",
     active.map((item) => ({
       id: String(item.id),
       name: item.title,
@@ -254,7 +254,7 @@ async function tencentStatus(url) {
         : incidents.length
           ? "minor"
           : "none",
-      incidents.length ? "存在服务故障或提示" : "正常运行",
+      incidents.length ? "存在服務故障或提示" : "正常運行",
       incidents,
     ),
     components: regions.map((region) => ({
@@ -309,7 +309,7 @@ export function parseAzure(html) {
     throw unavailable();
   return summary(
     active.length ? "major" : "none",
-    active.length ? "存在公开服务事件" : "未报告广泛影响的事件",
+    active.length ? "存在公開服務事件" : "未報告廣泛影響的事件",
     active.map((row, index) => ({
       id: `azure-current-${index}`,
       name: plainText(row).slice(0, 500),
@@ -329,7 +329,7 @@ async function sourceText(url, maxBytes = 2_000_000) {
     await response.body?.cancel();
     throw new HttpError(
       response.status === 429 ? 429 : 502,
-      "官方状态数据暂不可用",
+      "官方狀態數據暫不可用",
     );
   }
   const reader = response.body?.getReader();
@@ -397,7 +397,7 @@ export function parseQwenStatus(catalog, current) {
     components: [
       {
         id: "sfm",
-        name: "大模型服务平台百炼",
+        name: "大模型服務平臺百鍊",
         status:
           result.status.indicator === "none"
             ? "operational"

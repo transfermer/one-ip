@@ -17,23 +17,23 @@ test("platform comparisons account for normal Android, ChromeOS and iPad compati
   assert.equal(comparePlatforms("Mozilla iPad", "MacIntel", 5).status, "一致");
   assert.equal(
     comparePlatforms("Mozilla Windows NT", "MacIntel", 0).status,
-    "存在差异",
+    "存在差異",
   );
-  assert.equal(comparePlatforms("redacted", "", 0).status, "无法检测");
+  assert.equal(comparePlatforms("redacted", "", 0).status, "無法檢測");
 });
 test("context comparison distinguishes missing fields from contradictory values", () => {
   const data = {
     userAgent: "UA",
     platform: "MacIntel",
-    language: "zh-CN",
-    languages: ["zh-CN"],
+    language: "zh-TW",
+    languages: ["zh-TW"],
     hardwareConcurrency: 8,
     timezone: "Asia/Shanghai",
   };
   assert.equal(compareContexts(data, { ...data }, "test").status, "一致");
   assert.equal(
     compareContexts(data, { ...data, language: "en-US" }, "test").status,
-    "存在差异",
+    "存在差異",
   );
-  assert.equal(compareContexts(data, {}, "test").status, "无法检测");
+  assert.equal(compareContexts(data, {}, "test").status, "無法檢測");
 });

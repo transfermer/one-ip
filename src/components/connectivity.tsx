@@ -77,12 +77,12 @@ export function ConnectivityTile({
 
 export const homeTargets: Target[] = [
   {
-    name: t("字节跳动"),
+    name: t("字節跳動"),
     icon: "https://icons.duckduckgo.com/ip3/bytedance.com.ico",
     url: "https://perfops.byte-test.com/500b-bench.jpg",
   },
   {
-    name: t("淘宝"),
+    name: t("淘寶"),
     icon: "https://icons.duckduckgo.com/ip3/taobao.com.ico",
     url: "https://www.taobao.com/favicon.ico",
   },

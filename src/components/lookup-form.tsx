@@ -13,13 +13,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const schema = z.object({
-  query: z.string().trim().min(1, t("请输入查询内容")).max(253, t("输入过长")),
+  query: z.string().trim().min(1, t("請輸入查詢內容")).max(253, t("輸入過長")),
 });
 export function LookupForm({
   value = "",
   placeholder,
   busy,
-  label = t("查询"),
+  label = t("查詢"),
   onSubmit,
   grouped = false,
 }: {
@@ -63,7 +63,7 @@ export function LookupForm({
                   type="submit"
                   busy={busy}
                 >
-                  {busy ? t("查询中...") : label}
+                  {busy ? t("查詢中...") : label}
                 </ActionButton>
               </InputGroupAddon>
             ) : (

@@ -21,7 +21,7 @@ export function LocationMap({ geo }: { geo: Geo }) {
     [geo.country, geo.region, geo.city]
       .filter(Boolean)
       .filter((value, index, all) => all.indexOf(value) === index)
-      .join(" · ") || t("IP 归属位置");
+      .join(" · ") || t("IP 歸屬位置");
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const [visible, setVisible] = useState(false);
@@ -62,8 +62,8 @@ export function LocationMap({ geo }: { geo: Geo }) {
         L.control
           .zoom({
             position: "bottomright",
-            zoomInTitle: t("放大地图"),
-            zoomOutTitle: t("缩小地图"),
+            zoomInTitle: t("放大地圖"),
+            zoomOutTitle: t("縮小地圖"),
           })
           .addTo(instance);
         const mapInstance = instance;
@@ -115,15 +115,15 @@ export function LocationMap({ geo }: { geo: Geo }) {
     <ToolCard
       title={
         <span className="ip-map-heading">
-          <span>{t("地理位置 · 地图")}</span>
+          <span>{t("地理位置 · 地圖")}</span>
           {valid && (
             <span className="flex items-center gap-1">
               <Button
                 type="button"
                 variant="ghost"
                 size="icon-sm"
-                aria-label={t("回到归属位置")}
-                title={t("回到归属位置")}
+                aria-label={t("回到歸屬位置")}
+                title={t("回到歸屬位置")}
                 onClick={() =>
                   map.current?.setView([latitude, longitude], 7, {
                     animate: false,
@@ -137,8 +137,8 @@ export function LocationMap({ geo }: { geo: Geo }) {
                   href={mapExternalUrl(latitude, longitude, location)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={t("查看大图")}
-                  title={t("查看大图")}
+                  aria-label={t("查看大圖")}
+                  title={t("查看大圖")}
                 >
                   <ExternalLink className="size-4" />
                 </a>
@@ -165,28 +165,28 @@ export function LocationMap({ geo }: { geo: Geo }) {
             />
             {!loaded && !tileError && (
               <div className="ip-map-loading">
-                <Pending>{t("正在加载地图…")}</Pending>
+                <Pending>{t("正在加載地圖…")}</Pending>
               </div>
             )}
           </div>
           {tileError && (
             <p className="ip-map-error" role="status">
-              {t("地图底图暂不可用，归属信息仍可查看。")}{" "}
+              {t("地圖底圖暫不可用，歸屬信息仍可查看。")}{" "}
               <button
                 type="button"
                 onClick={() => setAttempt((value) => value + 1)}
               >
-                {t("重试")}
+                {t("重試")}
               </button>
             </p>
           )}
           <p className="ip-map-caption">
             {geo.source ? `${geo.source} · ` : ""}
-            {t("IP 大致归属位置，非设备精确定位。")}
+            {t("IP 大致歸屬位置，非設備精確定位。")}
           </p>
         </>
       ) : (
-        <p className="small muted">{t("暂无经纬度信息，无法显示地图。")}</p>
+        <p className="small muted">{t("暫無經緯度信息，無法顯示地圖。")}</p>
       )}
     </ToolCard>
   );

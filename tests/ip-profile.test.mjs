@@ -37,34 +37,34 @@ test("profile explanations highlight actual categories and keep unknown flags di
   );
   assert.equal(
     ordinary[1].options.find((item) => item.current).label,
-    "网络运营商",
+    "網絡運營商",
   );
   const publicFields = fields({ ...residential, is_public_service: true });
   assert.equal(
     publicFields[0].options.find((item) => item.current).label,
-    "公共服务",
+    "公共服務",
   );
-  assert.equal(publicFields[2].value, "不适用");
+  assert.equal(publicFields[2].value, "不適用");
   const conflict = fields({ ...residential, is_datacenter: true });
   assert.equal(
     conflict[0].options.find((item) => item.current).label,
-    "类型标记冲突",
+    "類型標記衝突",
   );
   const custom = fields({ ...residential, company_type: "specialized" });
   assert.equal(custom[1].value, "specialized");
   assert.equal(
     custom[1].options.find((item) => item.current).label,
-    "其他类型",
+    "其他類型",
   );
   const flags = fields({ ...residential, is_vpn: true, is_proxy: undefined })[3]
     .options;
-  assert.equal(flags.find((item) => item.label === "VPN").status, "已检测到");
+  assert.equal(flags.find((item) => item.label === "VPN").status, "已檢測到");
   assert.equal(flags.find((item) => item.label === "代理").status, "未知");
-  assert.equal(flags.find((item) => item.label === "Tor").status, "未检测到");
+  assert.equal(flags.find((item) => item.label === "Tor").status, "未檢測到");
 });
 
 test("preferred residential requires evidence beyond a high score", () => {
-  assert.equal(ipProfile(residential).grade, "住宅优选");
+  assert.equal(ipProfile(residential).grade, "住宅優選");
   assert.equal(ipProfile(residential).level, "S");
   assert.equal(
     ipProfile(residential).checks.filter((check) => check.passed === true)
@@ -173,26 +173,26 @@ test("informational mobile records do not trigger risk notices or one-star ratin
   const data = {
     ...residential,
     is_mobile: true,
-    intelligence: { threats: [{ label: "移动蜂窝", severity: "info" }] },
+    intelligence: { threats: [{ label: "移動蜂窩", severity: "info" }] },
   };
   const profile = ipProfile(data);
   assert.equal(profile.risk, null);
 
   const note = ipProfileFields(data, profile)[3].options.at(-1);
-  assert.equal(note.description, "移动蜂窝");
-  assert.equal(note.status, "仅信息");
+  assert.equal(note.description, "移動蜂窩");
+  assert.equal(note.status, "僅信息");
   assert.equal(note.current, false);
 });
 
 test("public services and conflicting flags never receive residential tiers", () => {
   const publicService = ipProfile({ ...residential, is_public_service: true });
-  assert.equal(publicService.grade, "公共服务网络");
+  assert.equal(publicService.grade, "公共服務網絡");
   assert.equal(publicService.level, null);
-  assert.equal(publicService.checks[0].value, "公共服务");
-  assert.equal(publicService.checks[2].value, "待确认");
+  assert.equal(publicService.checks[0].value, "公共服務");
+  assert.equal(publicService.checks[2].value, "待確認");
   assert.equal(
     ipProfile({ ...residential, is_datacenter: true }).grade,
-    "类型待确认",
+    "類型待確認",
   );
 });
 
@@ -201,7 +201,7 @@ test("missing values remain unknown and scores stay within their scale", () => {
   assert.equal(missing.grade, "信息不足");
   assert.equal(missing.level, null);
   assert.equal(missing.checks[0].value, "未知");
-  assert.equal(missing.checks[3].value, "缺少 6 项数据");
+  assert.equal(missing.checks[3].value, "缺少 6 項數據");
   for (const score of [undefined, null, NaN, Infinity, -1, 101]) {
     const profile = ipProfile({ ...residential, trust_score: score });
     assert.equal(profile.score, null);
@@ -249,20 +249,20 @@ test("hosting tiers follow score boundaries without ranking company sectors", ()
     company_type: "hosting",
   };
   for (const [score, expected] of [
-    [0, "信誉偏低"],
-    [44, "信誉偏低"],
-    [45, "信誉一般"],
-    [74, "信誉一般"],
-    [75, "信誉良好"],
-    [89, "信誉良好"],
-    [90, "高信誉机房"],
-    [100, "高信誉机房"],
+    [0, "信譽偏低"],
+    [44, "信譽偏低"],
+    [45, "信譽一般"],
+    [74, "信譽一般"],
+    [75, "信譽良好"],
+    [89, "信譽良好"],
+    [90, "高信譽機房"],
+    [100, "高信譽機房"],
   ]) {
     assert.equal(ipProfile({ ...hosting, trust_score: score }).grade, expected);
   }
   assert.equal(
     ipProfile({ ...hosting, company_type: "government" }).grade,
-    "高信誉机房",
+    "高信譽機房",
   );
-  assert.equal(ipProfile({ ...hosting, is_vpn: true }).grade, "存在网络标记");
+  assert.equal(ipProfile({ ...hosting, is_vpn: true }).grade, "存在網絡標記");
 });

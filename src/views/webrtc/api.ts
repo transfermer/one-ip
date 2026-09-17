@@ -48,7 +48,7 @@ export async function collectCandidates(
   signal: AbortSignal,
 ): Promise<RtcResult[]> {
   if (typeof RTCPeerConnection === "undefined")
-    throw new Error(t("当前浏览器不支持 WebRTC，无法完成检测。"));
+    throw new Error(t("當前瀏覽器不支持 WebRTC，無法完成檢測。"));
   const pc = new RTCPeerConnection({
     iceServers: [
       { urls: "stun:stun.l.google.com:19302" },
@@ -79,9 +79,9 @@ export async function collectCandidates(
           ip,
           type:
             type === "srflx"
-              ? t("公网 (STUN)")
+              ? t("公網 (STUN)")
               : type === "relay"
-                ? t("中继 (TURN)")
+                ? t("中繼 (TURN)")
                 : t("本地"),
           public: isPublicCandidate(ip),
         });
@@ -131,14 +131,14 @@ export async function runWebRtc(_: void, signal: AbortSignal) {
   );
   const verdict = !results.some((row) => row.public)
     ? t(
-        "未采集到公网候选地址。可能被浏览器限制、UDP 阻断或 WebRTC 禁用，不能据此判定安全。",
+        "未採集到公網候選地址。可能被瀏覽器限制、UDP 阻斷或 WebRTC 禁用，不能據此判定安全。",
       )
     : !baseline
-      ? t("已采集到 UDP 出口，但 HTTP 基准获取失败，无法判断是否一致。")
+      ? t("已採集到 UDP 出口，但 HTTP 基準獲取失敗，無法判斷是否一致。")
       : different
         ? t(
-            "发现与 HTTP 出口不同的 UDP 地址，请对照代理分流规则确认；不同出口不一定是泄露。",
+            "發現與 HTTP 出口不同的 UDP 地址，請對照代理分流規則確認；不同出口不一定是泄露。",
           )
-        : t("本次采样的公网 UDP 出口与 HTTP 出口一致。");
+        : t("本次採樣的公網 UDP 出口與 HTTP 出口一致。");
   return { baseline, results, verdict, different };
 }
