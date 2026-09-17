@@ -2,21 +2,6 @@
 
 # One IP
 
-<p align="left">
-  <img src="https://img.shields.io/badge/React-19-282C34?logo=react&amp;logoColor=61DAFB" alt="React 19" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&amp;logoColor=white" alt="Vite 8" />
-  <img src="https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&amp;logoColor=white" alt="TypeScript 6" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&amp;logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/shadcn%2Fui-000000?logo=shadcnui&amp;logoColor=white" alt="shadcn/ui" />
-  <img src="https://img.shields.io/badge/Lucide-F56565?logo=lucide&amp;logoColor=white" alt="Lucide" />
-  <img src="https://img.shields.io/badge/Jotai-000000" alt="Jotai" />
-  <img src="https://img.shields.io/badge/TanStack_Query-FF4154?logo=reactquery&amp;logoColor=white" alt="TanStack Query" />
-  <img src="https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflareworkers&amp;logoColor=white" alt="Cloudflare Workers" />
-  <img src="https://img.shields.io/badge/Leaflet-199900?logo=leaflet&amp;logoColor=white" alt="Leaflet" />
-  <img src="https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&amp;logoColor=white" alt="pnpm 10" />
-  <img src="https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&amp;logoColor=black" alt="Prettier" />
-</p>
-
 IP 查詢、網絡診斷、瀏覽器檢測與 AI 服務狀態工具箱。
 
 **中文** · [English](README.en.md)
@@ -188,5 +173,3 @@ reCAPTCHA 使用 v3 評分型密鑰。服務端校驗 hostname、`browser_check`
 Claude 頁面自動比較 `claude.ai` 與 `claude.com` 出口，並展示 DNS、WebRTC 和語言、時區等瀏覽器信息。檢測失敗、不同出口或中文偏好均不直接代表賬號風險。未接入 Cloudflare 企業版 Bot Management；不展示推算的企業版分數。
 
 Claude 頁面還內嵌自動人機校驗，並本地檢測簡繁中文字體、廠商字體、UA / Client Hints、Intl 區域及 Canvas 國旗渲染。檢測字典參考 LinXiaoTao/FuckClaude，來源摘要與 MIT 許可證位於 `vendor/claude-environment/`。不使用其風險分數；不把字體、廠商或中文偏好解釋爲國籍或封禁概率。頁面僅展示簡潔人機狀態和逐項更新的檢測日誌，不提供評分卡或文本輸入。
-
-社區友鏈：[LINUX DO](https://linux.do/) · 真誠、友善、團結、專業。
